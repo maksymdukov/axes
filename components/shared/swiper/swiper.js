@@ -22,7 +22,7 @@ const useStyles = makeStyles({
     maxWidth: "100%",
     maxHeight: "100%",
     width: "100%",
-    height: '100%',
+    height: "100%",
     objectFit: "cover",
     display: "none",
     "&.swiper-lazy-loaded": {
@@ -31,7 +31,7 @@ const useStyles = makeStyles({
   }
 });
 
-const MySwiper = ({ images }) => {
+const MySwiper = ({ images, className }) => {
   const classes = useStyles();
   const params = {
     lazy: true,
@@ -45,7 +45,7 @@ const MySwiper = ({ images }) => {
     }
   };
   return (
-    <div className={classes.swiperWrapper}>
+    <div className={clsx(classes.swiperWrapper, className)}>
       <Swiper {...params}>
         {images.map(image => (
           <div key={image.url}>

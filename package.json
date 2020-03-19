@@ -17,5 +17,8 @@
     "react-id-swiper": "^3.0.0",
     "sass": "^1.26.3",
     "swiper": "^5.3.6"
+  },
+  "devDependencies": {
+    "prettier": "^1.19.1"
   }
 }

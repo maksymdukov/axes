@@ -46,7 +46,10 @@ const Navbar = () => {
         <Typography variant="h6" className={classes.title}>
           Топоры
         </Typography>
-        <Navmenu />
+        <Hidden xsDown>
+          <Navmenu />
+        </Hidden>
+
       </Toolbar>
     </AppBar>
   );

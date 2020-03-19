@@ -5,8 +5,10 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(theme => ({
   navLink: {
+    transition: "color .2s linear",
     "&:hover": {
-      backgroundColor: theme.palette.primary.light
+      backgroundColor: theme.palette.primary.light,
+      color: theme.palette.secondary.light
     }
   }
 }));
