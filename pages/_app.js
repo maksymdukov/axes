@@ -6,7 +6,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import theme from "../components/shared/theme/theme";
 import Layout from "../components/layout/layout";
 import "swiper/css/swiper.css";
-import { appWithTranslation } from "../config/i18n";
+import { appWithTranslation } from "../i18n";
 
 class MyApp extends App {
   componentDidMount() {

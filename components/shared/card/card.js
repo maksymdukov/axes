@@ -9,7 +9,7 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Link from "~/components/shared/link/link";
 import CtaButton from "../buttons/cta-button";
-import { Link as NextLink } from "~/config/i18n";
+import { Link as NextLink } from "~/i18n";
 
 const useStyles = makeStyles(({ customShadows, shadows }) => ({
   root: {
