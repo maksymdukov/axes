@@ -1,6 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Navbar from "../../navbar/navbar";
+import Navbar from "../navbar/navbar";
 import Container from "@material-ui/core/Container";
 
 const useStyles = makeStyles(({ palette, spacing }) => ({

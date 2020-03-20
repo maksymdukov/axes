@@ -7,8 +7,9 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import Link from "next/link";
+import Link from "~/components/shared/link/link";
 import CtaButton from "../buttons/cta-button";
+import { Link as NextLink } from "~/config/i18n";
 
 const useStyles = makeStyles(({ customShadows, shadows }) => ({
   root: {
@@ -36,12 +37,12 @@ const useStyles = makeStyles(({ customShadows, shadows }) => ({
   }
 }));
 
-export default function MediaCard({ card }) {
+export default function MediaCard({ card, t }) {
   const classes = useStyles();
 
   return (
     <Card className={classes.root} elevation={3}>
-      <Link href={`/axes/[axeId]`} as={`/axes/${card.id}`}>
+      <NextLink href={`/axes/page?axeId=${card.id}`} as={`/axes/${card.id}`}>
         <CardActionArea className={classes.actionArea}>
           <CardMedia
             className={classes.media}
@@ -57,20 +58,20 @@ export default function MediaCard({ card }) {
             </Typography>
           </CardContent>
         </CardActionArea>
-      </Link>
+      </NextLink>
       <CardActions>
-        <Link href={`/axes/[axeId]`} as={`/axes/${card.id}`}>
+        <NextLink href={`/axes/page?axeId=${card.id}`} as={`/axes/${card.id}`}>
           <Button
             size="small"
             color="secondary"
             component="a"
             className={classes.details}
           >
-            Детальнее
+            {t("details")}
           </Button>
-        </Link>
+        </NextLink>
         <CtaButton size="small" color="inherit">
-          Заказать
+          {t("order")}
         </CtaButton>
       </CardActions>
     </Card>

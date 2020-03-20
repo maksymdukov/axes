@@ -4,10 +4,11 @@ import Head from "next/head";
 import { ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import theme from "../components/shared/theme/theme";
-import Layout from "../components/shared/layout/layout";
+import Layout from "../components/layout/layout";
 import "swiper/css/swiper.css";
+import { appWithTranslation } from "../config/i18n";
 
-export default class MyApp extends App {
+class MyApp extends App {
   componentDidMount() {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector("#jss-server-side");
@@ -39,8 +40,17 @@ export default class MyApp extends App {
             --swiper-theme-color: ${theme.palette.primary.main};
             --swiper-navigation-color: ${theme.palette.primary.contrastText};
           }
+
+          a,
+          a:link,
+          a:hover {
+            text-decoration: none;
+            color: inherit;
+          }
         `}</style>
       </React.Fragment>
     );
   }
 }
+
+export default appWithTranslation(MyApp);

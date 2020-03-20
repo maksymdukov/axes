@@ -1,30 +1,33 @@
 import React from "react";
-import Button from "@material-ui/core/Button";
-import Link from "next/link";
+import Link from "../../link/link";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(theme => ({
   navLink: {
+    fontSize: theme.typography.fontSize * 1.2,
+    padding: theme.spacing(),
+    color: "inherit",
     transition: "color .2s linear",
     "&:hover": {
-      backgroundColor: theme.palette.primary.light,
+      textDecoration: "none",
       color: theme.palette.secondary.light
     }
+  },
+  navLinkActive: {
+    color: theme.palette.secondary.light
   }
 }));
 
 const NavmenuItem = ({ link }) => {
   const classes = useStyles();
   return (
-    <Link key={link.to} href={link.to}>
-      <Button
-        className={classes.navLink}
-        href={link.to}
-        component="a"
-        color="inherit"
-      >
-        {link.label}
-      </Button>
+    <Link
+      key={link.to}
+      href={link.to}
+      className={classes.navLink}
+      activeClassName={classes.navLinkActive}
+    >
+      {link.label}
     </Link>
   );
 };

@@ -3,20 +3,23 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "node server.js",
     "build": "next build",
-    "start": "next start"
+    "start": "NODE_ENV=production node server.js"
   },
   "dependencies": {
     "@material-ui/core": "^4.9.7",
     "@material-ui/icons": "^4.9.1",
     "clsx": "^1.1.0",
+    "express": "^4.17.1",
     "next": "9.3.1",
+    "next-i18next": "^4.2.1",
     "react": "16.13.0",
     "react-dom": "16.13.0",
     "react-id-swiper": "^3.0.0",
     "sass": "^1.26.3",
-    "swiper": "^5.3.6"
+    "swiper": "^5.3.6",
+    "react-i18next": "latest"
   },
   "devDependencies": {
     "prettier": "^1.19.1"

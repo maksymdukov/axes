@@ -4,6 +4,7 @@ import Swiper from "../components/shared/swiper/swiper";
 import Container from "@material-ui/core/Container";
 import MainHeader from "../components/shared/typography/main-header";
 import Cards from "../components/shared/card/cards";
+import { useTranslation } from "react-i18next";
 
 const useStyles = makeStyles(({ spacing }) => ({
   mb: {
@@ -40,43 +41,50 @@ const cards = [
     title: "Невероятный мститель",
     imageURL:
       "https://i.etsystatic.com/16258006/r/il/08f511/1701343061/il_794xN.1701343061_gmx1.jpg",
-    description: "Из чистого дуба, каленный метал"
+    description: "Из чистого дуба, каленый метал"
   },
   {
     id: "2",
     title: "Ночной странник",
     imageURL:
       "https://www.gransforsbruk.com/wp-content/uploads/475-large-carving-axe-1440x1050.jpg",
-    description: "Из чистого бука, каленный метал"
+    description: "Из чистого бука, каленый метал"
   },
   {
     id: "3",
-    title: "Тихий шепот",
+    title: "Громкое молчание",
     imageURL:
       "https://cdna.artstation.com/p/assets/images/images/023/191/656/large/alexander-campos-thumbnail-16-9.jpg?1578412577",
-    description: "Из чистого дуба, каленный метал"
+    description: "Из чистого дуба, каленый метал"
   },
   {
     id: "4",
-    title: "Молот",
+    title: "Возмездие богов",
     imageURL:
       "https://cdna.artstation.com/p/assets/images/images/023/191/656/large/alexander-campos-thumbnail-16-9.jpg?1578412577",
-    description: "Из чистого дуба, каленный метал"
+    description: "Из чистого дуба, каленый метал"
   }
 ];
 const Home = () => {
   const classes = useStyles();
+  const { t } = useTranslation("index");
 
   return (
     <div className={classes.bgPattern}>
       <Swiper images={images} className={classes.mb} />
       <Container className={classes.container}>
-        <MainHeader>Лучшие работы</MainHeader>
+        <MainHeader>{t("bestWorks")}</MainHeader>
         <Cards cards={cards} className={classes.mb} />
-        <MainHeader>Новинки</MainHeader>
+        <MainHeader>{t("newWorks")}</MainHeader>
         <Cards cards={cards} />
       </Container>
     </div>
   );
+};
+
+Home.getInitialProps = async () => {
+  return {
+    namespacesRequired: ["index"]
+  };
 };
 export default Home;
