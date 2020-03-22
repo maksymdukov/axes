@@ -1,5 +1,6 @@
 {
   "descrHeader": "Опис",
   "specHeader": "Характеристики",
-  "order": "Замовити"
+  "order": "В кошик",
+  "unorder": "Видалити"
 }

@@ -62,9 +62,21 @@ const CartProvider = ({ children }) => {
   const isInCart = id => {
     return cart.items.find(itm => itm.id === id);
   };
+
+  const getItemCount = id => {
+    const found = isInCart(id);
+    return found && found.count;
+  };
   return (
     <CartContext.Provider
-      value={{ cart, addItem, deleteItem, decreaseItem, isInCart }}
+      value={{
+        cart,
+        addItem,
+        deleteItem,
+        decreaseItem,
+        isInCart,
+        getItemCount
+      }}
     >
       {children}
     </CartContext.Provider>

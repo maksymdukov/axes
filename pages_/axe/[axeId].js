@@ -12,6 +12,10 @@ import CtaButton from "../../components/shared/buttons/cta-button";
 import Box from "@material-ui/core/Box";
 import Gallery from "../../components/axe/gallery/gallery";
 import WithBreadcrumbs from "../../components/shared/with-breadcrumbs/with-breadcrumbs";
+import CartQuantity from "../../components/shared/cart-quantity/cart-quantity";
+import TableCell from "@material-ui/core/TableCell";
+import { useCart } from "../../context/cart/hooks";
+import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles(({ spacing }) => ({
   swiper: {
@@ -33,6 +37,16 @@ const Axe = ({ axe }) => {
   const classes = useStyles();
   const router = useRouter();
   const { t } = useTranslation();
+  const {
+    cart,
+    deleteItem,
+    addItem,
+    decreaseItem,
+    isInCart,
+    getItemCount
+  } = useCart();
+  const inCart = isInCart(axe.id);
+  const count = getItemCount(axe.id);
   const breadcrumbs = [
     { href: "/axes", label: "common:nav.axes" },
     { pureLabel: axe.title }
@@ -50,10 +64,36 @@ const Axe = ({ axe }) => {
                   {axe.title}
                 </Typography>
                 <Gallery axe={axe} />
-                <Box textAlign="end">
-                  <CtaButton align="end" size="large">
-                    {t("axe:order")}
-                  </CtaButton>
+                <Box display="flex" justifyContent="flex-end">
+                  {inCart && (
+                    <>
+                      <CartQuantity
+                        onIncrease={() => addItem(axe)}
+                        onDecrease={() => decreaseItem(axe.id)}
+                        decreaseDisabled={count === 1}
+                        display="inline-flex"
+                      >
+                        {count}
+                      </CartQuantity>
+                      <Button
+                        size="large"
+                        variant="contained"
+                        color="default"
+                        onClick={() => deleteItem(axe.id)}
+                      >
+                        {t("axe:unorder")}
+                      </Button>
+                    </>
+                  )}
+                  {!inCart && (
+                    <CtaButton
+                      align="end"
+                      size="large"
+                      onClick={() => addItem(axe)}
+                    >
+                      {t("axe:order")}
+                    </CtaButton>
+                  )}
                 </Box>
               </section>
             </Grid>

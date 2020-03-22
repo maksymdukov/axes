@@ -8,7 +8,8 @@ const CartQuantity = ({
   onIncrease,
   onDecrease,
   decreaseDisabled,
-  children
+  children,
+  ...rest
 }) => {
   return (
     <Box
@@ -16,6 +17,7 @@ const CartQuantity = ({
       flexWrap="nowrap"
       alignItems="center"
       justifyContent="center"
+      {...rest}
     >
       <IconButton disabled={decreaseDisabled} size="small" onClick={onDecrease}>
         <RemoveIcon />
