@@ -10,6 +10,7 @@ import Logo from "./components/logo";
 import { useTranslation } from "next-translate";
 import LanguageToggler from "./components/language-toggler";
 import Drawer from "./components/drawer";
+import CartWidget from "./components/cart-widget";
 
 const useStyles = makeStyles(({ palette, spacing }) => ({
   appbar: {
@@ -53,10 +54,11 @@ const Navbar = () => {
             </IconButton>
           </Hidden>
           <Logo className={classes.logo} slogan={t("common:slogan")} />
+          <LanguageToggler className={classes.language} />
           <Hidden xsDown implementation="css">
             <Navmenu />
           </Hidden>
-          <LanguageToggler className={classes.language} />
+          <CartWidget />
         </Toolbar>
       </AppBar>
       <Drawer isOpened={drawerOpened} toggleDrawer={toggleDrawer} />

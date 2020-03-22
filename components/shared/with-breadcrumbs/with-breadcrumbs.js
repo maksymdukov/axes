@@ -22,7 +22,7 @@ const WithBreadcrumbs = ({ paths, children }) => {
         </Link>
         {paths.map((path, idx) => {
           let props = {
-            key: path.href,
+            key: idx,
             color: "inherit"
           };
           if (idx !== paths.length - 1) {

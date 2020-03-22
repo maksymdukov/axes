@@ -10,6 +10,10 @@ import Typography from "@material-ui/core/Typography";
 import Link from "~/components/shared/link/link";
 import CtaButton from "../buttons/cta-button";
 import { default as NextLink } from "next-translate/Link";
+import { useCart } from "../../../context/cart/hooks";
+import IconButton from "@material-ui/core/IconButton";
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 
 const useStyles = makeStyles(({ customShadows, shadows }) => ({
   root: {
@@ -39,10 +43,12 @@ const useStyles = makeStyles(({ customShadows, shadows }) => ({
 
 export default function MediaCard({ card, t }) {
   const classes = useStyles();
+  const { isInCart, addItem, deleteItem } = useCart();
 
+  const inCart = isInCart(card.id);
   return (
     <Card className={classes.root} elevation={3}>
-      <NextLink href={`/axe/[axeId]`} as={`/axe/${card.id}`}>
+      <NextLink href={`/axe/[axeId]`} as={`/axe/${card.id}`} passHref>
         <CardActionArea className={classes.actionArea}>
           <CardMedia
             className={classes.media}
@@ -63,14 +69,23 @@ export default function MediaCard({ card, t }) {
         <NextLink href={`/axe/[axeId]`} as={`/axe/${card.id}`} passHref>
           <Button
             size="small"
-            color="secondary"
+            color="default"
+            variant="contained"
             component="a"
             className={classes.details}
           >
             {t("index:details")}
           </Button>
         </NextLink>
-        <CtaButton size="small">{t("index:order")}</CtaButton>
+        <IconButton
+          color="secondary"
+          onClick={inCart ? () => deleteItem(card.id) : () => addItem(card)}
+        >
+          {isInCart(card.id) ? <ShoppingCartIcon /> : <AddShoppingCartIcon />}
+        </IconButton>
+        {/*<CtaButton size="small" onClick={() => addItem(card)}>*/}
+        {/*  {t("index:order")}*/}
+        {/*</CtaButton>*/}
       </CardActions>
     </Card>
   );

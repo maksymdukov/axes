@@ -28,24 +28,19 @@ const timeout = (t = 1000) =>
 
 export const fetchAxes = async page => {
   await timeout(20);
-  return axesJson.slice((Number(page) - 1) * 5, 5 * Number(page));
+  return axesJson.slice((Number(page) - 1) * 10, 10 * Number(page));
 };
 
 export async function getStaticProps({ params }) {
   const data = await fetchAxes(params.page);
   return {
-    props: { axes: data, page: params.page, pageCount: 4 }
+    props: { axes: data, page: params.page, pageCount: 2 }
   };
 }
 
 export async function getStaticPaths(ctx) {
   return {
-    paths: [
-      { params: { page: "1" } },
-      { params: { page: "2" } },
-      { params: { page: "3" } },
-      { params: { page: "4" } }
-    ],
+    paths: [{ params: { page: "1" } }, { params: { page: "2" } }],
     fallback: false
   };
 }

@@ -52,7 +52,7 @@ const Axe = ({ axe }) => {
                 <Gallery axe={axe} />
                 <Box textAlign="end">
                   <CtaButton align="end" size="large">
-                    {t("index:order")}
+                    {t("axe:order")}
                   </CtaButton>
                 </Box>
               </section>
