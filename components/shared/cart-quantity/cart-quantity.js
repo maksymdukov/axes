@@ -11,7 +11,12 @@ const CartQuantity = ({
   children
 }) => {
   return (
-    <Box display="flex" flexWrap="nowrap" alignItems="center">
+    <Box
+      display="flex"
+      flexWrap="nowrap"
+      alignItems="center"
+      justifyContent="center"
+    >
       <IconButton disabled={decreaseDisabled} size="small" onClick={onDecrease}>
         <RemoveIcon />
       </IconButton>

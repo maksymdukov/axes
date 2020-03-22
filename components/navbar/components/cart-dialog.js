@@ -8,6 +8,7 @@ import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import CtaButton from "../../shared/buttons/cta-button";
 import IconButton from "@material-ui/core/IconButton";
 import HighlightOffIcon from "@material-ui/icons/HighlightOff";
+import CenteredBox from "../../shared/box/centered-box";
 
 const CartDialog = ({ isOpened, handleClose }) => {
   const { t } = useTranslation();
@@ -45,7 +46,9 @@ const CartDialog = ({ isOpened, handleClose }) => {
         {!cart.totalCount && (
           <Box mb={3}>
             <Typography variant="h5" align="center" color="textSecondary">
-              <ShoppingCartIcon fontSize="large" /> Cart is empty
+              <CenteredBox>
+                <ShoppingCartIcon fontSize="large" /> {t("common:cart.empty")}
+              </CenteredBox>
             </Typography>
           </Box>
         )}
