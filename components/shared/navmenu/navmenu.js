@@ -1,13 +1,13 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import NavmenuItem from "./elements/navmenu-item";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "next-translate";
 import clsx from "clsx";
 
 const navMenuItems = t => [
-  { label: t("nav.about"), to: "/about" },
-  { label: t("nav.axes"), to: "/axes" },
-  { label: t("nav.contacts"), to: "/contacts" }
+  { label: t`common:nav.about`, to: "/about" },
+  { label: t`common:nav.axes`, to: "/axes" },
+  { label: t`common:nav.contacts`, to: "/contacts" }
 ];
 
 const useStyles = makeStyles({
@@ -21,7 +21,7 @@ const useStyles = makeStyles({
 
 const Navmenu = ({ inDrawer, onClick }) => {
   const classes = useStyles();
-  const { t } = useTranslation("common");
+  const { t } = useTranslation();
   return (
     <div
       className={clsx(classes.linkWrapper, inDrawer && classes.inDrawer)}

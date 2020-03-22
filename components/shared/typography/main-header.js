@@ -24,7 +24,7 @@ const useStyles = makeStyles(({ palette }) => ({
 const MainHeader = ({ children, disableMargin }) => {
   const classes = useStyles();
   return (
-    <Box marginBottom={disableMargin ? 0 : 3} clone>
+    <Box marginBottom={disableMargin ? 0 : 3}>
       <Typography variant="h4" align="center" component="h2">
         <span className={classes.mainHeader}>{children}</span>
       </Typography>

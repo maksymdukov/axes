@@ -1,0 +1,13 @@
+{
+  "allLanguages": ["ua", "ru"],
+  "defaultLanguage": "ru",
+  "pages": {
+    "*": ["common"],
+    "/": ["index"],
+    "/contacts": ["contacts"],
+    "/axes": ["index"],
+    "/axes/[page]": ["index"],
+    "/axe/[axeId]": ["axe", "index"]
+  },
+  "redirectToDefaultLang": true
+}

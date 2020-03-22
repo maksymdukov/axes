@@ -1,0 +1,10 @@
+{
+  "masterName": "Николай",
+  "sendMessageTitle": "Отправить нам сообщение",
+  "form": {
+    "name": "Имя",
+    "email": "Email",
+    "phone": "Телефон"
+  },
+  "sendMessageBtn": "Отправить"
+}

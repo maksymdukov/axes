@@ -9,10 +9,15 @@ const useStyles = makeStyles(({ palette }) => ({
   }
 }));
 
-const CtaButton = ({ children }) => {
+const CtaButton = ({ children, ...rest }) => {
   const classes = useStyles();
   return (
-    <Button variant="contained" color="secondary" className={classes.ctaBtn}>
+    <Button
+      variant="contained"
+      color="secondary"
+      className={classes.ctaBtn}
+      {...rest}
+    >
       {children}
     </Button>
   );

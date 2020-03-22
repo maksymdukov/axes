@@ -7,7 +7,7 @@ import makeStyles from "@material-ui/core/styles/makeStyles";
 import { Hidden } from "@material-ui/core";
 import Navmenu from "../shared/navmenu/navmenu";
 import Logo from "./components/logo";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "next-translate";
 import LanguageToggler from "./components/language-toggler";
 import Drawer from "./components/drawer";
 
@@ -31,7 +31,7 @@ const useStyles = makeStyles(({ palette, spacing }) => ({
 
 const Navbar = () => {
   const [drawerOpened, setDrawerOpened] = useState(false);
-  const { t } = useTranslation("common");
+  const { t } = useTranslation();
   const classes = useStyles();
 
   const toggleDrawer = () => {
@@ -41,7 +41,7 @@ const Navbar = () => {
     <>
       <AppBar className={classes.appbar} position="static" color="primary">
         <Toolbar>
-          <Hidden smUp>
+          <Hidden smUp implementation="css">
             <IconButton
               edge="start"
               className={classes.menuButton}
@@ -52,8 +52,8 @@ const Navbar = () => {
               <MenuIcon />
             </IconButton>
           </Hidden>
-          <Logo className={classes.logo} slogan={t("slogan")} />
-          <Hidden xsDown>
+          <Logo className={classes.logo} slogan={t("common:slogan")} />
+          <Hidden xsDown implementation="css">
             <Navmenu />
           </Hidden>
           <LanguageToggler className={classes.language} />

@@ -1,7 +1,7 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
 import MediaCard from "./card";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "next-translate";
 
 const Cards = ({ cards, className }) => {
   const { t } = useTranslation("index");

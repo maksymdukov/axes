@@ -1,0 +1,10 @@
+{
+  "masterName": "Микола",
+  "sendMessageTitle": "Залишити повідомлення",
+  "form": {
+    "name": "Им'я",
+    "email": "Email",
+    "phone": "Телефон"
+  },
+  "sendMessageBtn": "Надіслати"
+}
