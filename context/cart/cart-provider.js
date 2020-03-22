@@ -1,8 +1,8 @@
-import React, { useContext } from "react";
+import React, { useState } from "react";
 import { CartContext } from "./cart-context";
 
 const CartProvider = ({ children }) => {
-  const [cart, setCart] = useContext({
+  const [cart, setCart] = useState({
     items: [],
     totalCount: 0
   });
