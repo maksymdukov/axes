@@ -1,5 +1,4 @@
 import React from "react";
-import Paper from "@material-ui/core/Paper";
 import Table from "@material-ui/core/Table";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
@@ -8,9 +7,10 @@ import TableBody from "@material-ui/core/TableBody";
 import IconButton from "@material-ui/core/IconButton";
 import DeleteIcon from "@material-ui/icons/Delete";
 import TableContainer from "@material-ui/core/TableContainer";
-import { useCart } from "../../../context/cart/hooks";
-import CartQuantity from "../../shared/cart-quantity/cart-quantity";
+import { useCart } from "../../context/cart/hooks";
+import CartQuantity from "../shared/cart-quantity/cart-quantity";
 import { useTranslation } from "next-translate";
+import { getFirstImage } from "../../utils/image";
 
 const CartDialogTable = () => {
   const { t } = useTranslation();
@@ -37,7 +37,12 @@ const CartDialogTable = () => {
               </TableCell>
 
               <TableCell align="center">
-                <img src={row.imageURL} alt="" width="auto" height={50} />
+                <img
+                  src={getFirstImage(row.images)}
+                  alt=""
+                  width="auto"
+                  height={50}
+                />
               </TableCell>
               <TableCell align="center">{row.title}</TableCell>
               <TableCell align="center">

@@ -34,7 +34,7 @@ const useStyles = makeStyles({
     maxHeight: "100%",
     width: "100%",
     height: "100%",
-    objectFit: "cover",
+    objectFit: "contain",
     display: "none",
     "&.swiper-lazy-loaded": {
       display: "inline-block"

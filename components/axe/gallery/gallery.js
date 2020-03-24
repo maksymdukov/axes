@@ -36,16 +36,20 @@ const Gallery = ({ axe }) => {
   const classes = useStyles();
   const [backdropOpened, setBackdropOpened] = useState(-1);
   const closeFullScreen = () => setBackdropOpened(-1);
+  const images = axe.images || [
+    { url: "/assets/images/No_image_available.svg", title: "No image" }
+  ];
   return (
     <>
       <MySwiper
         onImageClick={index => setBackdropOpened(index)}
         imageClassName={classes.imageSlide}
         className={classes.swiper}
-        images={axe.images.map(img => ({ url: img, alt: "Axe" }))}
+        images={images}
       />
       <ClientOnlyPortal selector="body">
         <Backdrop
+          timeout={500}
           className={classes.backdrop}
           open={backdropOpened > -1}
           onClick={closeFullScreen}
@@ -59,7 +63,7 @@ const Gallery = ({ axe }) => {
               onImageClick={closeFullScreen}
               imageClassName={classes.imageSlideFullScreen}
               className={classes.fullScreenSwiper}
-              images={axe.images.map(img => ({ url: img, alt: "Axe" }))}
+              images={images}
             />
           </div>
         </Backdrop>

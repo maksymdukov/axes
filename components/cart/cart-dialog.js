@@ -2,13 +2,13 @@ import React from "react";
 import { Box, Dialog, DialogContent, DialogTitle } from "@material-ui/core";
 import { useTranslation } from "next-translate";
 import CartDialogTable from "./cart-dialog-table";
-import { useCart } from "../../../context/cart/hooks";
+import { useCart } from "../../context/cart/hooks";
 import Typography from "@material-ui/core/Typography";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
-import CtaButton from "../../shared/buttons/cta-button";
+import CtaButton from "../shared/buttons/cta-button";
 import IconButton from "@material-ui/core/IconButton";
 import HighlightOffIcon from "@material-ui/icons/HighlightOff";
-import CenteredBox from "../../shared/box/centered-box";
+import CenteredBox from "../shared/box/centered-box";
 
 const CartDialog = ({ isOpened, handleClose }) => {
   const { t } = useTranslation();

@@ -1,9 +1,10 @@
-import AxesPage, { fetchAxes } from "./[page]";
+import AxesPage from "./[page]";
+import { getAxes } from "../../actions/axe";
 
-export async function getStaticProps({ params }) {
-  const data = await fetchAxes(1);
+export async function getStaticProps({ lang }) {
+  const { data, pageCount } = await getAxes(lang, 1);
   return {
-    props: { axes: data, page: 1, pageCount: 2 }
+    props: { axes: data, page: 1, pageCount }
   };
 }
 

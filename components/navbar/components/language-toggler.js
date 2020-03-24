@@ -8,7 +8,7 @@ import FlagUAIcon from "../../shared/icons/flag-ua";
 import LanguageMenuItem from "./language-menu-item";
 import Router from "next-translate/Router";
 
-const useStyles = makeStyles(({ palette }) => ({
+const useStyles = makeStyles(() => ({
   langSelect: {
     color: "inherit",
     "&::before": {
@@ -38,7 +38,7 @@ export default function LanguageToggler({ className }) {
     if (slugs[1] === "ua" || slugs[1] === "ru") {
       url = slugs.slice(2).join("/") || "/";
     }
-    const currentLang = Router.pushI18n({ url, options: { lang: value } });
+    Router.pushI18n({ url, options: { lang: value } });
   };
 
   return (

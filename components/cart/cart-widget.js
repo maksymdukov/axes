@@ -4,11 +4,7 @@ import IconButton from "@material-ui/core/IconButton";
 import CartIcon from "@material-ui/icons/ShoppingBasket";
 import CartDialog from "./cart-dialog";
 import { makeStyles } from "@material-ui/core/styles";
-import { useCart } from "../../../context/cart/hooks";
-
-const useStyles = makeStyles({
-  badge: {}
-});
+import { useCart } from "../../context/cart/hooks";
 
 const CartWidget = () => {
   const { cart } = useCart();

@@ -1,8 +1,6 @@
 import React from "react";
 import Layout from "../../components/layout/layout";
 import PageLayout from "../../components/layout/page-layout";
-import { useRouter } from "next/router";
-import axesJson from "../../_data/axes";
 import Typography from "@material-ui/core/Typography";
 import Surface from "../../components/axe/surface/surface";
 import { useTranslation } from "next-translate";
@@ -13,9 +11,9 @@ import Box from "@material-ui/core/Box";
 import Gallery from "../../components/axe/gallery/gallery";
 import WithBreadcrumbs from "../../components/shared/with-breadcrumbs/with-breadcrumbs";
 import CartQuantity from "../../components/shared/cart-quantity/cart-quantity";
-import TableCell from "@material-ui/core/TableCell";
 import { useCart } from "../../context/cart/hooks";
 import Button from "@material-ui/core/Button";
+import { getAxeById, getAxesIds } from "../../actions/axe";
 
 const useStyles = makeStyles(({ spacing }) => ({
   swiper: {
@@ -35,10 +33,8 @@ const useStyles = makeStyles(({ spacing }) => ({
 
 const Axe = ({ axe }) => {
   const classes = useStyles();
-  const router = useRouter();
   const { t } = useTranslation();
   const {
-    cart,
     deleteItem,
     addItem,
     decreaseItem,
@@ -51,8 +47,6 @@ const Axe = ({ axe }) => {
     { href: "/axes", label: "common:nav.axes" },
     { pureLabel: axe.title }
   ];
-  console.log("axeId", router.query);
-  console.log(axe);
   return (
     <Layout>
       <PageLayout>
@@ -114,28 +108,17 @@ const Axe = ({ axe }) => {
   );
 };
 
-const timeout = (t = 1000) =>
-  new Promise(resolve => {
-    setTimeout(resolve, t);
-  });
-
-const fetchData = async id => {
-  await timeout(10);
-  return axesJson.find(axe => axe.id === id);
-};
-
-export async function getStaticProps({ params }) {
-  console.log("getProps", params.axeId);
-  const data = await fetchData(params.axeId);
+export async function getStaticProps({ params, lang }) {
+  const data = await getAxeById(lang, params.axeId);
   return {
     props: { axe: data }
   };
 }
 
-export async function getStaticPaths(ctx) {
-  console.log("getStaticPath", ctx);
-  const paths = Array.from({ length: 16 }).map((_, idx) => ({
-    params: { axeId: String(idx + 1) }
+export async function getStaticPaths() {
+  const ids = await getAxesIds();
+  const paths = ids.map(id => ({
+    params: { axeId: id }
   }));
   return {
     paths,

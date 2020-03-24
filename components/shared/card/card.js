@@ -7,15 +7,14 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import Link from "~/components/shared/link/link";
-import CtaButton from "../buttons/cta-button";
 import { default as NextLink } from "next-translate/Link";
 import { useCart } from "../../../context/cart/hooks";
 import IconButton from "@material-ui/core/IconButton";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
+import { getFirstImage } from "../../../utils/image";
 
-const useStyles = makeStyles(({ customShadows, shadows }) => ({
+const useStyles = makeStyles(({ shadows }) => ({
   root: {
     width: "100%",
     height: "100%",
@@ -30,7 +29,8 @@ const useStyles = makeStyles(({ customShadows, shadows }) => ({
   media: {
     width: "100%",
     height: "auto",
-    paddingBottom: "calc(100% * 9 / 16)"
+    paddingBottom: "calc(100% * 9 / 16)",
+    backgroundSize: "contain"
     // backgroundSize: "contain"
   },
   actionArea: {
@@ -52,7 +52,7 @@ export default function MediaCard({ card, t }) {
         <CardActionArea className={classes.actionArea}>
           <CardMedia
             className={classes.media}
-            image={card.imageURL}
+            image={getFirstImage(card.images)}
             title="Axe"
           />
           <CardContent>

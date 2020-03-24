@@ -10,7 +10,7 @@ import Logo from "./components/logo";
 import { useTranslation } from "next-translate";
 import LanguageToggler from "./components/language-toggler";
 import Drawer from "./components/drawer";
-import CartWidget from "./components/cart-widget";
+import CartWidget from "../cart/cart-widget";
 
 const useStyles = makeStyles(({ palette, spacing }) => ({
   appbar: {
