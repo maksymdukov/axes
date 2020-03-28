@@ -14,6 +14,7 @@ import CartQuantity from "../../components/shared/cart-quantity/cart-quantity";
 import { useCart } from "../../context/cart/hooks";
 import Button from "@material-ui/core/Button";
 import { getAxeById, getAxesIds } from "../../actions/axe";
+import { useCartSnackbar } from "../../context/snackbar/snackbar-hooks";
 
 const useStyles = makeStyles(({ spacing }) => ({
   swiper: {
@@ -41,12 +42,18 @@ const Axe = ({ axe }) => {
     isInCart,
     getItemCount
   } = useCart();
+  const { showSnackbar } = useCartSnackbar();
+
   const inCart = isInCart(axe.id);
   const count = getItemCount(axe.id);
   const breadcrumbs = [
     { href: "/axes", label: "common:nav.axes" },
     { pureLabel: axe.title }
   ];
+  const onAddToCart = () => {
+    addItem(axe);
+    showSnackbar();
+  };
   return (
     <Layout>
       <PageLayout>
@@ -80,11 +87,7 @@ const Axe = ({ axe }) => {
                     </>
                   )}
                   {!inCart && (
-                    <CtaButton
-                      align="end"
-                      size="large"
-                      onClick={() => addItem(axe)}
-                    >
+                    <CtaButton align="end" size="large" onClick={onAddToCart}>
                       {t("axe:order")}
                     </CtaButton>
                   )}

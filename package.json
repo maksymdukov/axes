@@ -15,15 +15,20 @@
     "clsx": "^1.1.0",
     "contentful": "^7.14.0",
     "dotenv": "^8.2.0",
+    "ejs": "^3.0.1",
+    "fastest-validator": "^1.1.0",
     "formik": "^2.1.4",
     "formik-material-ui": "^2.0.0-beta.1",
     "next": "9.3.1",
-    "next-translate": "^0.13.0-canary.2",
+    "next-translate": "^0.13.0",
+    "nodemailer": "^6.4.6",
     "react": "16.13.0",
     "react-dom": "16.13.0",
     "react-id-swiper": "^3.0.0",
+    "react-text-mask": "^5.4.3",
     "sass": "^1.26.3",
-    "swiper": "^5.3.6"
+    "swiper": "^5.3.6",
+    "yup": "^0.28.3"
   },
   "devDependencies": {
     "prettier": "^1.19.1"

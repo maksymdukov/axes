@@ -7,6 +7,7 @@ import theme from "../components/shared/theme/theme";
 import "swiper/css/swiper.css";
 import Router from "next-translate/Router";
 import CartProvider from "../context/cart/cart-provider";
+import SnackbarProvider from "../context/snackbar/snackbar-provider";
 
 class MyApp extends App {
   getLanguage() {
@@ -48,8 +49,10 @@ class MyApp extends App {
         </Head>
         <ThemeProvider theme={theme}>
           <CartProvider>
-            <CssBaseline />
-            <Component {...pageProps} />
+            <SnackbarProvider>
+              <CssBaseline />
+              <Component {...pageProps} />
+            </SnackbarProvider>
           </CartProvider>
         </ThemeProvider>
         <style jsx global>{`

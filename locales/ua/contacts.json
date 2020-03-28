@@ -4,7 +4,14 @@
   "form": {
     "name": "Им'я",
     "email": "Email",
-    "phone": "Телефон"
+    "phone": "Телефон",
+    "message": "Повідомлення",
+    "errors": {
+      "required": "Обов'язкове поле",
+      "min3": "Мінімум 3 символи",
+      "email": "Невалідний email",
+      "phone": "Невірний формат"
+    }
   },
   "sendMessageBtn": "Надіслати"
 }

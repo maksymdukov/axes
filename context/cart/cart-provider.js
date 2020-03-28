@@ -2,26 +2,22 @@ import React, { useEffect, useState } from "react";
 import { CartContext } from "./cart-context";
 
 const CartProvider = ({ children }) => {
-  const [cart, setCartOriginal] = useState({
+  const [cart, setCart] = useState({
     items: [],
-    totalCount: 0
+    totalCount: 0,
+    cartWidgetOpened: false
   });
 
   useEffect(() => {
     const storedCart = localStorage.getItem("cart");
     if (storedCart) {
-      setCartOriginal(JSON.parse(storedCart));
+      setCart(JSON.parse(storedCart));
     }
   }, []);
 
-  const setCart = crt => {
-    if (crt.totalCount === 0) {
-      localStorage.removeItem("cart");
-    } else {
-      localStorage.setItem("cart", JSON.stringify(crt));
-    }
-    setCartOriginal(crt);
-  };
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
 
   const addItem = item => {
     let updatedItem;
@@ -33,6 +29,7 @@ const CartProvider = ({ children }) => {
       updatedItem = { ...oldItem, count: oldItem.count + 1 };
     }
     setCart({
+      ...cart,
       totalCount: cart.totalCount + 1,
       items: updatedItem
         ? cart.items.map(itm => (itm.id === updatedItem.id ? updatedItem : itm))
@@ -50,13 +47,13 @@ const CartProvider = ({ children }) => {
   };
 
   const decreaseItem = id => {
-    setCart({
-      ...cart,
+    setCart(prevState => ({
+      ...prevState,
       items: cart.items.map(itm =>
         itm.id === id ? { ...itm, count: itm.count - 1 } : itm
       ),
       totalCount: cart.totalCount - 1
-    });
+    }));
   };
 
   const isInCart = id => {
@@ -67,6 +64,15 @@ const CartProvider = ({ children }) => {
     const found = isInCart(id);
     return found && found.count;
   };
+
+  const clearCart = () => {
+    setCart({ ...cart, items: [], totalCount: 0 });
+  };
+
+  const openCartWidget = () =>
+    setCart(prevState => ({ ...prevState, cartWidgetOpened: true }));
+  const closeCartWidget = () =>
+    setCart(prevState => ({ ...prevState, cartWidgetOpened: false }));
   return (
     <CartContext.Provider
       value={{
@@ -75,7 +81,10 @@ const CartProvider = ({ children }) => {
         deleteItem,
         decreaseItem,
         isInCart,
-        getItemCount
+        getItemCount,
+        openCartWidget,
+        closeCartWidget,
+        clearCart
       }}
     >
       {children}

@@ -13,6 +13,7 @@ import IconButton from "@material-ui/core/IconButton";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 import { getFirstImage } from "../../../utils/image";
+import { useCartSnackbar } from "../../../context/snackbar/snackbar-hooks";
 
 const useStyles = makeStyles(({ shadows }) => ({
   root: {
@@ -43,9 +44,19 @@ const useStyles = makeStyles(({ shadows }) => ({
 
 export default function MediaCard({ card, t }) {
   const classes = useStyles();
-  const { isInCart, addItem, deleteItem } = useCart();
+  const { cart, isInCart, addItem, deleteItem } = useCart();
+  const { showSnackbar } = useCartSnackbar();
 
   const inCart = isInCart(card.id);
+
+  const handleAddToCart = () => {
+    addItem(card);
+    if (!cart.items.length) {
+      showSnackbar();
+    }
+  };
+  const handleRemoveFromCart = () => deleteItem(card.id);
+
   return (
     <Card className={classes.root} elevation={3}>
       <NextLink href={`/axe/[axeId]`} as={`/axe/${card.id}`} passHref>
@@ -79,13 +90,10 @@ export default function MediaCard({ card, t }) {
         </NextLink>
         <IconButton
           color="secondary"
-          onClick={inCart ? () => deleteItem(card.id) : () => addItem(card)}
+          onClick={inCart ? handleRemoveFromCart : handleAddToCart}
         >
           {isInCart(card.id) ? <ShoppingCartIcon /> : <AddShoppingCartIcon />}
         </IconButton>
-        {/*<CtaButton size="small" onClick={() => addItem(card)}>*/}
-        {/*  {t("index:order")}*/}
-        {/*</CtaButton>*/}
       </CardActions>
     </Card>
   );

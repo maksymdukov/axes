@@ -24,7 +24,7 @@ const CartDialogTable = () => {
             <TableCell align="center">{t("common:cart.photo")}</TableCell>
             <TableCell align="center">{t("common:cart.name")}</TableCell>
             <TableCell align="center">{t("common:cart.totalItems")}</TableCell>
-            <TableCell align="center">{t("common:cart.price")}</TableCell>
+            <TableCell align="center">{t("common:cart.price")}, грн</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
