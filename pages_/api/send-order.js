@@ -1,7 +1,8 @@
 const Validator = require("fastest-validator");
 const { transporter } = require("../../server/services/mailer");
 const mailConfig = require("../../config/nodemailer");
-const renderer = require("../../server/renderer/ejs");
+const orderTemplate = require("../../server/templates/email/send-order/send-order");
+const ejs = require("ejs");
 
 const v = new Validator({
   messages: {
@@ -47,7 +48,7 @@ export default async (req, res) => {
     if (!check(req.body)) {
       return res.status(422).send("");
     }
-    const html = await renderer("email/send-order/send-order.ejs", req.body);
+    const html = ejs.render(orderTemplate, req.body);
     await transporter.sendMail({
       from: mailConfig.MAIL_USER, // sender address
       to: mailConfig.MAIL_USER, // list of receivers

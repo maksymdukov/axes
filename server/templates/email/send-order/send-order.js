@@ -1,3 +1,4 @@
+module.exports = `
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -39,9 +40,22 @@
             </th>
         </tr>
         <% cart.forEach(item => { %>
-            <%- include('order-item', {item:item})  %>
+            <tr>
+                <td style="text-align: center;">
+                    <% if (item.images && item.images.length) { %>
+                        <img width="150" src="https://<%= item.images[0].url.substr(2) %>" alt="<%= item.images[0].title %>" />
+                    <% } %>
+                </td>
+                <td style="text-align: center;">
+                    <%= item.title %>
+                </td>
+                <td style="text-align: center;">
+                    <%= item.count %>
+                </td>
+            </tr>
         <% }); %>
     </table>
 </div>
 </body>
 </html>
+`;

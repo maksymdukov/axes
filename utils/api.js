@@ -1,5 +1,5 @@
 export const apiRequest = async ({ method, url, data }) => {
-  const response = await fetch(`${process.env.PUBLIC_URL}${url}`, {
+  const response = await fetch(`${location.origin}${url}`, {
     method,
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data)

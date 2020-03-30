@@ -3,15 +3,15 @@ import { makeStyles } from "@material-ui/core/styles";
 import Navbar from "../navbar/navbar";
 import Footer from "../footer/footer";
 
-const useStyles = makeStyles(({ palette, spacing }) => ({
+const useStyles = makeStyles(({ palette }) => ({
   wrapper: {
     minHeight: "100vh",
     display: "flex",
     flexDirection: "column"
   },
   main: {
-    flexGrow: 1,
-    paddingBottom: spacing(4)
+    flexGrow: 1
+    // paddingBottom: spacing(4)
   },
   footerWrapper: {
     display: "flex",

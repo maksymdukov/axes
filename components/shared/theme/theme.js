@@ -8,6 +8,10 @@ const palette = {
   secondary: {
     main: "#19857b"
   },
+  tertiary: {
+    main: "#3f669f",
+    dark: "#2b4b79"
+  },
   error: {
     main: red.A400
   },

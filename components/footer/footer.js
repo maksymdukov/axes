@@ -3,14 +3,14 @@ import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
 import Contacts from "../contacts/profile/contacts";
 
-const useStyles = makeStyles(({ palette, spacing, breakpoints }) => ({
+const useStyles = makeStyles(({ palette, breakpoints }) => ({
   footerWrapper: {
     display: "flex",
     flexDirection: "column",
     alignItems: "stretch",
     backgroundColor: palette.primary.light,
     color: palette.primary.contrastText,
-    minHeight: 200
+    minHeight: 100
   },
   footer: {
     flexGrow: 1

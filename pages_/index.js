@@ -8,17 +8,29 @@ import { useTranslation } from "next-translate";
 import Layout from "../components/layout/layout";
 import { getFeaturedAxes, getLastAxes } from "../actions/axe";
 import { getSlides } from "../actions/slider";
+import Individual from "../components/main/individual";
 
-const useStyles = makeStyles(({ spacing }) => ({
+const useStyles = makeStyles(({ spacing, palette }) => ({
   mb: {
     marginBottom: spacing(4)
   },
   bgPattern: {
-    background: "url('/assets/svg/pattern.svg')",
+    background:
+      "linear-gradient( rgba(0, 0, 0, 0.01), rgba(0, 0, 0, 0.20) ), url('/assets/svg/pattern.svg')",
     backgroundRepeat: "repeat repeat"
   },
   slide: {
     objectFit: "cover"
+  },
+  mainContainer: {
+    paddingTop: "3rem",
+    paddingBottom: "4rem"
+  },
+  contrastContainer: {
+    paddingTop: "3rem",
+    paddingBottom: "4rem",
+    background: palette.tertiary.main,
+    color: "white"
   }
 }));
 
@@ -34,12 +46,21 @@ const Home = ({ featuredAxes, lastAxes, slides }) => {
           className={classes.mb}
           imageClassName={classes.slide}
         />
-        <Container className={classes.container}>
-          <MainHeader>{t("index:bestWorks")}</MainHeader>
-          <Cards cards={featuredAxes} className={classes.mb} />
-          <MainHeader>{t("index:newWorks")}</MainHeader>
-          <Cards cards={lastAxes} />
-        </Container>
+        <section className={classes.mainContainer}>
+          <Container>
+            <MainHeader>{t("index:bestWorks")}</MainHeader>
+            <Cards cards={featuredAxes} className={classes.mb} />
+          </Container>
+        </section>
+        <section className={classes.mainContainer}>
+          <Container>
+            <MainHeader>{t("index:newWorks")}</MainHeader>
+            <Cards cards={lastAxes} />
+          </Container>
+        </section>
+        <section className={classes.contrastContainer}>
+          <Individual />
+        </section>
       </div>
     </Layout>
   );
