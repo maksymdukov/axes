@@ -23,10 +23,11 @@ const useStyles = makeStyles(({ palette, shadows }) => ({
   }
 }));
 
-const CtaButton = ({ children, ...rest }) => {
+const CtaButton = React.forwardRef(({ children, ...rest }, ref) => {
   const classes = useStyles();
   return (
     <Button
+      ref={ref}
       variant="contained"
       color="secondary"
       classes={{
@@ -38,6 +39,6 @@ const CtaButton = ({ children, ...rest }) => {
       {children}
     </Button>
   );
-};
+});
 
 export default CtaButton;

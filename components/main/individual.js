@@ -13,6 +13,7 @@ import ArrowRightAltIcon from "@material-ui/icons/ArrowRightAlt";
 import VisibilitySensor from "react-visibility-sensor";
 import clsx from "clsx";
 import { useTranslation } from "next-translate";
+import { default as NextLink } from "next-translate/Link";
 
 const useStyles = makeStyles(({ palette, breakpoints, spacing }) => ({
   sectionWrapper: {
@@ -173,9 +174,11 @@ const Individual = () => {
         </Grid>
       </Grid>
       <CenteredBox>
-        <CtaButton size="large">
-          Перейти <ArrowRightAltIcon fontSize="large" />
-        </CtaButton>
+        <NextLink href="/custom-order" passHref>
+          <CtaButton size="large" component="a">
+            Перейти <ArrowRightAltIcon fontSize="large" />
+          </CtaButton>
+        </NextLink>
       </CenteredBox>
     </Container>
   );

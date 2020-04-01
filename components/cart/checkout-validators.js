@@ -1,6 +1,6 @@
 import { string, object, number } from "yup";
 
-export let getSchema = t =>
+export let getSchema = (t, additional) =>
   object().shape({
     name: string()
       .min(3, t("common:errors.min3"))
@@ -25,5 +25,6 @@ export let getSchema = t =>
     ukrAddress: string().when("delivery", {
       is: "ukrposhta",
       then: string().required(t("common:errors.required"))
-    })
+    }),
+    ...additional
   });

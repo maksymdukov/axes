@@ -4,6 +4,7 @@ import Link from "../link/link";
 import { useTranslation } from "next-translate";
 import { makeStyles } from "@material-ui/core/styles";
 import { Typography } from "@material-ui/core";
+import clsx from "clsx";
 
 const useStyles = makeStyles({
   crumbs: {
@@ -11,12 +12,15 @@ const useStyles = makeStyles({
   }
 });
 
-const WithBreadcrumbs = ({ paths, children }) => {
+const WithBreadcrumbs = ({ paths, className, children }) => {
   const classes = useStyles();
   const { t } = useTranslation();
   return (
     <>
-      <MuiBreadCrumbs className={classes.crumbs} aria-label="breadcrumb">
+      <MuiBreadCrumbs
+        className={clsx(classes.crumbs, className)}
+        aria-label="breadcrumb"
+      >
         <Link color="inherit" href="/">
           {t("common:nav.main")}
         </Link>

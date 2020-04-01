@@ -23,11 +23,16 @@ const useStyles = makeStyles(({ palette }) => ({
   }
 }));
 
-const MainHeader = ({ children, disableMargin, className }) => {
+const MainHeader = ({
+  children,
+  disableMargin,
+  className,
+  component = "h2"
+}) => {
   const classes = useStyles();
   return (
     <Box marginBottom={disableMargin ? 0 : 3}>
-      <Typography variant="h4" align="center" component="h2">
+      <Typography variant="h4" align="center" component={component}>
         <span className={clsx(classes.mainHeader, className)}>{children}</span>
       </Typography>
     </Box>

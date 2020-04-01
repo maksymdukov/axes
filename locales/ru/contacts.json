@@ -1,4 +1,5 @@
 {
+  "header": "Контакты",
   "masterName": "Николай",
   "sendMessageTitle": "Отправить нам сообщение",
   "form": {
@@ -6,6 +7,7 @@
     "email": "Email",
     "phone": "Телефон",
     "message": "Сообщение",
+    "messageCustom": "Комментарий к заказу",
     "errors": {
       "required": "Обязательное поле",
       "min3": "Минимум 3 символа",

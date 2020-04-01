@@ -1,4 +1,8 @@
-import { createMuiTheme, fade } from "@material-ui/core/styles";
+import {
+  createMuiTheme,
+  fade,
+  responsiveFontSizes
+} from "@material-ui/core/styles";
 import { red, blueGrey, green } from "@material-ui/core/colors";
 
 const palette = {
@@ -9,6 +13,7 @@ const palette = {
     main: "#19857b"
   },
   tertiary: {
+    light: "#538bd6",
     main: "#3f669f",
     dark: "#2b4b79"
   },
@@ -25,7 +30,7 @@ const palette = {
 };
 
 // Create a theme instance.
-const theme = createMuiTheme({
+let theme = createMuiTheme({
   palette,
   customShadows: [
     `0px 7px 8px -4px ${fade(
@@ -37,5 +42,7 @@ const theme = createMuiTheme({
     )},0px 3px 16px 2px ${fade(palette.secondary.main, 0.08)}`
   ]
 });
+
+theme = responsiveFontSizes(theme);
 
 export default theme;

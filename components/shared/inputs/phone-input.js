@@ -42,7 +42,7 @@ function TextMaskCustom(props) {
 
 export default function PhoneInput({
   field: { name, value, onChange, onBlur },
-  form: { touched, errors },
+  form: { touched, errors, isSubmitting },
   label,
   placeholder
 }) {
@@ -50,6 +50,7 @@ export default function PhoneInput({
     <FormControl fullWidth error={touched[name] && !!errors[name]}>
       <InputLabel htmlFor="formatted-text-mask-input">{label}</InputLabel>
       <Input
+        disabled={isSubmitting}
         fullWidth
         value={value}
         onChange={onChange}

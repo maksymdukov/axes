@@ -22,7 +22,7 @@ const Cart = ({ onNextClick, totalPrice }) => {
             </Typography>
           </Box>
           <Box mt={2} textAlign="end">
-            <CtaButton variant="outlined" onClick={onNextClick} size="large">
+            <CtaButton variant="outlined" onClick={onNextClick}>
               {t("common:cart.order")}
             </CtaButton>
           </Box>

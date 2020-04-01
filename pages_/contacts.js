@@ -7,10 +7,13 @@ import Layout from "../components/layout/layout";
 import ContactForm from "../components/contacts/contact-form/form";
 import { makeStyles } from "@material-ui/core/styles";
 import WithBreadcrumbs from "../components/shared/with-breadcrumbs/with-breadcrumbs";
+import Typography from "@material-ui/core/Typography";
+import { useTranslation } from "next-translate";
+import MainHeader from "../components/shared/typography/main-header";
 
 const breadcrumbs = [{ href: "/contacts", label: "common:nav.contacts" }];
 
-const useStyles = makeStyles(({ spacing, palette, breakpoints }) => ({
+const useStyles = makeStyles(({ palette, breakpoints }) => ({
   leftBorder: {
     position: "relative",
     [breakpoints.up("sm")]: {
@@ -30,9 +33,11 @@ const useStyles = makeStyles(({ spacing, palette, breakpoints }) => ({
 
 const Contacts = () => {
   const classes = useStyles();
+  const { t } = useTranslation();
   return (
     <Layout>
       <PageLayout>
+        <MainHeader component="h1">{t("contacts:header")}</MainHeader>
         <WithBreadcrumbs paths={breadcrumbs}>
           <Grid container>
             <Grid item sm={6} xs={12}>
@@ -41,6 +46,9 @@ const Contacts = () => {
               </Box>
             </Grid>
             <Grid item sm={6} xs={12} className={classes.leftBorder}>
+              <Typography align="center" variant="h5" color="textSecondary">
+                {t("contacts:sendMessageTitle")}
+              </Typography>
               <ContactForm />
             </Grid>
           </Grid>

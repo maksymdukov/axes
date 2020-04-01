@@ -7,7 +7,8 @@
     "/contacts": ["contacts"],
     "/axes": ["index"],
     "/axes/[page]": ["index"],
-    "/axe/[axeId]": ["axe", "index"]
+    "/axe/[axeId]": ["axe", "index"],
+    "/custom-order": ["custom-order", "contacts"]
   },
   "redirectToDefaultLang": true
 }

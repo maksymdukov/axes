@@ -12,7 +12,7 @@ import LanguageToggler from "./components/language-toggler";
 import Drawer from "./components/drawer";
 import CartWidget from "../cart/cart-widget";
 
-const useStyles = makeStyles(({ palette, spacing }) => ({
+const useStyles = makeStyles(({ palette, spacing, breakpoints }) => ({
   appbar: {
     background: `linear-gradient(90deg, ${palette.primary.main} 0%, ${palette.primary.dark} 100%)`
   },
@@ -27,6 +27,9 @@ const useStyles = makeStyles(({ palette, spacing }) => ({
   },
   language: {
     marginLeft: spacing(2)
+  },
+  menu: {
+    // [breakpoints.up()]
   }
 }));
 
@@ -42,7 +45,7 @@ const Navbar = () => {
     <>
       <AppBar className={classes.appbar} position="static" color="primary">
         <Toolbar>
-          <Hidden smUp implementation="css">
+          <Hidden mdUp implementation="css">
             <IconButton
               edge="start"
               className={classes.menuButton}
@@ -55,7 +58,7 @@ const Navbar = () => {
           </Hidden>
           <Logo className={classes.logo} slogan={t("common:slogan")} />
           <LanguageToggler className={classes.language} />
-          <Hidden xsDown implementation="css">
+          <Hidden smDown implementation="css">
             <Navmenu />
           </Hidden>
           <CartWidget />

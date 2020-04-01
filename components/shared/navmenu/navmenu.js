@@ -7,6 +7,7 @@ import clsx from "clsx";
 const navMenuItems = t => [
   { label: t`common:nav.about`, to: "/about" },
   { label: t`common:nav.axes`, to: "/axes" },
+  { label: t`common:nav.custom-order`, to: "/custom-order" },
   { label: t`common:nav.contacts`, to: "/contacts" }
 ];
 

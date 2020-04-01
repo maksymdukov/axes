@@ -2,6 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Navbar from "../navbar/navbar";
 import Footer from "../footer/footer";
+import clsx from "clsx";
 
 const useStyles = makeStyles(({ palette }) => ({
   wrapper: {
@@ -29,12 +30,12 @@ const useStyles = makeStyles(({ palette }) => ({
   }
 }));
 
-const Layout = ({ children }) => {
+const Layout = ({ children, mainClassName }) => {
   const classes = useStyles();
   return (
     <div className={classes.wrapper}>
       <Navbar />
-      <main className={classes.main}>{children}</main>
+      <main className={clsx(classes.main, mainClassName)}>{children}</main>
       <Footer />
     </div>
   );
