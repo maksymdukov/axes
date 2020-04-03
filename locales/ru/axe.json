@@ -1,6 +1,12 @@
 {
   "descrHeader": "Описание",
   "specHeader": "Характеристики",
+  "deliveryHeader": "Доставка",
+  "novaPoshta": "Новая почта",
+  "ukrPoshta": "Укрпочта",
+  "paymentMethodHeader": "Оплата",
+  "platesh": "Наложенный платеж",
+  "privat": "На карту ПриватБанк",
   "order": "В корзину",
   "unorder": "Удалить"
 }

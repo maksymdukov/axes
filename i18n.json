@@ -5,6 +5,7 @@
     "*": ["common"],
     "/": ["index"],
     "/contacts": ["contacts"],
+    "/delivery": ["delivery"],
     "/axes": ["index"],
     "/axes/[page]": ["index"],
     "/axe/[axeId]": ["axe", "index"],

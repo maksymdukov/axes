@@ -27,9 +27,6 @@ const useStyles = makeStyles(({ palette, spacing, breakpoints }) => ({
   },
   language: {
     marginLeft: spacing(2)
-  },
-  menu: {
-    // [breakpoints.up()]
   }
 }));
 
@@ -43,7 +40,7 @@ const Navbar = () => {
   };
   return (
     <>
-      <AppBar className={classes.appbar} position="static" color="primary">
+      <AppBar className={classes.appbar} position="sticky" color="primary">
         <Toolbar>
           <Hidden mdUp implementation="css">
             <IconButton

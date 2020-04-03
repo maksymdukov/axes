@@ -9,6 +9,7 @@ import Layout from "../components/layout/layout";
 import { getFeaturedAxes, getLastAxes } from "../actions/axe";
 import { getSlides } from "../actions/slider";
 import Individual from "../components/main/individual";
+import Head from "next/head";
 
 const useStyles = makeStyles(({ spacing, palette }) => ({
   mb: {
@@ -40,6 +41,9 @@ const Home = ({ featuredAxes, lastAxes, slides }) => {
 
   return (
     <Layout>
+      <Head>
+        <title>Сделать импринт на торопе, топор под заказ</title>
+      </Head>
       <div className={classes.bgPattern}>
         <Swiper
           images={slides}
