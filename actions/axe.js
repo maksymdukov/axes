@@ -1,4 +1,4 @@
-import { client, locales } from "../config/contentful";
+import { client, locales } from "../server/config/contentful";
 import { normalizeAxe } from "./axe.utils";
 
 const AXE_PAGE_SIZE = 10;

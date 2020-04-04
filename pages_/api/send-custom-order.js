@@ -4,7 +4,7 @@ const {
   check
 } = require("../../server/validation/custom-order.validators");
 const { transporter } = require("../../server/services/mailer");
-const mailConfig = require("../../config/nodemailer");
+const mailConfig = require("../../server/config/nodemailer");
 const orderTemplate = require("../../server/templates/email/send-custom-order/send-custom-order");
 const ejs = require("ejs");
 

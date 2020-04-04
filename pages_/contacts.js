@@ -10,6 +10,7 @@ import WithBreadcrumbs from "../components/shared/with-breadcrumbs/with-breadcru
 import Typography from "@material-ui/core/Typography";
 import { useTranslation } from "next-translate";
 import MainHeader from "../components/shared/typography/main-header";
+import Head from "../components/shared/head/head";
 
 const breadcrumbs = [{ href: "/contacts", label: "common:nav.contacts" }];
 
@@ -36,6 +37,7 @@ const Contacts = () => {
   const { t } = useTranslation();
   return (
     <Layout>
+      <Head i18Page="contacts" />
       <PageLayout>
         <MainHeader component="h1">{t("contacts:header")}</MainHeader>
         <WithBreadcrumbs paths={breadcrumbs}>

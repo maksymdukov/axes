@@ -6,8 +6,8 @@
     "/": ["index"],
     "/contacts": ["contacts"],
     "/delivery": ["delivery"],
-    "/axes": ["index"],
-    "/axes/[page]": ["index"],
+    "/axes": ["index", "axes"],
+    "/axes/[page]": ["index", "axes"],
     "/axe/[axeId]": ["axe", "index"],
     "/custom-order": ["custom-order", "contacts"]
   },

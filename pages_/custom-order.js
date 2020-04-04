@@ -7,6 +7,7 @@ import MainHeader from "../components/shared/typography/main-header";
 import { useTranslation } from "next-translate";
 import FormWrapper from "../components/custom-order/form-wrapper";
 import Information from "../components/custom-order/information";
+import Head from "../components/shared/head/head";
 
 const useStyles = makeStyles(({ palette, spacing }) => ({
   bg: {
@@ -31,6 +32,7 @@ const CustomOrder = () => {
   const classes = useStyles();
   return (
     <Layout mainClassName={classes.bg}>
+      <Head i18Page="custom-order" />
       <PageLayout className={classes.page}>
         <MainHeader component="h1" className={classes.mainHeader}>
           {t("custom-order:header")}

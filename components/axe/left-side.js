@@ -13,7 +13,7 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles(() => ({
   leftSection: {
     position: "sticky",
-    top: 0
+    top: 20
   }
 }));
 
@@ -42,7 +42,8 @@ const LeftSide = ({ axe }) => {
         {axe.title}
       </Typography>
       <Gallery axe={axe} />
-      <Box display="flex" justifyContent="flex-end">
+      <Box display="flex" justifyContent="space-between" alignItems="center">
+        <Typography variant="h5">{axe.price} грн</Typography>
         {inCart && (
           <>
             <CartQuantity

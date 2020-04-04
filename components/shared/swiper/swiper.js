@@ -6,7 +6,7 @@ import clsx from "clsx";
 const useStyles = makeStyles({
   swiperWrapper: {
     "& .swiper-container": {
-      height: "20rem",
+      height: "auto",
       width: "100%"
     },
     "& .swiper-button-next, & .swiper-button-prev": {
@@ -22,19 +22,11 @@ const useStyles = makeStyles({
     }
   },
   slideImage: {
-    // position: "absolute",
-    // top: "50%",
-    // left: "50%",
-    // width: "auto",
-    // height: "auto",
-    // maxWidth: "100%",
-    // maxHeight: "100%",
-    // transform: "translate(-50%, -50%)"
     maxWidth: "100%",
-    maxHeight: "100%",
     width: "100%",
-    height: "100%",
-    objectFit: "contain",
+    height: "auto",
+    maxHeight: "70vh",
+    objectFit: "cover",
     display: "none",
     "&.swiper-lazy-loaded": {
       display: "inline-block"
@@ -47,15 +39,16 @@ const MySwiper = ({
   className,
   options,
   onImageClick,
-  imageClassName
+  imageClassName,
+  slideWrapper
 }) => {
   const classes = useStyles();
   const params = {
     lazy: true,
-    // pagination: {
-    //   el: ".swiper-pagination",
-    //   clickable: true
-    // },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true
+    },
     navigation: {
       nextEl: ".swiper-button-next",
       prevEl: ".swiper-button-prev"
@@ -67,6 +60,7 @@ const MySwiper = ({
       <Swiper {...params}>
         {images.map((image, idx) => (
           <div
+            className={slideWrapper}
             key={idx}
             onClick={e => {
               if (!e.currentTarget.contains(e.target)) return;

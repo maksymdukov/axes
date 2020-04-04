@@ -3,6 +3,7 @@ import MySwiper from "../../shared/swiper/swiper";
 import Backdrop from "@material-ui/core/Backdrop";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import ClientOnlyPortal from "../../shared/portal/portal";
+import { noImage } from "../../../utils/image";
 
 const useStyles = makeStyles(theme => ({
   backdrop: {
@@ -11,9 +12,14 @@ const useStyles = makeStyles(theme => ({
   },
   swiper: {
     // maxWidth: 800,
-    border: "1px solid #ddd",
+    // border: "1px solid #ddd",
     margin: "1rem 0",
-    width: "100%"
+    width: "100%",
+    maxHeight: "90vh",
+    lineHeight: 0,
+    "&  .swiper-container": {
+      height: "auto"
+    }
   },
   fullScreenSwiper: {
     zIndex: 1500,
@@ -24,11 +30,16 @@ const useStyles = makeStyles(theme => ({
     }
   },
   imageSlide: {
-    cursor: "pointer"
+    cursor: "pointer",
+    objectFit: "contain"
   },
   imageSlideFullScreen: {
     objectFit: "contain",
     cursor: "pointer"
+  },
+  slideWrapper: {
+    alignSelf: "flex-start"
+    // height: "calc(100% / 4 * 3)"
   }
 }));
 
@@ -36,12 +47,11 @@ const Gallery = ({ axe }) => {
   const classes = useStyles();
   const [backdropOpened, setBackdropOpened] = useState(-1);
   const closeFullScreen = () => setBackdropOpened(-1);
-  const images = axe.images || [
-    { url: "/assets/images/No_image_available.svg", title: "No image" }
-  ];
+  const images = axe.images || [{ url: noImage, title: "No image" }];
   return (
     <>
       <MySwiper
+        slideWrapper={classes.slideWrapper}
         onImageClick={index => setBackdropOpened(index)}
         imageClassName={classes.imageSlide}
         className={classes.swiper}

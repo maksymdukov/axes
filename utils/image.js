@@ -1,4 +1,4 @@
-const noImage = "/assets/images/No_image_available.svg";
+export const noImage = "/assets/images/no-image.svg";
 
 export const getFirstImage = images => {
   if (!images || !images.length) return noImage;

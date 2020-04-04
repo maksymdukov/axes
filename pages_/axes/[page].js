@@ -5,12 +5,18 @@ import Cards from "../../components/shared/card/cards";
 import Pagination from "../../components/axes/pagination/pagination";
 import WithBreadcrumbs from "../../components/shared/with-breadcrumbs/with-breadcrumbs";
 import { getAxes } from "../../actions/axe";
+import Head from "../../components/shared/head/head";
+import { useTranslation } from "next-translate";
 
 const breadcrumbs = [{ href: "/axes", label: "common:nav.axes" }];
 
 export const AxesPage = ({ axes, page, pageCount }) => {
+  const { t } = useTranslation();
+  const title =
+    page !== 1 && `${t("axes:seo.title")} ${t("axes:seo.page")} ${page}`;
   return (
     <Layout>
+      <Head i18Page="axes" title={title} />
       <PageLayout>
         <WithBreadcrumbs paths={breadcrumbs}>
           <Cards cards={axes} />

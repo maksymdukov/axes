@@ -81,7 +81,7 @@ const FileUploader = () => {
   const { t } = useTranslation();
   const classes = useStyles();
   const [field, meta, helpers] = useField("files");
-  const { getRootProps, getInputProps, open } = useDropzone({
+  const { getRootProps, getInputProps } = useDropzone({
     accept: "image/*",
     onDrop: acceptedFiles => {
       helpers.setValue([
@@ -129,17 +129,17 @@ const FileUploader = () => {
       <div {...getRootProps({ className: classes.dropzone })}>
         <input {...getInputProps()} />
         <p>{t("custom-order:step1.dragDropLabel")}</p>
+        <CenteredBox textAlign="center" mb={3}>
+          <div>
+            <Typography gutterBottom color="textSecondary">
+              {t("custom-order:step1.or")}
+            </Typography>
+            <Button color="primary" variant="outlined">
+              <AddIcon /> {t("custom-order:step1.addFileBtn")}
+            </Button>
+          </div>
+        </CenteredBox>
       </div>
-      <CenteredBox textAlign="center" mb={3}>
-        <div>
-          <Typography gutterBottom color="textSecondary">
-            {t("custom-order:step1.or")}
-          </Typography>
-          <Button onClick={open} color="primary" variant="outlined">
-            <AddIcon /> {t("custom-order:step1.addFileBtn")}
-          </Button>
-        </div>
-      </CenteredBox>
       <aside className={classes.thumbContainer}>{thumbs}</aside>
     </section>
   );

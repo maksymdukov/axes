@@ -7,6 +7,7 @@ import MainHeader from "../components/shared/typography/main-header";
 import Grid from "@material-ui/core/Grid";
 import InfoCard from "../components/delivery/info-card";
 import { makeStyles } from "@material-ui/core/styles";
+import Head from "../components/shared/head/head";
 
 const useStyles = makeStyles(({ spacing }) => ({
   container: {
@@ -21,6 +22,7 @@ const Delivery = () => {
   const { t } = useTranslation();
   return (
     <Layout>
+      <Head i18Page="delivery" />
       <PageLayout>
         <WithBreadcrumbs paths={breadcrumbs}>
           <MainHeader>{t("delivery:delivery")}</MainHeader>

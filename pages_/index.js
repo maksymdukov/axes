@@ -9,19 +9,17 @@ import Layout from "../components/layout/layout";
 import { getFeaturedAxes, getLastAxes } from "../actions/axe";
 import { getSlides } from "../actions/slider";
 import Individual from "../components/main/individual";
-import Head from "next/head";
+import Head from "../components/shared/head/head";
 
-const useStyles = makeStyles(({ spacing, palette }) => ({
-  mb: {
-    marginBottom: spacing(4)
-  },
+const useStyles = makeStyles(({ palette }) => ({
   bgPattern: {
     background:
       "linear-gradient( rgba(0, 0, 0, 0.01), rgba(0, 0, 0, 0.20) ), url('/assets/svg/pattern.svg')",
     backgroundRepeat: "repeat repeat"
   },
   slide: {
-    objectFit: "cover"
+    objectFit: "cover",
+    objectPosition: "center"
   },
   mainContainer: {
     paddingTop: "3rem",
@@ -41,15 +39,9 @@ const Home = ({ featuredAxes, lastAxes, slides }) => {
 
   return (
     <Layout>
-      <Head>
-        <title>Сделать импринт на торопе, топор под заказ</title>
-      </Head>
+      <Head i18Page="index" />
       <div className={classes.bgPattern}>
-        <Swiper
-          images={slides}
-          className={classes.mb}
-          imageClassName={classes.slide}
-        />
+        <Swiper images={slides} imageClassName={classes.slide} />
         <section className={classes.mainContainer}>
           <Container>
             <MainHeader>{t("index:bestWorks")}</MainHeader>
