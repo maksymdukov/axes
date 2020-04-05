@@ -3,6 +3,7 @@ import Surface from "./surface/surface";
 import Typography from "@material-ui/core/Typography";
 import { useTranslation } from "next-translate";
 import { makeStyles } from "@material-ui/core/styles";
+import ReactMarkdown from "react-markdown";
 
 const useStyles = makeStyles(({ spacing }) => ({
   deliveryIcon: {
@@ -21,13 +22,17 @@ const RightSide = ({ axe }) => {
   return (
     <>
       <Surface header={t("axe:descrHeader")}>
-        <Typography>{axe.description}</Typography>
+        <Typography component="div" variant="body2">
+          <ReactMarkdown source={axe.longDescription} />
+        </Typography>
       </Surface>
-      <Surface header={t("axe:specHeader")}>
-        <p>Blab</p>
-        <p>Blab</p>
-        <p>Blab</p>
-      </Surface>
+      {axe.characteristics && (
+        <Surface header={t("axe:specHeader")}>
+          <Typography component="div">
+            <ReactMarkdown source={axe.characteristics} />
+          </Typography>
+        </Surface>
+      )}
       <Surface header={t("axe:deliveryHeader")}>
         <Typography variant="body2" color="textSecondary" gutterBottom>
           <img

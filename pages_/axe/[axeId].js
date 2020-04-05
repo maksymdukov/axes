@@ -4,7 +4,7 @@ import PageLayout from "../../components/layout/page-layout";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import WithBreadcrumbs from "../../components/shared/with-breadcrumbs/with-breadcrumbs";
-import { getAxeById, getAxesIds } from "../../actions/axe";
+import { getAxeBySlug, getAxesSlugs } from "../../actions/axe";
 import LeftSide from "../../components/axe/left-side";
 import RightSide from "../../components/axe/right-side";
 import Head from "../../components/shared/head/head";
@@ -51,14 +51,14 @@ const Axe = ({ axe }) => {
 };
 
 export async function getStaticProps({ params, lang }) {
-  const data = await getAxeById(lang, params.axeId);
+  const data = await getAxeBySlug(lang, params.axeId);
   return {
     props: { axe: data }
   };
 }
 
 export async function getStaticPaths() {
-  const ids = await getAxesIds();
+  const ids = await getAxesSlugs();
   const paths = ids.map(id => ({
     params: { axeId: id }
   }));

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import MySwiper from "../../shared/swiper/swiper";
 import Backdrop from "@material-ui/core/Backdrop";
 import makeStyles from "@material-ui/core/styles/makeStyles";
@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
   fullScreenSwiper: {
     zIndex: 1500,
     width: "100%",
-    height: "80vh",
+    maxHeight: "80vh",
     "& .swiper-container": {
       height: "100%"
     }
@@ -43,9 +43,20 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+const blurredClassName = "blurred";
+
 const Gallery = ({ axe }) => {
   const classes = useStyles();
   const [backdropOpened, setBackdropOpened] = useState(-1);
+  useEffect(() => {
+    const container = document.querySelector("#__next");
+    if (backdropOpened !== -1) {
+      container.classList.add(blurredClassName);
+    }
+    return () => {
+      container.classList.remove(blurredClassName);
+    };
+  }, [backdropOpened, setBackdropOpened]);
   const closeFullScreen = () => setBackdropOpened(-1);
   const images = axe.images || [{ url: noImage, title: "No image" }];
   return (

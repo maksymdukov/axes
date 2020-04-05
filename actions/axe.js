@@ -52,22 +52,23 @@ export const getAxes = async (lang, page) => {
   }
 };
 
-export const getAxesIds = async () => {
+export const getAxesSlugs = async () => {
   try {
     const entries = await getAxeEntries(locales.ua, {
-      select: "sys.id"
+      select: "fields.slug"
     });
-    return entries.items.map(itm => itm.sys.id);
+    console.log("entries", entries.items[0].fields);
+    return entries.items.map(itm => itm.fields.slug);
   } catch (e) {
     console.error(e);
   }
 };
 
-export const getAxeById = async (lang, id) => {
+export const getAxeBySlug = async (lang, slug) => {
   try {
     const entries = await getAxeEntries(lang, {
       select: "fields",
-      "sys.id": id
+      "fields.slug": slug
     });
     return normalizeAxe(entries.items[0]);
   } catch (e) {

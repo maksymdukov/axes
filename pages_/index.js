@@ -11,15 +11,29 @@ import { getSlides } from "../actions/slider";
 import Individual from "../components/main/individual";
 import Head from "../components/shared/head/head";
 
-const useStyles = makeStyles(({ palette }) => ({
+const useStyles = makeStyles(({ palette, breakpoints }) => ({
   bgPattern: {
     background:
       "linear-gradient( rgba(0, 0, 0, 0.01), rgba(0, 0, 0, 0.20) ), url('/assets/svg/pattern.svg')",
     backgroundRepeat: "repeat repeat"
   },
   slide: {
-    objectFit: "cover",
-    objectPosition: "center"
+    display: "block",
+    maxWidth: "100%",
+    height: "auto",
+    width: "unset",
+    margin: "0 auto",
+    [breakpoints.down("xs")]: {
+      display: "none"
+    }
+    // objectFit: "cover",
+    // objectPosition: "center"
+  },
+  slideSmall: {
+    display: "none",
+    [breakpoints.down("xs")]: {
+      display: "block"
+    }
   },
   mainContainer: {
     paddingTop: "3rem",
@@ -36,12 +50,22 @@ const useStyles = makeStyles(({ palette }) => ({
 const Home = ({ featuredAxes, lastAxes, slides }) => {
   const classes = useStyles();
   const { t } = useTranslation();
-
   return (
     <Layout>
       <Head i18Page="index" />
       <div className={classes.bgPattern}>
-        <Swiper images={slides} imageClassName={classes.slide} />
+        <Swiper
+          options={{
+            autoplay: {
+              delay: 3000,
+              disableOnInteraction: false
+            }
+          }}
+          images={slides}
+          imageClassName={classes.slide}
+          lazy={false}
+          smallImageClassName={classes.slideSmall}
+        />
         <section className={classes.mainContainer}>
           <Container>
             <MainHeader>{t("index:bestWorks")}</MainHeader>

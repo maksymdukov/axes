@@ -3,7 +3,7 @@ import Swiper from "react-id-swiper";
 import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(() => ({
   swiperWrapper: {
     "& .swiper-container": {
       height: "auto",
@@ -32,19 +32,21 @@ const useStyles = makeStyles({
       display: "inline-block"
     }
   }
-});
+}));
 
 const MySwiper = ({
+  lazy = true,
   images,
   className,
   options,
   onImageClick,
   imageClassName,
+  smallImageClassName,
   slideWrapper
 }) => {
   const classes = useStyles();
   const params = {
-    lazy: true,
+    lazy,
     pagination: {
       el: ".swiper-pagination",
       clickable: true
@@ -69,14 +71,29 @@ const MySwiper = ({
           >
             <img
               alt="img"
+              src={
+                lazy
+                  ? "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 870 296'%3E%3C/svg%3E"
+                  : image.url
+              }
               data-src={image.url}
               className={clsx(
-                "swiper-lazy",
+                lazy && "swiper-lazy",
                 classes.slideImage,
                 imageClassName
               )}
             />
-            <div className="swiper-lazy-preloader swiper-lazy-preloader-black" />
+            {image.urlSmall && (
+              <img
+                alt="img"
+                src={image.urlSmall}
+                data-src={image.url}
+                className={clsx(classes.slideImage, smallImageClassName)}
+              />
+            )}
+            {lazy && (
+              <div className="swiper-lazy-preloader swiper-lazy-preloader-black" />
+            )}
           </div>
         ))}
       </Swiper>

@@ -66,6 +66,9 @@ class MyApp extends App {
             text-decoration: none;
             color: inherit;
           }
+          .blurred {
+            filter: blur(2px);
+          }
         `}</style>
       </React.Fragment>
     );

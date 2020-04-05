@@ -87,7 +87,7 @@ export default function MediaCard({ card, t }) {
 
   return (
     <Card className={classes.root} elevation={3}>
-      <NextLink href={`/axe/[axeId]`} as={`/axe/${card.id}`} passHref>
+      <NextLink href={`/axe/[axeId]`} as={`/axe/${card.slug}`} passHref>
         <CardActionArea className={classes.actionArea}>
           <CardMedia
             className={classes.media}
