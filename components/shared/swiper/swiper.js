@@ -27,7 +27,6 @@ const useStyles = makeStyles(() => ({
     height: "auto",
     maxHeight: "70vh",
     objectFit: "cover",
-    display: "none",
     "&.swiper-lazy-loaded": {
       display: "inline-block"
     }
@@ -73,7 +72,7 @@ const MySwiper = ({
               alt="img"
               src={
                 lazy
-                  ? "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 870 296'%3E%3C/svg%3E"
+                  ? "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 664'%3E%3C/svg%3E"
                   : image.url
               }
               data-src={image.url}
@@ -86,9 +85,17 @@ const MySwiper = ({
             {image.urlSmall && (
               <img
                 alt="img"
-                src={image.urlSmall}
-                data-src={image.url}
-                className={clsx(classes.slideImage, smallImageClassName)}
+                src={
+                  lazy
+                    ? "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 450'%3E%3C/svg%3E"
+                    : image.urlSmall
+                }
+                data-src={image.urlSmall}
+                className={clsx(
+                  lazy && "swiper-lazy",
+                  classes.slideImage,
+                  smallImageClassName
+                )}
               />
             )}
             {lazy && (

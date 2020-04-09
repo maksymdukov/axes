@@ -44,7 +44,7 @@ const useStyles = makeStyles(({ shadows, palette }) => ({
   media: {
     width: "100%",
     height: "auto",
-    paddingBottom: "calc(100% * 9 / 16)",
+    paddingBottom: "calc(100% * 3 / 4)",
     backgroundSize: "cover"
   },
   toCart: {
@@ -91,7 +91,7 @@ export default function MediaCard({ card, t }) {
         <CardActionArea className={classes.actionArea}>
           <CardMedia
             className={classes.media}
-            image={getFirstImage(card.images)}
+            image={`${getFirstImage(card.images)}?w=400`}
             title="Axe"
           />
           <CardContent>

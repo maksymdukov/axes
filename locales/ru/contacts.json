@@ -5,7 +5,7 @@
   },
   "header": "Контакты",
   "masterName": "Николай",
-  "sendMessageTitle": "Отправить нам сообщение",
+  "sendMessageTitle": "Отправить мне сообщение",
   "form": {
     "name": "Имя",
     "email": "Email",

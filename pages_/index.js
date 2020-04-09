@@ -18,21 +18,27 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     backgroundRepeat: "repeat repeat"
   },
   slide: {
-    display: "block",
     maxWidth: "100%",
     height: "auto",
     width: "unset",
     margin: "0 auto",
+    maxHeight: "90vh",
+    "&.swiper-lazy-loaded": {
+      display: "block"
+    },
     [breakpoints.down("xs")]: {
-      display: "none"
+      display: "none",
+      "&.swiper-lazy-loaded": {
+        display: "none"
+      }
     }
-    // objectFit: "cover",
-    // objectPosition: "center"
   },
   slideSmall: {
-    display: "none",
-    [breakpoints.down("xs")]: {
-      display: "block"
+    [breakpoints.up("sm")]: {
+      display: "none",
+      "&.swiper-lazy-loaded": {
+        display: "none"
+      }
     }
   },
   mainContainer: {
@@ -57,13 +63,12 @@ const Home = ({ featuredAxes, lastAxes, slides }) => {
         <Swiper
           options={{
             autoplay: {
-              delay: 3000,
+              delay: 5000,
               disableOnInteraction: false
             }
           }}
           images={slides}
           imageClassName={classes.slide}
-          lazy={false}
           smallImageClassName={classes.slideSmall}
         />
         <section className={classes.mainContainer}>
