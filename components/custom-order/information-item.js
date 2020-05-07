@@ -32,11 +32,11 @@ const useStyles = makeStyles(({ palette, shadows, spacing }) => ({
   },
   "@keyframes fly": {
     "0%": {
-      transform: "translateY(100px)",
+      transform: "translateY(80px)",
       opacity: 0
     },
     "50%": {
-      transform: "translateY(50px)",
+      transform: "translateY(30px)",
       opacity: 0.1
     },
     "100%": {
