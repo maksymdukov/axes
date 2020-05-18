@@ -3,12 +3,12 @@ import { useTranslation } from 'next-translate';
 import Layout from '../components/layout/layout';
 import WithBreadcrumbs from '../components/shared/with-breadcrumbs/with-breadcrumbs';
 import PageLayout from '../components/layout/page-layout';
+import MainHeader from '../components/shared/typography/main-header';
+import { Paper, makeStyles } from '@material-ui/core';
+import { getSovetyPage } from '../actions/get-page';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { richtextDocumentOptions } from '../components/shared/richtext-page/options';
-import { makeStyles, Paper } from '@material-ui/core';
 import Head from '../components/shared/head/head';
-import MainHeader from '../components/shared/typography/main-header';
-import { getAboutPage } from '../actions/get-page';
 
 const useStyles = makeStyles(({ spacing }) => ({
   paper: {
@@ -17,9 +17,9 @@ const useStyles = makeStyles(({ spacing }) => ({
   }
 }));
 
-const breadcrumbs = [{ href: '/about', label: 'common:nav.about' }];
+const breadcrumbs = [{ href: '/sovety', label: 'common:nav.sovety' }];
 
-const About = ({ document }) => {
+const Advice = ({ document }) => {
   const richTextDocument = documentToReactComponents(
     document,
     richtextDocumentOptions
@@ -28,10 +28,10 @@ const About = ({ document }) => {
   const classes = useStyles();
   return (
     <Layout>
-      <Head i18Page="about" />
+      <Head i18Page="sovety" />
       <PageLayout>
         <WithBreadcrumbs paths={breadcrumbs}>
-          <MainHeader component="h1">{t('about:header')}</MainHeader>
+          <MainHeader component="h1">{t('sovety:header')}</MainHeader>
           <Paper variant="outlined" className={classes.paper}>
             {richTextDocument}
           </Paper>
@@ -41,9 +41,9 @@ const About = ({ document }) => {
   );
 };
 
-export default About;
+export default Advice;
 
 export async function getStaticProps({ lang }) {
-  const document = await getAboutPage(lang);
+  const document = await getSovetyPage(lang);
   return { props: { document } };
 }

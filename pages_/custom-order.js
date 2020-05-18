@@ -34,10 +34,10 @@ const CustomOrder = () => {
     <Layout mainClassName={classes.bg}>
       <Head i18Page="custom-order" />
       <PageLayout className={classes.page}>
-        <MainHeader component="h1" className={classes.mainHeader}>
-          {t("custom-order:header")}
-        </MainHeader>
         <WithBreadcrumbs className={classes.breadcrumbs} paths={breadcrumbs}>
+          <MainHeader component="h1" className={classes.mainHeader}>
+            {t("custom-order:header")}
+          </MainHeader>
           <Information />
           <FormWrapper />
         </WithBreadcrumbs>

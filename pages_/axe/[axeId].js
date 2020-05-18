@@ -12,6 +12,9 @@ import { useTranslation } from "next-translate";
 import { capitalize } from "../../utils/header";
 
 const useStyles = makeStyles(({ spacing }) => ({
+  container: {
+    marginBottom: spacing(2)
+  },
   rightSection: {
     paddingLeft: spacing(2),
     paddingTop: 57
@@ -36,7 +39,7 @@ const Axe = ({ axe }) => {
       />
       <PageLayout>
         <WithBreadcrumbs paths={breadcrumbs}>
-          <Grid container>
+          <Grid container className={classes.container}>
             <Grid item xs={12} md={6}>
               <LeftSide axe={axe} />
             </Grid>

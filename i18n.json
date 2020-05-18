@@ -4,12 +4,14 @@
   "pages": {
     "*": ["common"],
     "/": ["index"],
+    "/about": ["about"],
     "/contacts": ["contacts"],
     "/delivery": ["delivery"],
     "/axes": ["index", "axes"],
     "/axes/[page]": ["index", "axes"],
     "/axe/[axeId]": ["axe", "index"],
-    "/custom-order": ["custom-order", "contacts"]
+    "/custom-order": ["custom-order", "contacts"],
+    "/sovety": ["sovety"]
   },
   "redirectToDefaultLang": true
 }
