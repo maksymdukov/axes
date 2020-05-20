@@ -21,7 +21,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
   slide: {
     maxWidth: '100%',
     height: 'auto',
-    width: 'unset',
+    width: '100%',
     margin: '0 auto',
     maxHeight: '90vh',
     '&.swiper-lazy-loaded': {
@@ -63,7 +63,7 @@ const Home = ({ featuredAxes, lastAxes, slides }) => {
         <Swiper
           options={{
             autoplay: {
-              delay: 5000,
+              delay: 6000,
               disableOnInteraction: false
             }
           }}
