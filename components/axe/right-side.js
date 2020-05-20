@@ -1,15 +1,16 @@
-import React from "react";
-import Surface from "./surface/surface";
-import Typography from "@material-ui/core/Typography";
-import { useTranslation } from "next-translate";
-import { makeStyles } from "@material-ui/core/styles";
-import ReactMarkdown from "react-markdown";
+import React from 'react';
+import Surface from './surface/surface';
+import Typography from '@material-ui/core/Typography';
+import { useTranslation } from 'next-translate';
+import { makeStyles } from '@material-ui/core/styles';
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import { richtextDocumentOptions } from '../shared/richtext-page/options';
 
 const useStyles = makeStyles(({ spacing }) => ({
   deliveryIcon: {
-    width: "1.5rem",
-    height: "1.5rem",
-    verticalAlign: "middle"
+    width: '1.5rem',
+    height: '1.5rem',
+    verticalAlign: 'middle'
   },
   deliveryLabel: {
     marginLeft: spacing()
@@ -19,28 +20,28 @@ const useStyles = makeStyles(({ spacing }) => ({
 const RightSide = ({ axe }) => {
   const classes = useStyles();
   const { t } = useTranslation();
+  const richTextDocument = documentToReactComponents(
+    axe.longDescription,
+    richtextDocumentOptions
+  );
   return (
     <>
-      <Surface header={t("axe:descrHeader")}>
-        <Typography component="div" variant="body2">
-          <ReactMarkdown source={axe.longDescription} />
-        </Typography>
-      </Surface>
+      <Surface header={t('axe:descrHeader')}>{richTextDocument}</Surface>
       {axe.characteristics && (
-        <Surface header={t("axe:specHeader")}>
+        <Surface header={t('axe:specHeader')}>
           <Typography component="div">
-            <ReactMarkdown source={axe.characteristics} />
+            {/* <ReactMarkdown source={axe.characteristics} /> */}
           </Typography>
         </Surface>
       )}
-      <Surface header={t("axe:deliveryHeader")}>
+      <Surface header={t('axe:deliveryHeader')}>
         <Typography variant="body2" color="textSecondary" gutterBottom>
           <img
             src="/assets/svg/nova-poshta.svg"
             alt="Nova poshta"
             className={classes.deliveryIcon}
           />
-          <span className={classes.deliveryLabel}>{t("axe:novaPoshta")}</span>
+          <span className={classes.deliveryLabel}>{t('axe:novaPoshta')}</span>
         </Typography>
         <Typography variant="body2" color="textSecondary" gutterBottom>
           <img
@@ -48,17 +49,17 @@ const RightSide = ({ axe }) => {
             alt="Ukr poshta"
             className={classes.deliveryIcon}
           />
-          <span className={classes.deliveryLabel}>{t("axe:ukrPoshta")}</span>
+          <span className={classes.deliveryLabel}>{t('axe:ukrPoshta')}</span>
         </Typography>
       </Surface>
-      <Surface header={t("axe:paymentMethodHeader")}>
+      <Surface header={t('axe:paymentMethodHeader')}>
         <Typography variant="body2" color="textSecondary" gutterBottom>
           <img
             src="/assets/svg/money.svg"
             alt="Money"
             className={classes.deliveryIcon}
           />
-          <span className={classes.deliveryLabel}>{t("axe:platesh")}</span>
+          <span className={classes.deliveryLabel}>{t('axe:platesh')}</span>
         </Typography>
         <Typography variant="body2" color="textSecondary" gutterBottom>
           <img
@@ -66,7 +67,7 @@ const RightSide = ({ axe }) => {
             alt="PrivatBank"
             className={classes.deliveryIcon}
           />
-          <span className={classes.deliveryLabel}>{t("axe:privat")}</span>
+          <span className={classes.deliveryLabel}>{t('axe:privat')}</span>
         </Typography>
       </Surface>
     </>
