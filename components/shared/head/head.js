@@ -16,7 +16,7 @@ const Head = ({ i18Page, ogImage, title, description }) => {
       <meta property="og:description" content={pageDescription} />
       <meta
         property="og:image"
-        content={`${config.PUBLIC_URL}${ogImage || '/assets/images/axe.png'}`}
+        content={ogImage || `${config.PUBLIC_URL}/assets/images/axe-white.png`}
       />
       <meta
         property="og:url"

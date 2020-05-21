@@ -36,6 +36,7 @@ const Axe = ({ axe }) => {
         description={`${t('axe:seo.description1')} ${title}. ${t(
           'axe:seo.description2'
         )}`}
+        ogImage={axe.images && axe.images[0].url}
       />
       <PageLayout>
         <WithBreadcrumbs paths={breadcrumbs}>
