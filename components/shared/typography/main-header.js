@@ -1,23 +1,23 @@
-import React from "react";
-import Typography from "@material-ui/core/Typography";
-import Box from "@material-ui/core/Box";
-import { makeStyles } from "@material-ui/core/styles";
-import clsx from "clsx";
+import React from 'react';
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
+import { makeStyles } from '@material-ui/core/styles';
+import clsx from 'clsx';
 
 const useStyles = makeStyles(({ palette }) => ({
   mainHeader: {
     // backgroundColor: "white",
-    position: "relative",
-    fontWeight: "300",
+    position: 'relative',
+    fontWeight: '300',
     // boxShadow: "0 0 10px 20px #fff",
-    "&:after": {
+    '&:after': {
       content: '""',
-      display: "block",
-      width: "50%",
-      height: "2px",
-      position: "absolute",
+      display: 'block',
+      width: '50%',
+      height: '2px',
+      position: 'absolute',
       bottom: 0,
-      left: "25%",
+      left: '25%',
       backgroundColor: palette.secondary.light
     }
   }
@@ -27,8 +27,8 @@ const MainHeader = ({
   children,
   disableMargin,
   className,
-  align = "center",
-  component = "h2"
+  align = 'center',
+  component = 'h2'
 }) => {
   const classes = useStyles();
   return (

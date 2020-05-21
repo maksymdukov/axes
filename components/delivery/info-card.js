@@ -1,27 +1,27 @@
-import React from "react";
-import Typography from "@material-ui/core/Typography";
-import { Paper } from "@material-ui/core";
-import Grid from "@material-ui/core/Grid";
-import { makeStyles } from "@material-ui/core/styles";
+import React from 'react';
+import Typography from '@material-ui/core/Typography';
+import { Paper } from '@material-ui/core';
+import Grid from '@material-ui/core/Grid';
+import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(() => ({
   paper: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    padding: "1rem",
-    height: "100%"
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    padding: '1rem',
+    height: '100%'
   },
   icon: {
-    width: "5rem",
-    height: "5rem"
+    width: '5rem',
+    height: '5rem'
   },
   text: {
-    alignSelf: "stretch"
+    alignSelf: 'stretch'
   },
   paragraph: {
-    "&::first-letter": {
-      fontWeight: "bold"
+    '&::first-letter': {
+      fontWeight: 'bold'
     }
   }
 }));

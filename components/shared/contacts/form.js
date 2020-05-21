@@ -1,20 +1,20 @@
-import React from "react";
-import { Field, Form } from "formik";
-import { TextField } from "formik-material-ui";
-import Button from "@material-ui/core/Button";
-import { makeStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
-import { useTranslation } from "next-translate";
-import PhoneInput from "../../shared/inputs/phone-input";
-import Box from "@material-ui/core/Box";
-import { CircularProgress } from "@material-ui/core";
-import clsx from "clsx";
-import DoneOutlineIcon from "@material-ui/icons/DoneOutline";
+import React from 'react';
+import { Field, Form } from 'formik';
+import { TextField } from 'formik-material-ui';
+import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import { useTranslation } from 'next-translate';
+import PhoneInput from '../../shared/inputs/phone-input';
+import Box from '@material-ui/core/Box';
+import { CircularProgress } from '@material-ui/core';
+import clsx from 'clsx';
+import DoneOutlineIcon from '@material-ui/icons/DoneOutline';
 
 const useStyles = makeStyles(({ spacing, palette }) => ({
   form: {
-    maxWidth: "400px",
-    "& > *": {
+    maxWidth: '400px',
+    '& > *': {
       marginBottom: spacing(2)
     }
   },
@@ -41,7 +41,7 @@ const ContactsGenericForm = ({
         fullWidth
         name="name"
         type="text"
-        label={t("contacts:form.name")}
+        label={t('contacts:form.name')}
       />
       <br />
       <Field
@@ -49,7 +49,7 @@ const ContactsGenericForm = ({
         fullWidth
         name="email"
         type="text"
-        label={t("contacts:form.email")}
+        label={t('contacts:form.email')}
       />
       <br />
       <Field
@@ -58,7 +58,7 @@ const ContactsGenericForm = ({
         placeholder="+38(___)___-__-__"
         name="phone"
         type="text"
-        label={t("contacts:form.phone")}
+        label={t('contacts:form.phone')}
       />
       <br />
       <Field
@@ -71,8 +71,8 @@ const ContactsGenericForm = ({
         type="text"
         label={
           customLabel
-            ? t("contacts:form.messageCustom")
-            : t("contacts:form.message")
+            ? t('contacts:form.messageCustom')
+            : t('contacts:form.message')
         }
       />
       {!!netError && <Typography color="error">{netError}</Typography>}
@@ -85,7 +85,7 @@ const ContactsGenericForm = ({
             color="primary"
             onClick={onSubmit}
           >
-            {t("contacts:sendMessageBtn")}
+            {t('contacts:sendMessageBtn')}
           </Button>
           {isSubmitting && <CircularProgress size="2rem" />}
           {isSuccess && <DoneOutlineIcon className={classes.successIcon} />}

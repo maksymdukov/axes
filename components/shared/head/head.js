@@ -1,8 +1,8 @@
-import React from "react";
-import NextHead from "next/head";
-import { getTitle } from "../../../utils/header";
-import { useTranslation } from "next-translate";
-import { config } from "../../../config/config";
+import React from 'react';
+import NextHead from 'next/head';
+import { getTitle } from '../../../utils/header';
+import { useTranslation } from 'next-translate';
+import { config } from '../../../config/config';
 
 const Head = ({ i18Page, ogImage, title, description }) => {
   const { t } = useTranslation();
@@ -16,7 +16,7 @@ const Head = ({ i18Page, ogImage, title, description }) => {
       <meta property="og:description" content={pageDescription} />
       <meta
         property="og:image"
-        content={`${config.PUBLIC_URL}${ogImage || "/assets/images/axe.png"}`}
+        content={`${config.PUBLIC_URL}${ogImage || '/assets/images/axe.png'}`}
       />
       <meta
         property="og:url"

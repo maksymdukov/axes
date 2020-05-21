@@ -72,13 +72,13 @@ const Home = ({ featuredAxes, lastAxes, slides }) => {
           smallImageClassName={classes.slideSmall}
         />
         <section className={classes.mainContainer}>
-          <Container>
+          <Container maxWidth="xl">
             <MainHeader>{t('index:bestWorks')}</MainHeader>
             <Cards cards={featuredAxes} className={classes.mb} />
           </Container>
         </section>
         <section className={classes.mainContainer}>
-          <Container>
+          <Container maxWidth="xl">
             <MainHeader>{t('index:newWorks')}</MainHeader>
             <Cards cards={lastAxes} />
           </Container>

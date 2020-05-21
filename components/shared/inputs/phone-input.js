@@ -1,9 +1,9 @@
-import React from "react";
-import MaskedInput from "react-text-mask";
-import Input from "@material-ui/core/Input";
-import InputLabel from "@material-ui/core/InputLabel";
-import FormControl from "@material-ui/core/FormControl";
-import FormHelperText from "@material-ui/core/FormHelperText";
+import React from 'react';
+import MaskedInput from 'react-text-mask';
+import Input from '@material-ui/core/Input';
+import InputLabel from '@material-ui/core/InputLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormHelperText from '@material-ui/core/FormHelperText';
 
 function TextMaskCustom(props) {
   const { inputRef, ...other } = props;
@@ -11,29 +11,29 @@ function TextMaskCustom(props) {
   return (
     <MaskedInput
       {...other}
-      ref={ref => {
+      ref={(ref) => {
         inputRef(ref ? ref.inputElement : null);
       }}
       mask={[
-        "+",
-        "3",
-        "8",
-        "(",
+        '+',
+        '3',
+        '8',
+        '(',
         /[0-9]/,
         /\d/,
         /\d/,
-        ")",
+        ')',
         /\d/,
         /\d/,
         /\d/,
-        "-",
+        '-',
         /\d/,
         /\d/,
-        "-",
+        '-',
         /\d/,
         /\d/
       ]}
-      placeholderChar={"\u2000"}
+      placeholderChar={'\u2000'}
       // showMask
       guide
     />

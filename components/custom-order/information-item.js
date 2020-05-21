@@ -1,15 +1,15 @@
-import React from "react";
-import CenteredBox from "../shared/box/centered-box";
-import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
-import { makeStyles } from "@material-ui/core/styles";
+import React from 'react';
+import CenteredBox from '../shared/box/centered-box';
+import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
+import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(({ palette, shadows, spacing }) => ({
   container: {
     marginBottom: spacing(4)
   },
   iconWrapper: {
-    borderRadius: "50%",
+    borderRadius: '50%',
     padding: 30,
     height: 150,
     backgroundColor: palette.secondary.light,
@@ -18,29 +18,29 @@ const useStyles = makeStyles(({ palette, shadows, spacing }) => ({
   },
   icon: {
     fill: palette.common.white,
-    width: "auto",
-    height: "100%"
+    width: 'auto',
+    height: '100%'
   },
   description: {
-    width: "80%",
-    margin: "auto",
+    width: '80%',
+    margin: 'auto',
     fontWeight: 300,
-    textAlign: "center"
+    textAlign: 'center'
   },
   fly: {
-    animation: "$fly 0.7s linear forwards"
+    animation: '$fly 0.7s linear forwards'
   },
-  "@keyframes fly": {
-    "0%": {
-      transform: "translateY(80px)",
+  '@keyframes fly': {
+    '0%': {
+      transform: 'translateY(80px)',
       opacity: 0
     },
-    "50%": {
-      transform: "translateY(30px)",
+    '50%': {
+      transform: 'translateY(30px)',
       opacity: 0.1
     },
-    "100%": {
-      transform: "translateY(0px)",
+    '100%': {
+      transform: 'translateY(0px)',
       opacity: 1
     }
   }

@@ -1,10 +1,10 @@
-import { apiRequest } from "../utils/api";
+import { apiRequest } from '../utils/api';
 
-export const sendCustomOrder = async formData => {
+export const sendCustomOrder = async (formData) => {
   return apiRequest({
-    url: "/api/send-custom-order",
+    url: '/api/send-custom-order',
     options: {
-      method: "POST",
+      method: 'POST',
       body: formData
     }
   });

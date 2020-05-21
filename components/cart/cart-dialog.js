@@ -1,16 +1,16 @@
-import React, { useEffect, useMemo, useState } from "react";
-import { Box, Dialog, DialogContent, DialogTitle } from "@material-ui/core";
-import { useTranslation } from "next-translate";
-import IconButton from "@material-ui/core/IconButton";
-import HighlightOffIcon from "@material-ui/icons/HighlightOff";
-import Cart from "./cart";
-import CheckoutForm from "./checkout-form";
-import { Formik } from "formik";
-import { makeStyles } from "@material-ui/core/styles";
-import { useCart } from "../../context/cart/hooks";
-import { getSchema } from "./checkout-validators";
-import SuccessScreen from "./success-screen";
-import { sendOrder } from "../../actions/cart";
+import React, { useEffect, useMemo, useState } from 'react';
+import { Box, Dialog, DialogContent, DialogTitle } from '@material-ui/core';
+import { useTranslation } from 'next-translate';
+import IconButton from '@material-ui/core/IconButton';
+import HighlightOffIcon from '@material-ui/icons/HighlightOff';
+import Cart from './cart';
+import CheckoutForm from './checkout-form';
+import { Formik } from 'formik';
+import { makeStyles } from '@material-ui/core/styles';
+import { useCart } from '../../context/cart/hooks';
+import { getSchema } from './checkout-validators';
+import SuccessScreen from './success-screen';
+import { sendOrder } from '../../actions/cart';
 
 const useStyles = makeStyles(({ palette }) => ({
   titleBg: {
@@ -24,13 +24,13 @@ const CartDialog = ({ isOpened, handleClose }) => {
   const [screen, setScreen] = useState(1);
   const [error, setError] = useState(null);
   const [initValues, setInitValues] = useState({
-    name: "",
-    surname: "",
-    email: "",
-    phone: "",
-    delivery: "",
-    npNumber: "",
-    ukrAddress: ""
+    name: '',
+    surname: '',
+    email: '',
+    phone: '',
+    delivery: '',
+    npNumber: '',
+    ukrAddress: ''
   });
   const { t } = useTranslation();
   const { cart, clearCart } = useCart();
@@ -45,7 +45,7 @@ const CartDialog = ({ isOpened, handleClose }) => {
 
   // Preload contact data if user filled it before
   useEffect(() => {
-    const contacts = localStorage.getItem("contacts");
+    const contacts = localStorage.getItem('contacts');
     if (contacts && isOpened) {
       setInitValues(JSON.parse(contacts));
     }
@@ -64,7 +64,7 @@ const CartDialog = ({ isOpened, handleClose }) => {
       clearCart();
     } catch (e) {
       console.error(e);
-      setError("Произошла ошибка. Попробуйте позже");
+      setError('Произошла ошибка. Попробуйте позже');
     }
     setSubmitting(false);
   };
@@ -79,8 +79,8 @@ const CartDialog = ({ isOpened, handleClose }) => {
       <DialogTitle className={classes.titleBg}>
         <Box display="flex" justifyContent="space-between" alignItems="center">
           <span>
-            {screen === 1 && t("common:cart.title")}
-            {(screen === 2 || screen === 3) && t("common:checkout.title")}
+            {screen === 1 && t('common:cart.title')}
+            {(screen === 2 || screen === 3) && t('common:checkout.title')}
           </span>
           <IconButton color="inherit" onClick={handleClose} size="small">
             <HighlightOffIcon />

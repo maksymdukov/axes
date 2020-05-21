@@ -1,15 +1,15 @@
-import React from "react";
-import { Field, Form } from "formik";
-import CheckoutFields from "../cart/elements/checkout-fields";
-import { useTranslation } from "next-translate";
-import { makeStyles } from "@material-ui/core/styles";
-import { TextField } from "formik-material-ui";
+import React from 'react';
+import { Field, Form } from 'formik';
+import CheckoutFields from '../cart/elements/checkout-fields';
+import { useTranslation } from 'next-translate';
+import { makeStyles } from '@material-ui/core/styles';
+import { TextField } from 'formik-material-ui';
 
 const useStyles = makeStyles(({ spacing }) => ({
   form: {
-    maxWidth: "400px",
+    maxWidth: '400px',
     marginBottom: spacing(3),
-    "& > *": {
+    '& > *': {
       marginBottom: spacing(2)
     }
   }
@@ -27,7 +27,7 @@ const OrderForm = () => {
       multiline
       rows={5}
       type="text"
-      label={t("contacts:form.messageCustom")}
+      label={t('contacts:form.messageCustom')}
     />
   );
   return (

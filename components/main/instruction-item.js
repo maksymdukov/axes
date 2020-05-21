@@ -1,10 +1,10 @@
-import React from "react";
-import NumberIcon from "./number";
-import { makeStyles } from "@material-ui/core/styles";
+import React from 'react';
+import NumberIcon from './number';
+import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(() => ({
   itemWrapper: {
-    margin: ".7rem 0"
+    margin: '.7rem 0'
   }
 }));
 

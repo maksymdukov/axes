@@ -1,8 +1,8 @@
-import React from "react";
-import IconButton from "@material-ui/core/IconButton";
-import AddIcon from "@material-ui/icons/Add";
-import RemoveIcon from "@material-ui/icons/Remove";
-import { Box } from "@material-ui/core";
+import React from 'react';
+import IconButton from '@material-ui/core/IconButton';
+import AddIcon from '@material-ui/icons/Add';
+import RemoveIcon from '@material-ui/icons/Remove';
+import { Box } from '@material-ui/core';
 
 const CartQuantity = ({
   onIncrease,

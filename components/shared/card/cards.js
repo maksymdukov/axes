@@ -1,10 +1,10 @@
-import React from "react";
-import Grid from "@material-ui/core/Grid";
-import MediaCard from "./card";
-import { useTranslation } from "next-translate";
+import React from 'react';
+import Grid from '@material-ui/core/Grid';
+import MediaCard from './card';
+import { useTranslation } from 'next-translate';
 
 const Cards = ({ cards, className }) => {
-  const { t } = useTranslation("index");
+  const { t } = useTranslation('index');
   return (
     <Grid container spacing={2} className={className}>
       {cards.map((card, index) => (

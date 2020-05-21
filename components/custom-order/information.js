@@ -1,11 +1,11 @@
-import React from "react";
-import Grid from "@material-ui/core/Grid";
-import { makeStyles } from "@material-ui/core/styles";
-import ClockIcon from "../../public/assets/svg/clock.svg";
-import InformationIcon from "../../public/assets/svg/info.svg";
-import SketchIcon from "../../public/assets/svg/sketch.svg";
-import InformationItem from "./information-item";
-import Link from "../shared/link/link";
+import React from 'react';
+import Grid from '@material-ui/core/Grid';
+import { makeStyles } from '@material-ui/core/styles';
+import ClockIcon from '../../public/assets/svg/clock.svg';
+import InformationIcon from '../../public/assets/svg/info.svg';
+import SketchIcon from '../../public/assets/svg/sketch.svg';
+import InformationItem from './information-item';
+import Link from '../shared/link/link';
 
 const useStyles = makeStyles(({ spacing }) => ({
   container: {
@@ -31,8 +31,8 @@ const Information = () => {
         Icon={ClockIcon}
         text={
           <>
-            Тут можно что-то написать про сроки. Срок исполнения заказа от 1 до 3
-            недель. <Link href="/delivery">Способы доставки и оплаты</Link>
+            Тут можно что-то написать про сроки. Срок исполнения заказа от 1 до
+            3 недель. <Link href="/delivery">Способы доставки и оплаты</Link>
           </>
         }
       />

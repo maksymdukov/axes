@@ -1,4 +1,4 @@
-export const normalizeSlide = slide => {
+export const normalizeSlide = (slide) => {
   return {
     id: slide.sys.id,
     title: slide.fields.title,

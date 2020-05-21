@@ -1,18 +1,18 @@
-import React from "react";
-import { Box } from "@material-ui/core";
-import { MARKS } from "@contentful/rich-text-types";
+import React from 'react';
+import { Box } from '@material-ui/core';
+import { MARKS } from '@contentful/rich-text-types';
 
 const Mark = ({ children, type }) => {
   let boxProps;
   switch (type) {
-    case "bold":
-      boxProps = { fontWeight: "bold" };
+    case 'bold':
+      boxProps = { fontWeight: 'bold' };
       break;
-    case "italic":
-      boxProps = { component: "i", fontStyle: "italic" };
+    case 'italic':
+      boxProps = { component: 'i', fontStyle: 'italic' };
       break;
-    case "underline":
-      boxProps = { textDecoration: "underline" };
+    case 'underline':
+      boxProps = { textDecoration: 'underline' };
       break;
     default:
       boxProps = {};

@@ -1,15 +1,15 @@
-import React from "react";
-import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
-import Link from "../shared/link/link";
-import { makeStyles } from "@material-ui/core/styles";
+import React from 'react';
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+import Link from '../shared/link/link';
+import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(({ palette }) => ({
   footerLink: {
-    display: "block",
+    display: 'block',
     color: palette.grey[300],
-    fontSize: "small",
-    marginBottom: "0.2rem"
+    fontSize: 'small',
+    marginBottom: '0.2rem'
   }
 }));
 
@@ -22,7 +22,7 @@ const Block = ({ header, links, children }) => {
           <Typography variant="subtitle2" gutterBottom>
             {header}
           </Typography>
-          {links.map(link => (
+          {links.map((link) => (
             <Link
               className={classes.footerLink}
               key={link.href}

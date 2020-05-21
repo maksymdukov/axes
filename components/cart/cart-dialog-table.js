@@ -1,16 +1,16 @@
-import React from "react";
-import Table from "@material-ui/core/Table";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
-import TableCell from "@material-ui/core/TableCell";
-import TableBody from "@material-ui/core/TableBody";
-import IconButton from "@material-ui/core/IconButton";
-import DeleteIcon from "@material-ui/icons/Delete";
-import TableContainer from "@material-ui/core/TableContainer";
-import { useCart } from "../../context/cart/hooks";
-import CartQuantity from "../shared/cart-quantity/cart-quantity";
-import { useTranslation } from "next-translate";
-import { getFirstImage } from "../../utils/image";
+import React from 'react';
+import Table from '@material-ui/core/Table';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import TableCell from '@material-ui/core/TableCell';
+import TableBody from '@material-ui/core/TableBody';
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
+import TableContainer from '@material-ui/core/TableContainer';
+import { useCart } from '../../context/cart/hooks';
+import CartQuantity from '../shared/cart-quantity/cart-quantity';
+import { useTranslation } from 'next-translate';
+import { getFirstImage } from '../../utils/image';
 
 const CartDialogTable = () => {
   const { t } = useTranslation();
@@ -21,14 +21,14 @@ const CartDialogTable = () => {
         <TableHead>
           <TableRow>
             <TableCell />
-            <TableCell align="center">{t("common:cart.photo")}</TableCell>
-            <TableCell align="center">{t("common:cart.name")}</TableCell>
-            <TableCell align="center">{t("common:cart.totalItems")}</TableCell>
-            <TableCell align="center">{t("common:cart.price")}, грн</TableCell>
+            <TableCell align="center">{t('common:cart.photo')}</TableCell>
+            <TableCell align="center">{t('common:cart.name')}</TableCell>
+            <TableCell align="center">{t('common:cart.totalItems')}</TableCell>
+            <TableCell align="center">{t('common:cart.price')}, грн</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {cart.items.map(row => (
+          {cart.items.map((row) => (
             <TableRow key={row.id}>
               <TableCell component="th" scope="row">
                 <IconButton size="small" onClick={() => deleteItem(row.id)}>

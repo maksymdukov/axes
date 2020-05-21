@@ -1,15 +1,15 @@
-import React from "react";
-import Layout from "../../components/layout/layout";
-import PageLayout from "../../components/layout/page-layout";
-import { makeStyles } from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid";
-import WithBreadcrumbs from "../../components/shared/with-breadcrumbs/with-breadcrumbs";
-import { getAxeBySlug, getAxesSlugs } from "../../actions/axe";
-import LeftSide from "../../components/axe/left-side";
-import RightSide from "../../components/axe/right-side";
-import Head from "../../components/shared/head/head";
-import { useTranslation } from "next-translate";
-import { capitalize } from "../../utils/header";
+import React from 'react';
+import Layout from '../../components/layout/layout';
+import PageLayout from '../../components/layout/page-layout';
+import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import WithBreadcrumbs from '../../components/shared/with-breadcrumbs/with-breadcrumbs';
+import { getAxeBySlug, getAxesSlugs } from '../../actions/axe';
+import LeftSide from '../../components/axe/left-side';
+import RightSide from '../../components/axe/right-side';
+import Head from '../../components/shared/head/head';
+import { useTranslation } from 'next-translate';
+import { capitalize } from '../../utils/header';
 
 const useStyles = makeStyles(({ spacing }) => ({
   container: {
@@ -25,7 +25,7 @@ const Axe = ({ axe }) => {
   const classes = useStyles();
   const { t } = useTranslation();
   const breadcrumbs = [
-    { href: "/axes", label: "common:nav.axes" },
+    { href: '/axes', label: 'common:nav.axes' },
     { pureLabel: axe.title }
   ];
   const title = capitalize(axe.title);
@@ -33,8 +33,8 @@ const Axe = ({ axe }) => {
     <Layout>
       <Head
         title={`${title}`}
-        description={`${t("axe:seo.description1")} ${title}. ${t(
-          "axe:seo.description2"
+        description={`${t('axe:seo.description1')} ${title}. ${t(
+          'axe:seo.description2'
         )}`}
       />
       <PageLayout>
@@ -62,7 +62,7 @@ export async function getStaticProps({ params, lang }) {
 
 export async function getStaticPaths() {
   const ids = await getAxesSlugs();
-  const paths = ids.map(id => ({
+  const paths = ids.map((id) => ({
     params: { axeId: id }
   }));
   return {

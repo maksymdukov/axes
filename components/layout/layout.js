@@ -1,23 +1,23 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Navbar from "../navbar/navbar";
-import Footer from "../footer/footer";
-import clsx from "clsx";
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import Navbar from '../navbar/navbar';
+import Footer from '../footer/footer';
+import clsx from 'clsx';
 
 const useStyles = makeStyles(({ palette }) => ({
   wrapper: {
-    minHeight: "100vh",
-    display: "flex",
-    flexDirection: "column"
+    minHeight: '100vh',
+    display: 'flex',
+    flexDirection: 'column'
   },
   main: {
     flexGrow: 1
     // paddingBottom: spacing(4)
   },
   footerWrapper: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "stretch",
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'stretch',
     backgroundColor: palette.primary.light,
     color: palette.primary.contrastText,
     minHeight: 200

@@ -1,23 +1,23 @@
-import React, { useEffect } from "react";
-import Button from "@material-ui/core/Button";
-import { makeStyles } from "@material-ui/core/styles";
-import { useTranslation } from "next-translate";
-import Box from "@material-ui/core/Box";
-import CtaButton from "../shared/buttons/cta-button";
-import Typography from "@material-ui/core/Typography";
-import { CircularProgress } from "@material-ui/core";
-import CheckoutFields from "./elements/checkout-fields";
+import React, { useEffect } from 'react';
+import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core/styles';
+import { useTranslation } from 'next-translate';
+import Box from '@material-ui/core/Box';
+import CtaButton from '../shared/buttons/cta-button';
+import Typography from '@material-ui/core/Typography';
+import { CircularProgress } from '@material-ui/core';
+import CheckoutFields from './elements/checkout-fields';
 
 const useStyles = makeStyles(({ spacing }) => ({
   form: {
-    width: "100%",
-    maxWidth: "300px",
-    "& > *": {
+    width: '100%',
+    maxWidth: '300px',
+    '& > *': {
       marginBottom: spacing()
     }
   },
   summary: {
-    fontWeight: "300"
+    fontWeight: '300'
   }
 }));
 
@@ -32,7 +32,7 @@ const CheckoutForm = ({
   const { t } = useTranslation();
   const classes = useStyles();
   useEffect(() => {
-    localStorage.setItem("contacts", JSON.stringify(values));
+    localStorage.setItem('contacts', JSON.stringify(values));
   }, [values]);
   return (
     <>
@@ -43,7 +43,7 @@ const CheckoutForm = ({
           align="center"
           color="textSecondary"
         >
-          {t("common:checkout.total")}: {totalPrice} грн
+          {t('common:checkout.total')}: {totalPrice} грн
         </Typography>
       </Box>
       <div className={classes.form}>
@@ -56,12 +56,12 @@ const CheckoutForm = ({
           mt={3}
         >
           <Button color="primary" type="button" onClick={onBackClick}>
-            {t("common:checkout.back")}
+            {t('common:checkout.back')}
           </Button>
           {isSubmitting && <CircularProgress size={30} />}
           {!isSubmitting && (
             <CtaButton type="button" disabled={isSubmitting} onClick={onSubmit}>
-              {t("common:checkout.order")}
+              {t('common:checkout.order')}
             </CtaButton>
           )}
         </Box>

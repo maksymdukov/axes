@@ -1,23 +1,23 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Stepper from "@material-ui/core/Stepper";
-import Step from "@material-ui/core/Step";
-import StepLabel from "@material-ui/core/StepLabel";
-import StepContent from "@material-ui/core/StepContent";
-import { StepConnector } from "@material-ui/core";
-import { useTranslation } from "next-translate";
-import StepperActions from "./stepper-actions";
-import { getStepContent, getSteps } from "./stepper-helpers";
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import Stepper from '@material-ui/core/Stepper';
+import Step from '@material-ui/core/Step';
+import StepLabel from '@material-ui/core/StepLabel';
+import StepContent from '@material-ui/core/StepContent';
+import { StepConnector } from '@material-ui/core';
+import { useTranslation } from 'next-translate';
+import StepperActions from './stepper-actions';
+import { getStepContent, getSteps } from './stepper-helpers';
 
 const useStyles = makeStyles(({ palette, spacing, breakpoints }) => ({
   root: {
-    width: "100%",
-    margin: "auto",
+    width: '100%',
+    margin: 'auto',
     maxWidth: 700,
     color: palette.secondary.main
   },
   paper: {
-    [breakpoints.down("xs")]: {
+    [breakpoints.down('xs')]: {
       padding: spacing()
     }
   },
@@ -26,7 +26,7 @@ const useStyles = makeStyles(({ palette, spacing, breakpoints }) => ({
   },
   stepIcon: {
     fontSize: 45,
-    "&.MuiStepIcon-active, &.MuiStepIcon-completed": {
+    '&.MuiStepIcon-active, &.MuiStepIcon-completed': {
       color: palette.secondary.main
     }
   },
@@ -53,14 +53,14 @@ const VerticalStepper = ({
 
   const handleNext = () => {
     if (activeStep < steps.length - 2) {
-      setActiveStep(prevActiveStep => prevActiveStep + 1);
+      setActiveStep((prevActiveStep) => prevActiveStep + 1);
     } else {
       submitForm();
     }
   };
 
   const handleBack = () => {
-    setActiveStep(prevActiveStep => prevActiveStep - 1);
+    setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
   return (

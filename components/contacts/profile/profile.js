@@ -1,16 +1,16 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Avatar from "@material-ui/core/Avatar";
-import Typography from "@material-ui/core/Typography";
-import { useTranslation } from "next-translate";
-import Contact from "./contact";
-import Contacts from "./contacts";
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import Avatar from '@material-ui/core/Avatar';
+import Typography from '@material-ui/core/Typography';
+import { useTranslation } from 'next-translate';
+import Contact from './contact';
+import Contacts from './contacts';
 
 const useStyles = makeStyles(({ spacing }) => ({
   profile: {
-    display: "inline-flex",
-    flexDirection: "column",
-    alignItems: "center"
+    display: 'inline-flex',
+    flexDirection: 'column',
+    alignItems: 'center'
   },
   photo: {
     width: spacing(15),
@@ -38,7 +38,7 @@ const Profile = () => {
         className={classes.name}
         color="textPrimary"
       >
-        {t("contacts:masterName")}
+        {t('contacts:masterName')}
       </Typography>
       <Contacts />
     </div>

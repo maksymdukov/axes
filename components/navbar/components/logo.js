@@ -1,19 +1,19 @@
-import React from "react";
-import AxeIcon from "../../shared/icons/axe";
-import Link from "~/components/shared/link/link";
-import clsx from "clsx";
-import { makeStyles } from "@material-ui/core/styles";
-import Slogan from "./slogan";
+import React from 'react';
+import AxeIcon from '../../shared/icons/axe';
+import Link from '~/components/shared/link/link';
+import clsx from 'clsx';
+import { makeStyles } from '@material-ui/core/styles';
+import Slogan from './slogan';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   logoWrapper: {
-    display: "flex",
-    alignItems: "center",
-    textDecoration: "none",
-    color: "inherit",
-    transition: "color .2s linear",
-    "&:hover": {
-      textDecoration: "none",
+    display: 'flex',
+    alignItems: 'center',
+    textDecoration: 'none',
+    color: 'inherit',
+    transition: 'color .2s linear',
+    '&:hover': {
+      textDecoration: 'none',
       color: theme.palette.secondary.light
     }
   },
@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
   title: {}
 }));
 
-const Logo = ({ className, slogan, onClick, size = "large" }) => {
+const Logo = ({ className, slogan, onClick, size = 'large' }) => {
   const classes = useStyles();
   return (
     <Link

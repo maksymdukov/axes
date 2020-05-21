@@ -1,9 +1,9 @@
-import React from "react";
-import PropTypes from "prop-types";
-import clsx from "clsx";
-import { useRouter } from "next/router";
-import { default as NextLink } from "next-translate/Link";
-import MuiLink from "@material-ui/core/Link";
+import React from 'react';
+import PropTypes from 'prop-types';
+import clsx from 'clsx';
+import { useRouter } from 'next/router';
+import { default as NextLink } from 'next-translate/Link';
+import MuiLink from '@material-ui/core/Link';
 
 const NextComposed = React.forwardRef(function NextComposed(props, ref) {
   const { as, href, lang, ...other } = props;
@@ -26,7 +26,7 @@ NextComposed.propTypes = {
 function LinkComponent(props) {
   const {
     href,
-    activeClassName = "active",
+    activeClassName = 'active',
     className: classNameProps,
     innerRef,
     naked,
@@ -34,7 +34,7 @@ function LinkComponent(props) {
   } = props;
 
   const router = useRouter();
-  const pathname = typeof href === "string" ? href : href.pathname;
+  const pathname = typeof href === 'string' ? href : href.pathname;
   const className = clsx(classNameProps, {
     [activeClassName]: router.pathname === pathname && activeClassName
   });

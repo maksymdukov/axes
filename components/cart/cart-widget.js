@@ -1,9 +1,9 @@
-import React from "react";
-import Badge from "@material-ui/core/Badge";
-import IconButton from "@material-ui/core/IconButton";
-import CartIcon from "@material-ui/icons/ShoppingBasket";
-import CartDialog from "./cart-dialog";
-import { useCart } from "../../context/cart/hooks";
+import React from 'react';
+import Badge from '@material-ui/core/Badge';
+import IconButton from '@material-ui/core/IconButton';
+import CartIcon from '@material-ui/icons/ShoppingBasket';
+import CartDialog from './cart-dialog';
+import { useCart } from '../../context/cart/hooks';
 
 const CartWidget = () => {
   const { cart, openCartWidget, closeCartWidget } = useCart();

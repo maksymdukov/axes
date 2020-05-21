@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { SnackbarContext } from "./snackbar-context";
-import Snackbar from "@material-ui/core/Snackbar";
-import IconButton from "@material-ui/core/IconButton";
-import CloseIcon from "@material-ui/icons/Close";
-import { makeStyles } from "@material-ui/core/styles";
+import React, { useState } from 'react';
+import { SnackbarContext } from './snackbar-context';
+import Snackbar from '@material-ui/core/Snackbar';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
+import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(({ palette }) => ({
   snack: {
@@ -22,8 +22,8 @@ const SnackbarProvider = ({ children }) => {
       {children}
       <Snackbar
         anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "left"
+          vertical: 'bottom',
+          horizontal: 'left'
         }}
         open={!!open}
         autoHideDuration={4000}

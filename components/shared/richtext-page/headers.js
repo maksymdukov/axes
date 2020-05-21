@@ -1,6 +1,6 @@
-import React from "react";
-import { Typography } from "@material-ui/core";
-import { BLOCKS } from "@contentful/rich-text-types";
+import React from 'react';
+import { Typography } from '@material-ui/core';
+import { BLOCKS } from '@contentful/rich-text-types';
 
 export const getHeaderOptions = () => {
   let renderNodeObject = {};

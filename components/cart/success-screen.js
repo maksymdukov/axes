@@ -1,15 +1,15 @@
-import React from "react";
-import CenteredBox from "../shared/box/centered-box";
-import { makeStyles } from "@material-ui/core/styles";
-import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
-import { useTranslation } from "next-translate";
+import React from 'react';
+import CenteredBox from '../shared/box/centered-box';
+import { makeStyles } from '@material-ui/core/styles';
+import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
+import { useTranslation } from 'next-translate';
 
 const useStyles = makeStyles(({ spacing }) => ({
   alertIcon: {
     marginRight: spacing()
   },
   wrapper: {
-    textAlign: "center"
+    textAlign: 'center'
   }
 }));
 
@@ -30,9 +30,9 @@ const SuccessScreen = () => {
             color="inherit"
             fontSize="large"
           />
-          {t("common:checkout.success1")}
+          {t('common:checkout.success1')}
         </CenteredBox>
-        <div>{t("common:checkout.success2")}</div>
+        <div>{t('common:checkout.success2')}</div>
       </div>
     </CenteredBox>
   );

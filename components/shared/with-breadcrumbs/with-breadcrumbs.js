@@ -1,14 +1,14 @@
-import React from "react";
-import { default as MuiBreadCrumbs } from "@material-ui/core/Breadcrumbs";
-import Link from "../link/link";
-import { useTranslation } from "next-translate";
-import { makeStyles } from "@material-ui/core/styles";
-import { Typography } from "@material-ui/core";
-import clsx from "clsx";
+import React from 'react';
+import { default as MuiBreadCrumbs } from '@material-ui/core/Breadcrumbs';
+import Link from '../link/link';
+import { useTranslation } from 'next-translate';
+import { makeStyles } from '@material-ui/core/styles';
+import { Typography } from '@material-ui/core';
+import clsx from 'clsx';
 
 const useStyles = makeStyles({
   crumbs: {
-    margin: "1rem 0"
+    margin: '1rem 0'
   }
 });
 
@@ -22,12 +22,12 @@ const WithBreadcrumbs = ({ paths, className, children }) => {
         aria-label="breadcrumb"
       >
         <Link color="inherit" href="/">
-          {t("common:nav.main")}
+          {t('common:nav.main')}
         </Link>
         {paths.map((path, idx) => {
           let props = {
             key: idx,
-            color: "inherit"
+            color: 'inherit'
           };
           if (idx !== paths.length - 1) {
             props.href = path.href;

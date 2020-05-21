@@ -1,8 +1,8 @@
-const Validator = require("fastest-validator");
-const { transporter } = require("../../server/services/mailer");
-const mailConfig = require("../../server/config/nodemailer");
-const orderTemplate = require("../../server/templates/email/send-order/send-order");
-const ejs = require("ejs");
+const Validator = require('fastest-validator');
+const { transporter } = require('../../server/services/mailer');
+const mailConfig = require('../../server/config/nodemailer');
+const orderTemplate = require('../../server/templates/email/send-order/send-order');
+const ejs = require('ejs');
 
 const v = new Validator({
   messages: {
@@ -11,27 +11,27 @@ const v = new Validator({
   }
 });
 const schema = {
-  name: { type: "string", min: 3, max: 255 },
-  email: { type: "email" },
+  name: { type: 'string', min: 3, max: 255 },
+  email: { type: 'email' },
   phone: {
-    type: "string",
+    type: 'string',
     length: 17,
-    custom: v =>
+    custom: (v) =>
       /\+38\(\d{3}\)\d{3}-\d{2}-\d{2}/i.test(v)
         ? true
-        : [{ type: "phoneNumber" }]
+        : [{ type: 'phoneNumber' }]
   },
   delivery: {
-    type: "enum",
-    values: ["novaposhta", "ukrposhta"]
+    type: 'enum',
+    values: ['novaposhta', 'ukrposhta']
   },
   npNumber: {
-    type: "number",
+    type: 'number',
     min: 1,
     optional: true
   },
   ukrAddress: {
-    type: "string",
+    type: 'string',
     min: 3,
     optional: true,
     max: 255
@@ -41,18 +41,18 @@ const check = v.compile(schema);
 
 export default async (req, res) => {
   try {
-    if (req.method !== "POST") {
+    if (req.method !== 'POST') {
       res.statusCode = 404;
       return res.end();
     }
     if (!check(req.body)) {
-      return res.status(422).send("");
+      return res.status(422).send('');
     }
     const html = ejs.render(orderTemplate, req.body);
     await transporter.sendMail({
       from: mailConfig.MAIL_USER, // sender address
       to: mailConfig.MAIL_USER, // list of receivers
-      subject: "[AXES] Новый заказ", // Subject line
+      subject: '[AXES] Новый заказ', // Subject line
       html
     });
     res.statusCode = 200;
@@ -60,6 +60,6 @@ export default async (req, res) => {
   } catch (e) {
     console.error(e);
     res.statusCode = 500;
-    res.end("Error occurred");
+    res.end('Error occurred');
   }
 };

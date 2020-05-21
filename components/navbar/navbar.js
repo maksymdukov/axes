@@ -1,16 +1,16 @@
-import React, { useState } from "react";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
-import makeStyles from "@material-ui/core/styles/makeStyles";
-import { Hidden } from "@material-ui/core";
-import Navmenu from "../shared/navmenu/navmenu";
-import Logo from "./components/logo";
-import { useTranslation } from "next-translate";
-import LanguageToggler from "./components/language-toggler";
-import Drawer from "./components/drawer";
-import CartWidget from "../cart/cart-widget";
+import React, { useState } from 'react';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
+import makeStyles from '@material-ui/core/styles/makeStyles';
+import { Hidden } from '@material-ui/core';
+import Navmenu from '../shared/navmenu/navmenu';
+import Logo from './components/logo';
+import { useTranslation } from 'next-translate';
+import LanguageToggler from './components/language-toggler';
+import Drawer from './components/drawer';
+import CartWidget from '../cart/cart-widget';
 
 const useStyles = makeStyles(({ palette, spacing, breakpoints }) => ({
   appbar: {
@@ -20,7 +20,7 @@ const useStyles = makeStyles(({ palette, spacing, breakpoints }) => ({
     flexGrow: 1
   },
   logo: {
-    marginRight: "auto"
+    marginRight: 'auto'
   },
   menuButton: {
     marginRight: spacing(2)
@@ -53,7 +53,7 @@ const Navbar = () => {
               <MenuIcon />
             </IconButton>
           </Hidden>
-          <Logo className={classes.logo} slogan={t("common:slogan")} />
+          <Logo className={classes.logo} slogan={t('common:slogan')} />
           <LanguageToggler className={classes.language} />
           <Hidden smDown implementation="css">
             <Navmenu />

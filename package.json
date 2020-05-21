@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next-translate && next dev",
     "build": "next-translate && next build",
+    "prettify": "prettier --write  \"**/*.js\"",
     "start": "next start"
   },
   "dependencies": {

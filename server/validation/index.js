@@ -1,4 +1,4 @@
-const Validator = require("fastest-validator");
+const Validator = require('fastest-validator');
 
 const v = new Validator({
   messages: {

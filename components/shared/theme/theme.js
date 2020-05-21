@@ -2,30 +2,30 @@ import {
   createMuiTheme,
   fade,
   responsiveFontSizes
-} from "@material-ui/core/styles";
-import { red, blueGrey, green } from "@material-ui/core/colors";
+} from '@material-ui/core/styles';
+import { red, blueGrey, green } from '@material-ui/core/colors';
 
 const palette = {
   primary: {
-    main: blueGrey["900"]
+    main: blueGrey['900']
   },
   secondary: {
-    main: "#19857b"
+    main: '#19857b'
   },
   tertiary: {
-    light: "#538bd6",
-    main: "#3f669f",
-    dark: "#2b4b79"
+    light: '#538bd6',
+    main: '#3f669f',
+    dark: '#2b4b79'
   },
   error: {
     main: red.A400
   },
   background: {
-    default: "#fff"
+    default: '#fff'
   },
   success: {
     main: green.A700,
-    contrastText: "#fff"
+    contrastText: '#fff'
   }
 };
 
