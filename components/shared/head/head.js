@@ -4,7 +4,7 @@ import { getTitle } from '../../../utils/header';
 import { useTranslation } from 'next-translate';
 import { config } from '../../../config/config';
 
-const Head = ({ i18Page, ogImage, title, description }) => {
+const Head = ({ i18Page, ogImage, ogImageSecure, title, description }) => {
   const { t } = useTranslation();
   const pageTitle = getTitle(title || t(`${i18Page}:seo.title`));
   const pageDescription = description || t(`${i18Page}:seo.description`);
@@ -18,10 +18,10 @@ const Head = ({ i18Page, ogImage, title, description }) => {
         property="og:image"
         content={ogImage || `${config.PUBLIC_URL}/assets/images/axe-white.png`}
       />
-      <meta
-        property="og:url"
-        // TODO
-      />
+      {ogImageSecure && (
+        <meta property="og:image:secure_url" content={ogImageSecure} />
+      )}
+      {/* <meta property="og:url" /> */}
     </NextHead>
   );
 };

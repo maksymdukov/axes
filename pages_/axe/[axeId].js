@@ -10,6 +10,7 @@ import RightSide from '../../components/axe/right-side';
 import Head from '../../components/shared/head/head';
 import { useTranslation } from 'next-translate';
 import { capitalize } from '../../utils/header';
+import { addPrefix } from '../../utils/url';
 
 const useStyles = makeStyles(({ spacing }) => ({
   container: {
@@ -29,6 +30,8 @@ const Axe = ({ axe }) => {
     { pureLabel: axe.title }
   ];
   const title = capitalize(axe.title);
+  const ogImage = axe.images && addPrefix(axe.images[0].url);
+  const ogImageSecure = axe.images && addPrefix(axe.images[0].url, true);
   return (
     <Layout>
       <Head
@@ -36,7 +39,8 @@ const Axe = ({ axe }) => {
         description={`${t('axe:seo.description1')} ${title}. ${t(
           'axe:seo.description2'
         )}`}
-        ogImage={axe.images && axe.images[0].url}
+        ogImage={ogImage}
+        ogImageSecure={ogImageSecure}
       />
       <PageLayout>
         <WithBreadcrumbs paths={breadcrumbs}>
