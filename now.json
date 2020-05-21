@@ -7,8 +7,8 @@
     "env": {
       "CONTENTFUL_SPACE_ID": "@contentful_space_id",
       "CONTENTFUL_ACCESS_TOKEN": "@contentful_access_token",
-      "PUBLIC_DOMAIN": "@public_domain",
-      "PUBLIC_URL": "@public_url"
+      "PUBLIC_DOMAIN": "Sokyra.net.ua",
+      "PUBLIC_URL": "https://sokyra.net.ua"
     }
   }
 }
