@@ -13,5 +13,5 @@
     "/custom-order": ["custom-order", "contacts"],
     "/sovety": ["sovety"]
   },
-  "redirectToDefaultLang": true
+  "redirectToDefaultLang": false
 }

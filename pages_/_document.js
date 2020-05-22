@@ -3,10 +3,20 @@ import Document, { Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheets } from '@material-ui/core/styles';
 import theme from '../components/shared/theme/theme';
 
+import i18nConfig from '../i18n.json';
+
+function documentLang({ __NEXT_DATA__ }) {
+  const { page } = __NEXT_DATA__;
+  const [, langQuery] = page.split('/');
+  const lang = i18nConfig.allLanguages.find((l) => l === langQuery);
+
+  return lang || i18nConfig.defaultLanguage;
+}
+
 export default class MyDocument extends Document {
   render() {
     return (
-      <html lang="en">
+      <html lang={documentLang(this.props)}>
         <Head>
           {/* PWA primary color */}
           <meta name="theme-color" content={theme.palette.primary.main} />
