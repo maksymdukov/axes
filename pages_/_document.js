@@ -2,8 +2,27 @@ import React from 'react';
 import Document, { Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheets } from '@material-ui/core/styles';
 import theme from '../components/shared/theme/theme';
-
 import i18nConfig from '../i18n.json';
+
+// You can find a benchmark of the available CSS minifiers under
+// https://github.com/GoalSmashers/css-minification-benchmark
+// We have found that clean-css is faster than cssnano but the output is larger.
+// Waiting for https://github.com/cssinjs/jss/issues/279
+// 4% slower but 12% smaller output than doing it in a single step.
+//
+// It's using .browserslistrc
+let prefixer;
+let cleanCSS;
+if (process.env.NODE_ENV === 'production') {
+  /* eslint-disable global-require */
+  const postcss = require('postcss');
+  const autoprefixer = require('autoprefixer');
+  const CleanCSS = require('clean-css');
+  /* eslint-enable global-require */
+
+  prefixer = postcss([autoprefixer]);
+  cleanCSS = new CleanCSS();
+}
 
 function documentLang({ __NEXT_DATA__ }) {
   const { page } = __NEXT_DATA__;
@@ -67,12 +86,27 @@ MyDocument.getInitialProps = async (ctx) => {
     });
 
   const initialProps = await Document.getInitialProps(ctx);
+
+  let css = sheets.toString();
+  // It might be undefined, e.g. after an error.
+  if (css && process.env.NODE_ENV === 'production') {
+    const result1 = await prefixer.process(css, { from: undefined });
+    css = result1.css;
+    const output = cleanCSS.minify(css);
+    css = output.styles;
+  }
+
   return {
     ...initialProps,
     // Styles fragment is rendered after the app and page rendering finish.
     styles: [
       ...React.Children.toArray(initialProps.styles),
-      sheets.getStyleElement()
+      <style
+        id="jss-server-side"
+        key="jss-server-side"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{ __html: css }}
+      />
     ]
   };
 };
