@@ -43,7 +43,8 @@ const MySwiper = ({
   onImageClick,
   imageClassName,
   smallImageClassName,
-  slideWrapper
+  slideWrapper,
+  imageQuality = 60
 }) => {
   const classes = useStyles();
   const params = {
@@ -72,8 +73,12 @@ const MySwiper = ({
           >
             <img
               alt="img"
-              src={lazy ? `${image.url}?q=5&w=200` : `${image.url}?q=60`}
-              data-src={`${image.url}?q=60`}
+              src={
+                lazy
+                  ? `${image.url}?q=5&w=200`
+                  : `${image.url}?q=${imageQuality}`
+              }
+              data-src={`${image.url}?q=${imageQuality}`}
               className={clsx(
                 lazy && 'swiper-lazy',
                 classes.slideImage,
@@ -86,9 +91,9 @@ const MySwiper = ({
                 src={
                   lazy
                     ? `${image.urlSmall}?q=5&w=200`
-                    : `${image.urlSmall}?q=60`
+                    : `${image.urlSmall}?q=${imageQuality}`
                 }
-                data-src={`${image.urlSmall}?q=60`}
+                data-src={`${image.urlSmall}?q=${imageQuality}`}
                 className={clsx(
                   lazy && 'swiper-lazy',
                   classes.slideImage,

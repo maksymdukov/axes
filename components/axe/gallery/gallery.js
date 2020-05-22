@@ -67,6 +67,7 @@ const Gallery = ({ axe }) => {
         imageClassName={classes.imageSlide}
         className={classes.swiper}
         images={images}
+        imageQuality={80}
       />
       <ClientOnlyPortal selector="body">
         <Backdrop
@@ -85,6 +86,7 @@ const Gallery = ({ axe }) => {
               imageClassName={classes.imageSlideFullScreen}
               className={classes.fullScreenSwiper}
               images={images}
+              imageQuality={80}
             />
           </div>
         </Backdrop>
