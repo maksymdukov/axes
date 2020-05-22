@@ -3,14 +3,14 @@ import Layout from '../../components/layout/layout';
 import PageLayout from '../../components/layout/page-layout';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import WithBreadcrumbs from '../../components/shared/with-breadcrumbs/with-breadcrumbs';
 import { getAxeBySlug, getAxesSlugs } from '../../actions/axe';
 import LeftSide from '../../components/axe/left-side';
 import RightSide from '../../components/axe/right-side';
 import Head from '../../components/shared/head/head';
 import { useTranslation } from 'next-translate';
 import { capitalize } from '../../utils/header';
-import { addPrefix } from '../../utils/url';
+import { addPrefix } from '~/utils/url';
+import WithBreadcrumbs from '@Components/shared/with-breadcrumbs/with-breadcrumbs';
 
 const useStyles = makeStyles(({ spacing }) => ({
   container: {

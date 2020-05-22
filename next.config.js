@@ -14,6 +14,7 @@ module.exports = {
       use: ['@svgr/webpack']
     });
     config.resolve.alias['~'] = path.resolve(__dirname);
+    config.resolve.alias['@Components'] = path.resolve(__dirname, 'components');
     return config;
   },
   env: {

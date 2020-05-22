@@ -18,6 +18,9 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       "linear-gradient( rgba(0, 0, 0, 0.01), rgba(0, 0, 0, 0.20) ), url('/assets/svg/pattern.svg')",
     backgroundRepeat: 'repeat repeat'
   },
+  swiperWrapper: {
+    minHeight: '34.5vw'
+  },
   slide: {
     maxWidth: '100%',
     height: 'auto',
@@ -70,6 +73,7 @@ const Home = ({ featuredAxes, lastAxes, slides }) => {
           images={slides}
           imageClassName={classes.slide}
           smallImageClassName={classes.slideSmall}
+          className={classes.swiperWrapper}
         />
         <section className={classes.mainContainer}>
           <Container maxWidth="xl">
