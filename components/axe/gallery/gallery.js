@@ -11,35 +11,35 @@ const useStyles = makeStyles((theme) => ({
     color: '#fff'
   },
   swiper: {
-    // maxWidth: 800,
-    // border: "1px solid #ddd",
     margin: '1rem 0',
     width: '100%',
     maxHeight: '90vh',
     lineHeight: 0,
-    '&  .swiper-container': {
+    '& .swiper-container': {
       height: 'auto'
     }
   },
   fullScreenSwiper: {
     zIndex: 1500,
     width: '100%',
-    maxHeight: '80vh',
     '& .swiper-container': {
       height: '100%'
     }
   },
   imageSlide: {
-    cursor: 'pointer',
     objectFit: 'contain'
   },
   imageSlideFullScreen: {
+    position: 'static',
+    opacity: 1,
+    maxHeight: '80vh',
     objectFit: 'contain',
     cursor: 'pointer'
   },
   slideWrapper: {
-    alignSelf: 'flex-start'
-    // height: "calc(100% / 4 * 3)"
+    alignSelf: 'center',
+    position: 'relative',
+    cursor: 'pointer'
   }
 }));
 
@@ -62,15 +62,19 @@ const Gallery = ({ axe }) => {
   return (
     <>
       <MySwiper
-        slideWrapper={classes.slideWrapper}
         onImageClick={(index) => setBackdropOpened(index)}
-        imageClassName={classes.imageSlide}
-        className={classes.swiper}
+        classes={{
+          root: classes.swiper,
+          image: classes.imageSlide,
+          slideWrapper: classes.slideWrapper
+        }}
         images={images}
         imageQuality={80}
       />
       <ClientOnlyPortal selector="body">
         <Backdrop
+          unmountOnExit={true}
+          mountOnEnter={true}
           timeout={500}
           className={classes.backdrop}
           open={backdropOpened > -1}
@@ -81,10 +85,15 @@ const Gallery = ({ axe }) => {
             onClick={(e) => e.stopPropagation()}
           >
             <MySwiper
+              classes={{
+                slideWrapper: classes.slideWrapper,
+                image: classes.imageSlideFullScreen
+              }}
               options={{ activeSlideKey: String(backdropOpened) }}
               onImageClick={closeFullScreen}
-              imageClassName={classes.imageSlideFullScreen}
-              className={classes.fullScreenSwiper}
+              withPreview={false}
+              lazy={false}
+              isRatioPadding={false}
               images={images}
               imageQuality={80}
             />

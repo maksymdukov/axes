@@ -12,13 +12,16 @@ import { capitalize } from '../../utils/header';
 import { addPrefix } from '~/utils/url';
 import WithBreadcrumbs from '@Components/shared/with-breadcrumbs/with-breadcrumbs';
 
-const useStyles = makeStyles(({ spacing }) => ({
+const useStyles = makeStyles(({ spacing, breakpoints }) => ({
   container: {
     marginBottom: spacing(2)
   },
   rightSection: {
     paddingLeft: spacing(2),
-    paddingTop: 57
+    paddingTop: 57,
+    [breakpoints.down('sm')]: {
+      paddingLeft: 0
+    }
   }
 }));
 

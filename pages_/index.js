@@ -19,7 +19,13 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     backgroundRepeat: 'repeat repeat'
   },
   swiperWrapper: {
-    minHeight: '34.5vw'
+    // minHeight: '34.5vw'
+  },
+  slideWrapper: {
+    paddingBottom: '34.5%',
+    [breakpoints.down('xs')]: {
+      paddingBottom: '75%'
+    }
   },
   slide: {
     maxWidth: '100%',
@@ -45,6 +51,16 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       }
     }
   },
+  preview: {
+    [breakpoints.down('xs')]: {
+      display: 'none'
+    }
+  },
+  previewSmall: {
+    [breakpoints.up('sm')]: {
+      display: 'none'
+    }
+  },
   mainContainer: {
     paddingTop: '3rem',
     paddingBottom: '4rem'
@@ -64,6 +80,7 @@ const Home = ({ featuredAxes, lastAxes, slides }) => {
       <Head i18Page="index" />
       <div className={classes.bgPattern}>
         <Swiper
+          isRatioPadding={false}
           options={{
             autoplay: {
               delay: 6000,
@@ -71,9 +88,14 @@ const Home = ({ featuredAxes, lastAxes, slides }) => {
             }
           }}
           images={slides}
-          imageClassName={classes.slide}
-          smallImageClassName={classes.slideSmall}
-          className={classes.swiperWrapper}
+          classes={{
+            root: classes.swiperWrapper,
+            slideWrapper: classes.slideWrapper,
+            image: classes.slide,
+            smallImage: classes.slideSmall,
+            preview: classes.preview,
+            smallPreview: classes.previewSmall
+          }}
         />
         <section className={classes.mainContainer}>
           <Container maxWidth="xl">

@@ -22,33 +22,60 @@ const useStyles = makeStyles(() => ({
     }
   },
   slideImage: {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    left: 0,
+    bottom: 0,
     maxWidth: '100%',
     width: '100%',
     height: 'auto',
-    maxHeight: '70vh',
     objectFit: 'cover',
-    filter: 'blur(10px)',
+    opacity: 0,
+    transition: 'opacity .4s',
     '&.swiper-lazy-loaded': {
-      display: 'inline-block',
-      filter: 'none'
+      opacity: 1
     }
+  },
+  imagePreview: {
+    position: 'absolute',
+    maxWidth: '100%',
+    width: '100%',
+    height: 'auto',
+    objectFit: 'contain',
+    opacity: 1,
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    filter: 'blur(10px)',
+    transition: 'filter .4s, opacity .4s',
+    '.swiper-lazy-loaded + &': {
+      filter: 'blur(0)',
+      opacity: 0
+    }
+  },
+  slideWrapper: {
+    alignSelf: 'center',
+    position: 'relative',
+    transform: 'translateZ(0)'
   }
 }));
 
 const MySwiper = ({
   lazy = true,
+  classes: customClasses = {},
   images,
-  className,
   options,
   onImageClick,
-  imageClassName,
-  smallImageClassName,
-  slideWrapper,
-  imageQuality = 60
+  imageQuality = 60,
+  isRatioPadding = true,
+  withPreview = true
 }) => {
   const classes = useStyles();
   const params = {
     lazy,
+    spaceBetween: 30,
     pagination: {
       el: '.swiper-pagination',
       clickable: true
@@ -59,51 +86,71 @@ const MySwiper = ({
     },
     ...options
   };
+
+  const handleImageClick = (idx) => (e) => {
+    if (!e.currentTarget.contains(e.target)) return;
+    return onImageClick && onImageClick(idx);
+  };
+
+  const mainImageClass = clsx(
+    lazy && 'swiper-lazy',
+    classes.slideImage,
+    customClasses.image
+  );
+
+  const smallImageClass = clsx(
+    lazy && 'swiper-lazy',
+    classes.slideImage,
+    customClasses.smallImage
+  );
+
+  const getWrapperStyle = (image) =>
+    isRatioPadding
+      ? { paddingBottom: `${(image.height / image.width) * 100}%` }
+      : {};
+
+  const getSmallScreenImage = (image) => (
+    <>
+      <img
+        src={lazy ? undefined : `${image.smallImage.url}?q=${imageQuality}`}
+        alt={image.title}
+        data-src={
+          lazy ? `${image.smallImage.url}?q=${imageQuality}` : undefined
+        }
+        className={smallImageClass}
+      />
+      {withPreview && (
+        <img
+          src={`${image.smallImage.url}?q=5&w=200`}
+          className={clsx(classes.imagePreview, customClasses.smallPreview)}
+        />
+      )}
+    </>
+  );
+
   return (
-    <div className={clsx(classes.swiperWrapper, className)}>
+    <div className={clsx(classes.swiperWrapper, customClasses.root)}>
       <Swiper {...params}>
         {images.map((image, idx) => (
           <div
-            className={slideWrapper}
+            className={clsx(classes.slideWrapper, customClasses.slideWrapper)}
             key={idx}
-            onClick={(e) => {
-              if (!e.currentTarget.contains(e.target)) return;
-              return onImageClick && onImageClick(idx);
-            }}
+            onClick={handleImageClick(idx)}
+            style={getWrapperStyle(image)}
           >
             <img
-              alt="img"
-              src={
-                lazy
-                  ? `${image.url}?q=5&w=200`
-                  : `${image.url}?q=${imageQuality}`
-              }
-              data-src={`${image.url}?q=${imageQuality}`}
-              className={clsx(
-                lazy && 'swiper-lazy',
-                classes.slideImage,
-                imageClassName
-              )}
+              src={lazy ? undefined : `${image.url}?q=${imageQuality}`}
+              alt={image.title}
+              data-src={lazy ? `${image.url}?q=${imageQuality}` : undefined}
+              className={mainImageClass}
             />
-            {image.urlSmall && (
+            {withPreview && (
               <img
-                alt="img"
-                src={
-                  lazy
-                    ? `${image.urlSmall}?q=5&w=200`
-                    : `${image.urlSmall}?q=${imageQuality}`
-                }
-                data-src={`${image.urlSmall}?q=${imageQuality}`}
-                className={clsx(
-                  lazy && 'swiper-lazy',
-                  classes.slideImage,
-                  smallImageClassName
-                )}
+                src={`${image.url}?q=5&w=200`}
+                className={clsx(classes.imagePreview, customClasses.preview)}
               />
             )}
-            {lazy && (
-              <div className="swiper-lazy-preloader swiper-lazy-preloader-black" />
-            )}
+            {image.smallImage && getSmallScreenImage(image)}
           </div>
         ))}
       </Swiper>

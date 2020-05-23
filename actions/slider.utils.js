@@ -1,8 +1,40 @@
-export const normalizeSlide = (slide) => {
-  return {
-    id: slide.sys.id,
-    title: slide.fields.title,
-    url: slide.fields.image.fields.file.url,
-    urlSmall: slide.fields.imageSmall.fields.file.url
+export const normalizeSlide = ({
+  sys: { id },
+  fields: {
+    title,
+    image: {
+      fields: {
+        file: {
+          url,
+          details: {
+            image: { width, height }
+          }
+        }
+      }
+    },
+    imageSmall: {
+      fields: {
+        file: {
+          url: urlSmall,
+          details: {
+            image: { width: widthSmall, height: heightSmall }
+          }
+        }
+      }
+    }
+  }
+}) => {
+  const slide = {
+    id: id,
+    title: title,
+    url,
+    width,
+    height,
+    smallImage: {
+      url: urlSmall,
+      width: widthSmall,
+      height: heightSmall
+    }
   };
+  return slide;
 };
