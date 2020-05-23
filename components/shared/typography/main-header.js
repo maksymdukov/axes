@@ -6,10 +6,8 @@ import clsx from 'clsx';
 
 const useStyles = makeStyles(({ palette }) => ({
   mainHeader: {
-    // backgroundColor: "white",
     position: 'relative',
     fontWeight: '300',
-    // boxShadow: "0 0 10px 20px #fff",
     '&:after': {
       content: '""',
       display: 'block',

@@ -75,7 +75,13 @@ const useStyles = makeStyles(({ shadows, palette }) => ({
   }
 }));
 
-export default function MediaCard({ card, t }) {
+export default function MediaCard({
+  card,
+  t,
+  renderCustomActions,
+  isDescription = true,
+  titleVariant
+}) {
   const classes = useStyles();
   const { cart, isInCart, addItem, deleteItem } = useCart();
   const { showSnackbar } = useCartSnackbar();
@@ -103,34 +109,46 @@ export default function MediaCard({ card, t }) {
             />
           </div>
           <CardContent>
-            <Typography gutterBottom variant="h5" component="h2">
+            <Typography
+              gutterBottom
+              variant={titleVariant || 'h5'}
+              component="h2"
+            >
               {card.title}
             </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
-              {card.description}
-            </Typography>
+            {isDescription && (
+              <Typography variant="body2" color="textSecondary" component="p">
+                {card.description}
+              </Typography>
+            )}
           </CardContent>
         </CardActionArea>
       </NextLink>
       <div className={classes.actions}>
-        <Typography variant="h6" className={classes.priceTag}>
-          {card.price} грн
-        </Typography>
-        <Button
-          disableElevation
-          variant={inCart ? 'outlined' : 'contained'}
-          className={classes.toCart}
-          color="secondary"
-          onClick={inCart ? handleRemoveFromCart : handleAddToCart}
-        >
-          {inCart ? (
-            <>
-              <CheckCircleOutlineIcon /> {t('common:card.inCart')}
-            </>
-          ) : (
-            t('common:card.toCart')
-          )}
-        </Button>
+        {renderCustomActions ? (
+          renderCustomActions(card)
+        ) : (
+          <>
+            <Typography variant="h6" className={classes.priceTag}>
+              {card.price} грн
+            </Typography>
+            <Button
+              disableElevation
+              variant={inCart ? 'outlined' : 'contained'}
+              className={classes.toCart}
+              color="secondary"
+              onClick={inCart ? handleRemoveFromCart : handleAddToCart}
+            >
+              {inCart ? (
+                <>
+                  <CheckCircleOutlineIcon /> {t('common:card.inCart')}
+                </>
+              ) : (
+                t('common:card.toCart')
+              )}
+            </Button>
+          </>
+        )}
       </div>
     </Card>
   );

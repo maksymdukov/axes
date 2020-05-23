@@ -3,7 +3,11 @@ import Layout from '../../components/layout/layout';
 import PageLayout from '../../components/layout/page-layout';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import { getAxeBySlug, getAxesSlugs } from '../../actions/axe';
+import {
+  getAxeBySlug,
+  getAxesSlugs,
+  getAxesAroundDate
+} from '../../actions/axe';
 import LeftSide from '../../components/axe/left-side';
 import RightSide from '../../components/axe/right-side';
 import Head from '../../components/shared/head/head';
@@ -11,10 +15,12 @@ import { useTranslation } from 'next-translate';
 import { capitalize } from '../../utils/header';
 import { addPrefix } from '~/utils/url';
 import WithBreadcrumbs from '@Components/shared/with-breadcrumbs/with-breadcrumbs';
+import { Typography } from '@material-ui/core';
+import AdjacentCards from '@Components/axe/adjacent-cards';
 
 const useStyles = makeStyles(({ spacing, breakpoints }) => ({
   container: {
-    marginBottom: spacing(2)
+    marginBottom: spacing(4)
   },
   rightSection: {
     paddingLeft: spacing(2),
@@ -22,10 +28,16 @@ const useStyles = makeStyles(({ spacing, breakpoints }) => ({
     [breakpoints.down('sm')]: {
       paddingLeft: 0
     }
+  },
+  adjacentTitle: {
+    marginBottom: spacing(2)
+  },
+  adjacentCards: {
+    marginBottom: spacing(2)
   }
 }));
 
-const Axe = ({ axe }) => {
+const Axe = ({ axe, adjacentAxes }) => {
   const classes = useStyles();
   const { t } = useTranslation();
   const breadcrumbs = [
@@ -55,6 +67,18 @@ const Axe = ({ axe }) => {
               <RightSide axe={axe} />
             </Grid>
           </Grid>
+          <Typography
+            variant="h5"
+            component="h2"
+            className={classes.adjacentTitle}
+          >
+            {t('axe:adjacentTitle')}
+          </Typography>
+          <AdjacentCards
+            t={t}
+            adjacentAxes={adjacentAxes}
+            className={classes.adjacentCards}
+          />
         </WithBreadcrumbs>
       </PageLayout>
     </Layout>
@@ -62,9 +86,20 @@ const Axe = ({ axe }) => {
 };
 
 export async function getStaticProps({ params, lang }) {
-  const data = await getAxeBySlug(lang, params.axeId);
+  const axe = await getAxeBySlug(lang, params.axeId);
+
+  // Fetch adjacent axes to show them in 'You might like section'
+  let adjacentAxes = await getAxesAroundDate({ lang, date: axe.createdAt });
+  // If not found try finding later posts
+  if (!adjacentAxes.length) {
+    adjacentAxes = await getAxesAroundDate({
+      lang,
+      date: axe.createdAt,
+      forward: false
+    });
+  }
   return {
-    props: { axe: data }
+    props: { axe, adjacentAxes }
   };
 }
 

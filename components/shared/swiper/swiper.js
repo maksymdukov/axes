@@ -58,7 +58,7 @@ const useStyles = makeStyles(() => ({
   slideWrapper: {
     alignSelf: 'center',
     position: 'relative',
-    transform: 'translateZ(0)'
+    overflow: 'hidden'
   }
 }));
 
@@ -75,7 +75,7 @@ const MySwiper = ({
   const classes = useStyles();
   const params = {
     lazy,
-    spaceBetween: 30,
+    spaceBetween: 10,
     pagination: {
       el: '.swiper-pagination',
       clickable: true

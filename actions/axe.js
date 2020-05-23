@@ -40,7 +40,8 @@ export const getAxes = async (lang, page) => {
     const entries = await getAxeEntries(lang, {
       select: 'fields',
       limit: AXE_PAGE_SIZE,
-      skip: (page - 1) * AXE_PAGE_SIZE
+      skip: (page - 1) * AXE_PAGE_SIZE,
+      order: '-sys.createdAt'
     });
     return {
       data: entries.items.map(normalizeAxe),
@@ -57,7 +58,6 @@ export const getAxesSlugs = async () => {
     const entries = await getAxeEntries(locales.ua, {
       select: 'fields.slug'
     });
-    console.log('entries', entries.items[0].fields);
     return entries.items.map((itm) => itm.fields.slug);
   } catch (e) {
     console.error(e);
@@ -74,4 +74,18 @@ export const getAxeBySlug = async (lang, slug) => {
   } catch (e) {
     console.error(e);
   }
+};
+
+export const getAxesAroundDate = async ({
+  lang,
+  date,
+  limit = 5,
+  forward = true
+}) => {
+  const direction = forward ? 'gt' : 'lt';
+  const entries = await getAxeEntries(lang, {
+    [`sys.createdAt[${direction}]`]: date,
+    limit
+  });
+  return entries.items.map(normalizeAxe);
 };
