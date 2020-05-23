@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React from 'react';
 import Swiper from 'react-id-swiper';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
@@ -72,17 +72,8 @@ const MySwiper = ({
   isRatioPadding = true,
   withPreview = true
 }) => {
-  const forceUpdate = useRef(1);
-  // Swiper didn't want to update it's state when browsing from one axe to another.
-  // Trick to rebuild tree when Swiper is updated
-  // Swiper is updated only when prevProps.image !== nextProps.image
-  forceUpdate.current++;
-
-  console.log('[MySwiper]');
-
   const classes = useStyles();
   const params = {
-    shouldSwiperUpdate: true,
     lazy,
     spaceBetween: 10,
     pagination: {
@@ -137,15 +128,12 @@ const MySwiper = ({
     </>
   );
   return (
-    <div
-      className={clsx(classes.swiperWrapper, customClasses.root)}
-      key={String(forceUpdate.current)} // Trick
-    >
+    <div className={clsx(classes.swiperWrapper, customClasses.root)}>
       <Swiper {...params}>
         {images.map((image, idx) => (
           <div
             className={clsx(classes.slideWrapper, customClasses.slideWrapper)}
-            key={image.url}
+            key={idx}
             onClick={handleImageClick(idx)}
             style={getWrapperStyle(image)}
           >
@@ -168,7 +156,4 @@ const MySwiper = ({
     </div>
   );
 };
-export default React.memo(
-  MySwiper,
-  (prevProps, nextProps) => prevProps.images === nextProps.images
-);
+export default MySwiper;

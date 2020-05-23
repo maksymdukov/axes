@@ -15,6 +15,7 @@ class MyApp extends App {
   }
 
   setUserLanguage() {
+    // TODO needs rewriting
     const lang = this.getLanguage();
     if (!lang) return;
     const slugs = window.location.pathname.split('/');
