@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Swiper from 'react-id-swiper';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
@@ -32,7 +32,6 @@ const useStyles = makeStyles(() => ({
     height: 'auto',
     objectFit: 'cover',
     opacity: 0,
-    transition: 'opacity .4s',
     '&.swiper-lazy-loaded': {
       opacity: 1
     }
@@ -49,11 +48,11 @@ const useStyles = makeStyles(() => ({
     right: 0,
     bottom: 0,
     filter: 'blur(10px)',
-    transition: 'filter .4s, opacity .4s',
-    '.swiper-lazy-loaded + &': {
-      filter: 'blur(0)',
-      opacity: 0
-    }
+    transition: 'filter 0.4s, opacity 0.4s'
+  },
+  hidePreview: {
+    filter: 'blur(0)',
+    opacity: 0
   },
   slideWrapper: {
     alignSelf: 'center',
@@ -87,6 +86,18 @@ const MySwiper = ({
     ...options
   };
 
+  const [loadedImages, setloadedImages] = useState(
+    new Array(images.length).fill({ big: false, small: false })
+  );
+
+  const onImageLoaded = (type = 'big', idx) => () => {
+    setloadedImages(
+      loadedImages.map((statusObj, index) =>
+        index === idx ? { ...statusObj, [type]: true } : statusObj
+      )
+    );
+  };
+
   const handleImageClick = (idx) => (e) => {
     if (!e.currentTarget.contains(e.target)) return;
     return onImageClick && onImageClick(idx);
@@ -109,11 +120,12 @@ const MySwiper = ({
       ? { paddingBottom: `${(image.height / image.width) * 100}%` }
       : {};
 
-  const getSmallScreenImage = (image) => (
+  const getSmallScreenImage = (image, idx) => (
     <>
       <img
         src={lazy ? undefined : `${image.smallImage.url}?q=${imageQuality}`}
         alt={image.title}
+        onLoad={lazy ? onImageLoaded('small', idx) : undefined}
         data-src={
           lazy ? `${image.smallImage.url}?q=${imageQuality}` : undefined
         }
@@ -122,7 +134,11 @@ const MySwiper = ({
       {withPreview && (
         <img
           src={`${image.smallImage.url}?q=5&w=200`}
-          className={clsx(classes.imagePreview, customClasses.smallPreview)}
+          className={clsx(
+            classes.imagePreview,
+            loadedImages[idx].small && classes.hidePreview,
+            customClasses.smallPreview
+          )}
         />
       )}
     </>
@@ -140,16 +156,21 @@ const MySwiper = ({
             <img
               src={lazy ? undefined : `${image.url}?q=${imageQuality}`}
               alt={image.title}
+              onLoad={lazy ? onImageLoaded('big', idx) : undefined}
               data-src={lazy ? `${image.url}?q=${imageQuality}` : undefined}
               className={mainImageClass}
             />
             {withPreview && (
               <img
                 src={`${image.url}?q=5&w=200`}
-                className={clsx(classes.imagePreview, customClasses.preview)}
+                className={clsx(
+                  classes.imagePreview,
+                  loadedImages[idx].big && classes.hidePreview,
+                  customClasses.preview
+                )}
               />
             )}
-            {image.smallImage && getSmallScreenImage(image)}
+            {image.smallImage && getSmallScreenImage(image, idx)}
           </div>
         ))}
       </Swiper>
