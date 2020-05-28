@@ -12,6 +12,5 @@
     "/axe/[axeId]": ["axe", "index"],
     "/custom-order": ["custom-order", "contacts"],
     "/sovety": ["sovety"]
-  },
-  "redirectToDefaultLang": false
+  }
 }

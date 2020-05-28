@@ -95,7 +95,6 @@ export default function MediaCard({
     }
   };
   const handleRemoveFromCart = () => deleteItem(card.id);
-
   return (
     <Card className={classes.root} elevation={3}>
       <NextLink href={`/axe/[axeId]`} as={`/axe/${card.slug}`} passHref>
@@ -105,7 +104,7 @@ export default function MediaCard({
               component="img"
               className={classes.media}
               src={`${getFirstImage(card.images)}?q=60&w=400`}
-              title="Axe"
+              alt={card.title}
             />
           </div>
           <CardContent>

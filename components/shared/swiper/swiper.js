@@ -134,6 +134,7 @@ const MySwiper = ({
       {withPreview && (
         <img
           src={`${image.smallImage.url}?q=5&w=200`}
+          alt={image.title}
           className={clsx(
             classes.imagePreview,
             loadedImages[idx].small && classes.hidePreview,
@@ -163,6 +164,7 @@ const MySwiper = ({
             {withPreview && (
               <img
                 src={`${image.url}?q=5&w=200`}
+                alt={image.title}
                 className={clsx(
                   classes.imagePreview,
                   loadedImages[idx].big && classes.hidePreview,
