@@ -15,12 +15,23 @@ import { parseUrl } from '~/hooks/url';
 import Router from 'next-translate/Router';
 
 class MyApp extends App {
+  state = {
+    languageChanged: false
+  };
+
+  backdropref = React.createRef();
+
   componentDidMount() {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side');
     if (jssStyles) {
       jssStyles.parentElement.removeChild(jssStyles);
     }
+
+    this.backdropref.current.addEventListener('transitionend', () => {
+      console.log('transitionend triggered');
+      this.backdropref.current.style.display = 'none';
+    });
 
     // Save default language
     const savedLang = getUserLanguageSetting();
@@ -30,9 +41,14 @@ class MyApp extends App {
         // TODO
         // Not the best solution
         // Can be alleviated by showing large loader
-        // Router.pushI18n({ url: path, options: { lang: savedLang } });
+        Router.pushI18n({ url: path, options: { lang: savedLang } }).then(
+          () => {
+            this.setState({ languageChanged: true });
+          }
+        );
+        return;
       }
-      return;
+      this.setState({ languageChanged: true });
     }
     setUserLanguageSetting();
   }
@@ -53,6 +69,27 @@ class MyApp extends App {
             <SnackbarProvider>
               <CssBaseline />
               <Component {...pageProps} />
+              <div
+                ref={this.backdropref}
+                style={{
+                  position: 'fixed',
+                  top: 0,
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  zIndex: 10000,
+                  backgroundColor: 'red',
+                  color: 'white',
+                  fontSize: '2rem',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  opacity: this.state.languageChanged ? 0 : 1,
+                  transition: 'opacity 1s'
+                }}
+              >
+                Backdrop
+              </div>
             </SnackbarProvider>
           </CartProvider>
         </ThemeProvider>
