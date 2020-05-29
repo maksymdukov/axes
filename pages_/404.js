@@ -7,8 +7,9 @@ import DisableLinkProvider from '~/context/404-page/disable-link-provider';
 import I18CustomProvider from '~/context/404-page/i18provider';
 import SokyraIcon from '~/components/shared/icons/sokyra.svg';
 import { makeStyles } from '@material-ui/core';
+import Head from '@Components/shared/head/head';
 
-const useStyles = makeStyles(({ breakpoints, spacing }) => ({
+const useStyles = makeStyles(({ breakpoints, spacing, palette }) => ({
   iconBox: {
     marginBottom: spacing(2),
     width: '30%',
@@ -25,7 +26,8 @@ const useStyles = makeStyles(({ breakpoints, spacing }) => ({
   },
   icon: {
     width: '100%',
-    height: 'auto'
+    height: 'auto',
+    fill: palette.primary.light
   }
 }));
 
@@ -34,6 +36,9 @@ const NotFoundBody = () => {
   const { t } = useTranslation();
   return (
     <>
+      <Head i18Page="404">
+        <meta name="robots" content="noindex,nofollow" />
+      </Head>
       <MainHeader component="h1" variant="h4">
         {t('404:header')}
       </MainHeader>

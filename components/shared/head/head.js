@@ -4,7 +4,14 @@ import { getTitle } from '../../../utils/header';
 import { useTranslation } from 'next-translate';
 import { config } from '../../../config/config';
 
-const Head = ({ i18Page, ogImage, ogImageSecure, title, description }) => {
+const Head = ({
+  i18Page,
+  ogImage,
+  ogImageSecure,
+  title,
+  description,
+  children
+}) => {
   const { t } = useTranslation();
   const pageTitle = getTitle(title || t(`${i18Page}:seo.title`));
   const pageDescription = description || t(`${i18Page}:seo.description`);
@@ -21,6 +28,7 @@ const Head = ({ i18Page, ogImage, ogImageSecure, title, description }) => {
       {ogImageSecure && (
         <meta property="og:image:secure_url" content={ogImageSecure} />
       )}
+      {children}
       {/* <meta property="og:url" /> */}
     </NextHead>
   );
