@@ -65,7 +65,7 @@ const useStyles = makeStyles(({ palette, spacing }) => ({
 
 const Footer = ({ notFoundPage }) => {
   const classes = useStyles();
-  const currentPathname = usePurePathname();
+  const { path: currentPathname } = usePurePathname();
   const { t } = useTranslation();
   const links = getLinks(t);
 

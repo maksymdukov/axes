@@ -4,7 +4,7 @@ import { setUserLanguageSetting } from '~/utils/language';
 import Router from 'next-translate/Router';
 
 export const useLanguageToggler = () => {
-  const purePathname = usePurePathname();
+  const { path: purePathname } = usePurePathname();
   const toggleLanguage = useCallback(
     (lng) => {
       // localstorage

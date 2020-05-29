@@ -37,7 +37,7 @@ function LinkComponent(props) {
   // fix for 404 page
   const { disableActiveLinks } = useContext(DisableLinkContext);
 
-  const purePathname = usePurePathname();
+  const { path: purePathname } = usePurePathname();
   const pathname = typeof href === 'string' ? href : href.pathname;
   const className = clsx(classNameProps, {
     [activeClassName]:

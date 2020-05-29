@@ -11,6 +11,8 @@ import {
   getUserLanguageSetting,
   setUserLanguageSetting
 } from '~/utils/language';
+import { parseUrl } from '~/hooks/url';
+import Router from 'next-translate/Router';
 
 class MyApp extends App {
   componentDidMount() {
@@ -23,7 +25,13 @@ class MyApp extends App {
     // Save default language
     const savedLang = getUserLanguageSetting();
     if (savedLang) {
-      // TODO redirect;
+      const { lang, path } = parseUrl(window.location.pathname)();
+      if (lang !== savedLang) {
+        // TODO
+        // Not the best solution
+        // Can be alleviated by showing large loader
+        // Router.pushI18n({ url: path, options: { lang: savedLang } });
+      }
       return;
     }
     setUserLanguageSetting();
