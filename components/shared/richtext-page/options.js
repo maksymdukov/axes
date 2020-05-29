@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 import { Options } from '@contentful/rich-text-react-renderer';
 import { BLOCKS } from '@contentful/rich-text-types';
 import { Typography } from '@material-ui/core';

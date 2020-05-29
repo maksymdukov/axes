@@ -5,36 +5,28 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import theme from '../components/shared/theme/theme';
 import 'swiper/css/swiper.css';
-import Router from 'next-translate/Router';
 import CartProvider from '../context/cart/cart-provider';
 import SnackbarProvider from '../context/snackbar/snackbar-provider';
+import {
+  getUserLanguageSetting,
+  setUserLanguageSetting
+} from '~/utils/language';
 
 class MyApp extends App {
-  getLanguage() {
-    return localStorage.getItem('language');
-  }
-
-  setUserLanguage() {
-    // TODO needs rewriting
-    const lang = this.getLanguage();
-    if (!lang) return;
-    const slugs = window.location.pathname.split('/');
-    console.log(slugs);
-    if (slugs[1] !== lang) {
-      Router.pushI18n({
-        url: slugs.slice(2).join('/') || '/',
-        options: { lang: lang }
-      });
-    }
-  }
-
   componentDidMount() {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side');
     if (jssStyles) {
       jssStyles.parentElement.removeChild(jssStyles);
     }
-    // this.setUserLanguage();
+
+    // Save default language
+    const savedLang = getUserLanguageSetting();
+    if (savedLang) {
+      // TODO redirect;
+      return;
+    }
+    setUserLanguageSetting();
   }
 
   render() {

@@ -26,7 +26,6 @@ const WithBreadcrumbs = ({ paths, className, children }) => {
         </Link>
         {paths.map((path, idx) => {
           let props = {
-            key: idx,
             color: 'inherit'
           };
           if (idx !== paths.length - 1) {
@@ -35,7 +34,7 @@ const WithBreadcrumbs = ({ paths, className, children }) => {
           }
           const Component = idx === paths.length - 1 ? Typography : Link;
           return (
-            <Component {...props}>
+            <Component key={idx} {...props}>
               {path.label ? t(path.label) : path.pureLabel}
             </Component>
           );

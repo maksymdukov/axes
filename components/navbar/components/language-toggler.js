@@ -6,7 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import FlagRUIcon from '../../shared/icons/flag-ru';
 import FlagUAIcon from '../../shared/icons/flag-ua';
 import LanguageMenuItem from './language-menu-item';
-import Router from 'next-translate/Router';
+import { useLanguageToggler } from '~/hooks/language';
 
 const useStyles = makeStyles(() => ({
   langSelect: {
@@ -31,14 +31,9 @@ const LANGUAGES = [
 export default function LanguageToggler({ className }) {
   const classes = useStyles();
   const { lang } = useTranslation();
+  const { toggleLanguage } = useLanguageToggler();
   const handleLanguageChange = ({ target: { value } }) => {
-    localStorage.setItem('language', value);
-    let url = '/';
-    const slugs = window.location.pathname.split('/');
-    if (slugs[1] === 'ua' || slugs[1] === 'ru') {
-      url = slugs.slice(2).join('/') || '/';
-    }
-    Router.pushI18n({ url, options: { lang: value } });
+    toggleLanguage(value);
   };
 
   return (

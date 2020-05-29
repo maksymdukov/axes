@@ -6,6 +6,7 @@ import clsx from 'clsx';
 
 const useStyles = makeStyles(({ palette }) => ({
   mainHeader: {
+    display: 'inline-block',
     position: 'relative',
     fontWeight: '300',
     '&:after': {
@@ -26,12 +27,13 @@ const MainHeader = ({
   disableMargin,
   className,
   align = 'center',
-  component = 'h2'
+  component = 'h2',
+  variant = 'h4'
 }) => {
   const classes = useStyles();
   return (
     <Box marginBottom={disableMargin ? 0 : 3}>
-      <Typography variant="h4" align={align} component={component}>
+      <Typography variant={variant} align={align} component={component}>
         <span className={clsx(classes.mainHeader, className)}>{children}</span>
       </Typography>
     </Box>

@@ -30,13 +30,13 @@ const useStyles = makeStyles(({ palette }) => ({
   }
 }));
 
-const Layout = ({ children, mainClassName }) => {
+const Layout = ({ children, mainClassName, notFoundPage }) => {
   const classes = useStyles();
   return (
     <div className={classes.wrapper}>
       <Navbar />
       <main className={clsx(classes.main, mainClassName)}>{children}</main>
-      <Footer />
+      <Footer notFoundPage={notFoundPage} />
     </div>
   );
 };

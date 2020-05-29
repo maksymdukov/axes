@@ -12,7 +12,7 @@ import LanguageToggler from './components/language-toggler';
 import Drawer from './components/drawer';
 import CartWidget from '../cart/cart-widget';
 
-const useStyles = makeStyles(({ palette, spacing, breakpoints }) => ({
+const useStyles = makeStyles(({ palette, spacing }) => ({
   appbar: {
     background: `linear-gradient(90deg, ${palette.primary.main} 0%, ${palette.primary.dark} 100%)`
   },

@@ -7,6 +7,8 @@ import Block from './block';
 import { useTranslation } from 'next-translate';
 import CenteredBox from '../shared/box/centered-box';
 import Link from '../shared/link/link';
+import { setUserLanguageSetting } from '~/utils/language';
+import { usePurePathname } from '~/hooks/url';
 
 const getLinks = (t) => ({
   help: {
@@ -61,10 +63,18 @@ const useStyles = makeStyles(({ palette, spacing }) => ({
   }
 }));
 
-const Footer = () => {
+const Footer = ({ notFoundPage }) => {
   const classes = useStyles();
+  const currentPathname = usePurePathname();
   const { t } = useTranslation();
   const links = getLinks(t);
+
+  // Fix for 404 page
+  const correctPathname = notFoundPage ? '/' : currentPathname;
+
+  const handleLanguageChange = (lng) => () => {
+    setUserLanguageSetting(lng);
+  };
   return (
     <footer className={classes.footerWrapper}>
       <Container component="section" className={classes.footer}>
@@ -77,11 +87,21 @@ const Footer = () => {
           <Block header={links.services.header} links={links.services.links} />
         </Grid>
         <CenteredBox mt={3}>
-          <Link href="/" lang="ru" className={classes.lang}>
+          <Link
+            href={correctPathname}
+            lang="ru"
+            className={classes.lang}
+            onClick={handleLanguageChange('ru')}
+          >
             {t('common:nav.ru')}
           </Link>
           /
-          <Link href="/" lang="ua" className={classes.lang}>
+          <Link
+            href={correctPathname}
+            lang="ua"
+            className={classes.lang}
+            onClick={handleLanguageChange('ua')}
+          >
             {t('common:nav.ua')}
           </Link>
         </CenteredBox>

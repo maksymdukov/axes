@@ -1,6 +1,4 @@
 import React from 'react';
-import FlagRUIcon from '../../shared/icons/flag-ru';
-import MenuItem from '@material-ui/core/MenuItem';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
@@ -13,15 +11,13 @@ const useStyles = makeStyles({
   }
 });
 
-const LanguageMenuItem = React.forwardRef(
-  ({ lang, icon: Icon, label }, ref) => {
-    const classes = useStyles();
-    return (
-      <div className={classes.item}>
-        <Icon className={classes.icon} />
-      </div>
-    );
-  }
-);
+const LanguageMenuItem = React.forwardRef(({ icon: Icon }, ref) => {
+  const classes = useStyles();
+  return (
+    <div className={classes.item} ref={ref}>
+      <Icon className={classes.icon} />
+    </div>
+  );
+});
 
 export default LanguageMenuItem;

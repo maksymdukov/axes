@@ -39,7 +39,9 @@ const FormWrapper = () => {
 
       await sendCustomOrder(formData);
       setActiveStep((step) => step + 2);
-    } catch (e) {}
+    } catch (e) {
+      console.error(e);
+    }
     setSubmitting(false);
   };
   return (

@@ -80,6 +80,7 @@ const useStyles = makeStyles(({ spacing }) => ({
 const FileUploader = () => {
   const { t } = useTranslation();
   const classes = useStyles();
+  // eslint-disable-next-line
   const [field, meta, helpers] = useField('files');
   const { getRootProps, getInputProps } = useDropzone({
     accept: 'image/*',

@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import { useTranslation } from 'next-translate';
-import Contact from './contact';
 import Contacts from './contacts';
 
 const useStyles = makeStyles(({ spacing }) => ({

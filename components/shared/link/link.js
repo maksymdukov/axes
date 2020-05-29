@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
-import { useRouter } from 'next/router';
 import { default as NextLink } from 'next-translate/Link';
 import MuiLink from '@material-ui/core/Link';
+import { usePurePathname } from '~/hooks/url';
+import { DisableLinkContext } from '~/context/404-page/disable-link-context';
 
 const NextComposed = React.forwardRef(function NextComposed(props, ref) {
   const { as, href, lang, ...other } = props;
@@ -33,10 +34,14 @@ function LinkComponent(props) {
     ...other
   } = props;
 
-  const router = useRouter();
+  // fix for 404 page
+  const { disableActiveLinks } = useContext(DisableLinkContext);
+
+  const purePathname = usePurePathname();
   const pathname = typeof href === 'string' ? href : href.pathname;
   const className = clsx(classNameProps, {
-    [activeClassName]: router.pathname === pathname && activeClassName
+    [activeClassName]:
+      purePathname === pathname && !disableActiveLinks && activeClassName
   });
 
   if (naked) {

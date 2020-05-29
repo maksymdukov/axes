@@ -4,7 +4,7 @@ import Backdrop from '@material-ui/core/Backdrop';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import ClientOnlyPortal from '../../shared/portal/portal';
 import { noImage } from '../../../utils/image';
-import { usePreviousValue } from '~/utils/hooks';
+import { usePreviousValue } from '~/hooks/common';
 
 const useStyles = makeStyles((theme) => ({
   backdrop: {
