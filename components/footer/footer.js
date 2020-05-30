@@ -65,7 +65,7 @@ const useStyles = makeStyles(({ palette, spacing }) => ({
 
 const Footer = ({ notFoundPage }) => {
   const classes = useStyles();
-  const { path: currentPathname } = usePurePathname();
+  const { path: currentPathname, pagePath } = usePurePathname();
   const { t } = useTranslation();
   const links = getLinks(t);
 
@@ -75,6 +75,9 @@ const Footer = ({ notFoundPage }) => {
   const handleLanguageChange = (lng) => () => {
     setUserLanguageSetting(lng);
   };
+  console.log('correctPathname', correctPathname);
+  console.log('pagePath', pagePath);
+
   return (
     <footer className={classes.footerWrapper}>
       <Container component="section" className={classes.footer}>
@@ -88,7 +91,8 @@ const Footer = ({ notFoundPage }) => {
         </Grid>
         <CenteredBox mt={3}>
           <Link
-            href={correctPathname}
+            as={correctPathname}
+            href={pagePath}
             lang="ru"
             className={classes.lang}
             onClick={handleLanguageChange('ru')}
@@ -97,7 +101,8 @@ const Footer = ({ notFoundPage }) => {
           </Link>
           /
           <Link
-            href={correctPathname}
+            href={pagePath}
+            as={correctPathname}
             lang="ua"
             className={classes.lang}
             onClick={handleLanguageChange('ua')}
