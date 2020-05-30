@@ -24,8 +24,6 @@ class MyApp extends App {
   backdropref = React.createRef();
 
   componentDidMount() {
-    console.log(this.props);
-
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side');
     if (jssStyles) {
@@ -33,7 +31,6 @@ class MyApp extends App {
     }
 
     this.backdropref.current.addEventListener('transitionend', () => {
-      console.log('transitionend triggered');
       this.backdropref.current.style.display = 'none';
     });
 

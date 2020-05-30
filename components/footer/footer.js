@@ -75,8 +75,6 @@ const Footer = ({ notFoundPage }) => {
   const handleLanguageChange = (lng) => () => {
     setUserLanguageSetting(lng);
   };
-  console.log('correctPathname', correctPathname);
-  console.log('pagePath', pagePath);
 
   return (
     <footer className={classes.footerWrapper}>
