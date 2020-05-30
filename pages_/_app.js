@@ -13,15 +13,19 @@ import {
 } from '~/utils/language';
 import { parseUrl } from '~/hooks/url';
 import Router from 'next-translate/Router';
+import Preloader from '@Components/shared/preloader/preloader';
 
 class MyApp extends App {
   state = {
-    languageChanged: false
+    languageChanged: false,
+    sameLanguage: false
   };
 
   backdropref = React.createRef();
 
   componentDidMount() {
+    console.log(this.props);
+
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side');
     if (jssStyles) {
@@ -36,20 +40,24 @@ class MyApp extends App {
     // Save default language
     const savedLang = getUserLanguageSetting();
     if (savedLang) {
-      const { lang, path } = parseUrl(window.location.pathname)();
+      const { lang, path: asPath } = parseUrl(this.props.router.asPath)();
+      const { path: url } = parseUrl(this.props.router.pathname)();
       if (lang !== savedLang) {
-        // TODO
         // Not the best solution
-        // Can be alleviated by showing large loader
-        Router.pushI18n({ url: path, options: { lang: savedLang } }).then(
-          () => {
-            this.setState({ languageChanged: true });
-          }
-        );
+        // Can be alleviated by showing fullscreen loader
+        // Since we use SSG there is no way to save preferred user lang in cookie
+        // That's why preloader is necessary
+        Router.pushI18n({
+          url: url,
+          as: asPath,
+          options: { lang: savedLang }
+        }).then(() => {
+          this.setState({ languageChanged: true });
+        });
         return;
       }
-      this.setState({ languageChanged: true });
     }
+    this.setState({ languageChanged: true, sameLanguage: true });
     setUserLanguageSetting();
   }
 
@@ -69,31 +77,18 @@ class MyApp extends App {
             <SnackbarProvider>
               <CssBaseline />
               <Component {...pageProps} />
-              <div
+              <Preloader
                 ref={this.backdropref}
-                style={{
-                  position: 'fixed',
-                  top: 0,
-                  bottom: 0,
-                  left: 0,
-                  right: 0,
-                  zIndex: 10000,
-                  backgroundColor: 'red',
-                  color: 'white',
-                  fontSize: '2rem',
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  opacity: this.state.languageChanged ? 0 : 1,
-                  transition: 'opacity 1s'
-                }}
-              >
-                Backdrop
-              </div>
+                languageChanged={this.state.languageChanged}
+                sameLanguage={this.state.sameLanguage}
+              />
             </SnackbarProvider>
           </CartProvider>
         </ThemeProvider>
         <style jsx global>{`
+          body {
+            overflow-x: hidden;
+          }
           :root {
             --swiper-theme-color: ${theme.palette.primary.main};
             --swiper-navigation-color: ${theme.palette.secondary.main};
@@ -106,6 +101,49 @@ class MyApp extends App {
           }
           .blurred {
             filter: blur(2px);
+          }
+
+          #box {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            margin-left: 60px;
+          }
+          #icon1 {
+            fill: rgb(112, 128, 144);
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transform-origin: center;
+            animation: rotate-clockwise 2s linear;
+            transform-origin: 30% 60%;
+            animation-iteration-count: infinite;
+          }
+          #icon2 {
+            fill: rgb(112, 128, 144);
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: -60px;
+            transform-origin: 65% 62%;
+            animation: rotate-anticlockwise 2s linear;
+            animation-iteration-count: infinite;
+          }
+          @keyframes rotate-clockwise {
+            0% {
+              transform: rotate(0deg);
+            }
+            100% {
+              transform: rotate(360deg);
+            }
+          }
+          @keyframes rotate-anticlockwise {
+            0% {
+              transform: rotate(0deg);
+            }
+            100% {
+              transform: rotate(-360deg);
+            }
           }
         `}</style>
       </React.Fragment>

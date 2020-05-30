@@ -20,9 +20,13 @@ export const parseUrl = (url) => () => {
 };
 
 export const usePurePathname = () => {
-  const { asPath } = useRouter();
+  const { asPath, pathname } = useRouter();
 
-  const factory = useMemo(() => parseUrl(asPath), [asPath]);
+  const factoryAsPath = useMemo(() => parseUrl(asPath), [asPath]);
+  const factoryPathname = useMemo(() => parseUrl(pathname), [pathname]);
 
-  return useMemo(factory, [factory]);
+  const { lang, path } = useMemo(factoryAsPath, [factoryAsPath]);
+  const { path: pagePath } = useMemo(factoryPathname, [factoryPathname]);
+
+  return { lang, path, pagePath };
 };
