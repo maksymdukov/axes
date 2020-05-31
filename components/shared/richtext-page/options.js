@@ -1,11 +1,12 @@
 // eslint-disable-next-line
 import { Options } from '@contentful/rich-text-react-renderer';
-import { BLOCKS } from '@contentful/rich-text-types';
+import { BLOCKS, INLINES } from '@contentful/rich-text-types';
 import { Typography } from '@material-ui/core';
 import React from 'react';
 import { getHeaderOptions } from './headers';
 import { getMarkOptions } from './mark';
 import { EmbeddedAsset } from './embedded-asset';
+import { renderHyperlink } from './inlines';
 
 /**
  * @type {Options}
@@ -14,6 +15,7 @@ export const richtextDocumentOptions = {
   renderMark: getMarkOptions(),
   renderNode: {
     ...getHeaderOptions(),
+    [INLINES.HYPERLINK]: renderHyperlink,
     [BLOCKS.PARAGRAPH]: (node, children) => <Typography>{children}</Typography>,
     [BLOCKS.EMBEDDED_ASSET]: (node) => (
       <EmbeddedAsset

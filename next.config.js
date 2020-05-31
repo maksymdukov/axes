@@ -1,7 +1,9 @@
 //next.config.js
 
 const path = require('path');
+// eslint-disable-next-line
 const webpack = require('webpack');
+// eslint-disable-next-line
 const dotenv = require('dotenv').config();
 
 module.exports = {

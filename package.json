@@ -6,6 +6,8 @@
     "dev": "next-translate && next dev",
     "build": "next-translate && next build",
     "prettify": "prettier --write  \"**/*.js\"",
+    "eslint": "eslint ./",
+    "check": "npm run prettify && npm run eslint",
     "start": "next start"
   },
   "dependencies": {
