@@ -1,8 +1,7 @@
 import React from 'react';
 import Contact from './contact';
 
-const PHONE_NUMBER = '+380662906866';
-const SKYPE = 'latency0007';
+const PHONE_NUMBER = '+380956095379';
 
 const CONTACTS = [
   {
@@ -15,13 +14,7 @@ const CONTACTS = [
     alt: 'Viber',
     imgSrc: '/assets/images/viber.svg',
     value: PHONE_NUMBER,
-    href: `viber://add?number=${PHONE_NUMBER}`
-  },
-  {
-    alt: 'Skype',
-    imgSrc: '/assets/images/skype.svg',
-    value: SKYPE,
-    href: `skype:${SKYPE}?call`
+    href: `viber://chat?number=${PHONE_NUMBER}`
   }
 ];
 
