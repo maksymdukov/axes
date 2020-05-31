@@ -69,7 +69,8 @@ const MySwiper = ({
   onImageClick,
   imageQuality = 60,
   isRatioPadding = true,
-  withPreview = true
+  withPreview = true,
+  width
 }) => {
   const classes = useStyles();
   const params = {
@@ -158,7 +159,13 @@ const MySwiper = ({
               src={lazy ? undefined : `${image.url}?q=${imageQuality}`}
               alt={image.title}
               onLoad={lazy ? onImageLoaded('big', idx) : undefined}
-              data-src={lazy ? `${image.url}?q=${imageQuality}` : undefined}
+              data-src={
+                lazy
+                  ? `${image.url}?q=${imageQuality}${
+                      width ? `&w=${width}` : ''
+                    }`
+                  : undefined
+              }
               className={mainImageClass}
             />
             {withPreview && (

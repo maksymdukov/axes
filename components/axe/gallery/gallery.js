@@ -83,6 +83,7 @@ const Gallery = ({ axe }) => {
         }}
         images={images}
         imageQuality={80}
+        width={800}
       />
       <ClientOnlyPortal selector="body">
         <Backdrop

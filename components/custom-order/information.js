@@ -13,26 +13,21 @@ const useStyles = makeStyles(({ spacing }) => ({
   }
 }));
 
-const Information = () => {
+const Information = ({ t }) => {
   const classes = useStyles();
   return (
     <Grid container color="primary.contrastText" className={classes.container}>
       <InformationItem
         Icon={InformationIcon}
-        text="Тут нужно что-то написать общеинформационное. Про индивидуальный
-            заказ"
+        text={t('custom-order:info.info')}
       />
-      <InformationItem
-        Icon={SketchIcon}
-        text="Что-то про эскиз. Сначала мы делаем и согласовывем эскиз. Если он
-            вам нравится - начинаем работу."
-      />
+      <InformationItem Icon={SketchIcon} text={t('custom-order:info.sketch')} />
       <InformationItem
         Icon={ClockIcon}
         text={
           <>
-            Тут можно что-то написать про сроки. Срок исполнения заказа от 1 до
-            3 недель. <Link href="/delivery">Способы доставки и оплаты</Link>
+            {t('custom-order:info.timing')}{' '}
+            <Link href="/delivery">{t('custom-order:info.delivery')}</Link>
           </>
         }
       />

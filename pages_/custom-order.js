@@ -38,7 +38,7 @@ const CustomOrder = () => {
           <MainHeader component="h1" className={classes.mainHeader}>
             {t('custom-order:header')}
           </MainHeader>
-          <Information />
+          <Information t={t} />
           <FormWrapper />
         </WithBreadcrumbs>
       </PageLayout>

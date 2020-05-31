@@ -45,7 +45,7 @@ const RightSide = ({ axe }) => {
           label={t('axe:ukrPoshta')}
         />
         <Link href="/delivery" className={classes.deliveryLink}>
-          Детальнее &#8594;
+          {t('axe:deliveryMore')} &#8594;
         </Link>
       </Surface>
       <Surface header={t('axe:paymentMethodHeader')}>
