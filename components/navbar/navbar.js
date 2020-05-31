@@ -11,6 +11,7 @@ import { useTranslation } from 'next-translate';
 import LanguageToggler from './components/language-toggler';
 import Drawer from './components/drawer';
 import CartWidget from '../cart/cart-widget';
+import { getMainLinks } from '@Components/shared/navmenu/nav-links';
 
 const useStyles = makeStyles(({ palette, spacing }) => ({
   appbar: {
@@ -56,7 +57,7 @@ const Navbar = () => {
           <Logo className={classes.logo} slogan={t('common:slogan')} />
           <LanguageToggler className={classes.language} />
           <Hidden smDown implementation="css">
-            <Navmenu />
+            <Navmenu getNavMenuItems={getMainLinks} />
           </Hidden>
           <CartWidget />
         </Toolbar>

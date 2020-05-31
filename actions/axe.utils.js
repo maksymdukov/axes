@@ -1,5 +1,9 @@
 export const normalizeAxe = (axe) => {
-  const normalized = { ...axe.fields, id: axe.sys.id, createdAt: axe.sys.createdAt };
+  const normalized = {
+    ...axe.fields,
+    id: axe.sys.id,
+    createdAt: axe.sys.createdAt
+  };
   if (normalized.images) {
     normalized.images = axe.fields.images.map(
       ({

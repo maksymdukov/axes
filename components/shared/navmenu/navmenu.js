@@ -4,13 +4,6 @@ import NavmenuItem from './elements/navmenu-item';
 import { useTranslation } from 'next-translate';
 import clsx from 'clsx';
 
-const navMenuItems = (t) => [
-  { label: t`common:nav.about`, to: '/about' },
-  { label: t`common:nav.axes`, to: '/axes' },
-  { label: t`common:nav.custom-order`, to: '/custom-order' },
-  { label: t`common:nav.contacts`, to: '/contacts' }
-];
-
 const useStyles = makeStyles({
   linkWrapper: {
     display: 'flex'
@@ -20,16 +13,26 @@ const useStyles = makeStyles({
   }
 });
 
-const Navmenu = ({ inDrawer, onClick }) => {
+const Navmenu = ({
+  inDrawer,
+  onClick,
+  getNavMenuItems,
+  className,
+  itemClassName
+}) => {
   const classes = useStyles();
   const { t } = useTranslation();
   return (
     <div
-      className={clsx(classes.linkWrapper, inDrawer && classes.inDrawer)}
+      className={clsx(
+        classes.linkWrapper,
+        inDrawer && classes.inDrawer,
+        className
+      )}
       onClick={onClick}
     >
-      {navMenuItems(t).map((link) => (
-        <NavmenuItem key={link.to} link={link} />
+      {getNavMenuItems(t).map((link) => (
+        <NavmenuItem key={link.to} link={link} className={itemClassName} />
       ))}
     </div>
   );

@@ -5,15 +5,14 @@ import { useTranslation } from 'next-translate';
 import { makeStyles } from '@material-ui/core/styles';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { richtextDocumentOptions } from '../shared/richtext-page/options';
+import Link from '@Components/shared/link/link';
+import LabelledIcon from './elements/labelled-icon';
 
-const useStyles = makeStyles(({ spacing }) => ({
-  deliveryIcon: {
-    width: '1.5rem',
-    height: '1.5rem',
-    verticalAlign: 'middle'
-  },
-  deliveryLabel: {
-    marginLeft: spacing()
+const useStyles = makeStyles(({ spacing, palette }) => ({
+  deliveryLink: {
+    display: 'block',
+    color: palette.primary.light,
+    marginTop: spacing(2)
   }
 }));
 
@@ -35,40 +34,31 @@ const RightSide = ({ axe }) => {
         </Surface>
       )}
       <Surface header={t('axe:deliveryHeader')}>
-        <Typography variant="body2" color="textSecondary" gutterBottom>
-          <img
-            src="/assets/svg/nova-poshta.svg"
-            alt="Nova poshta"
-            className={classes.deliveryIcon}
-          />
-          <span className={classes.deliveryLabel}>{t('axe:novaPoshta')}</span>
-        </Typography>
-        <Typography variant="body2" color="textSecondary" gutterBottom>
-          <img
-            src="/assets/svg/ukr-poshta.svg"
-            alt="Ukr poshta"
-            className={classes.deliveryIcon}
-          />
-          <span className={classes.deliveryLabel}>{t('axe:ukrPoshta')}</span>
-        </Typography>
+        <LabelledIcon
+          alt="Nova poshta"
+          src="/assets/svg/nova-poshta.svg"
+          label={t('axe:novaPoshta')}
+        />
+        <LabelledIcon
+          alt="Ukr poshta"
+          src="/assets/svg/ukr-poshta.svg"
+          label={t('axe:ukrPoshta')}
+        />
+        <Link href="/delivery" className={classes.deliveryLink}>
+          Детальнее &#8594;
+        </Link>
       </Surface>
       <Surface header={t('axe:paymentMethodHeader')}>
-        <Typography variant="body2" color="textSecondary" gutterBottom>
-          <img
-            src="/assets/svg/money.svg"
-            alt="Money"
-            className={classes.deliveryIcon}
-          />
-          <span className={classes.deliveryLabel}>{t('axe:platesh')}</span>
-        </Typography>
-        <Typography variant="body2" color="textSecondary" gutterBottom>
-          <img
-            src="/assets/images/privatbank.png"
-            alt="PrivatBank"
-            className={classes.deliveryIcon}
-          />
-          <span className={classes.deliveryLabel}>{t('axe:privat')}</span>
-        </Typography>
+        <LabelledIcon
+          alt="Money"
+          src="/assets/svg/money.svg"
+          label={t('axe:platesh')}
+        />
+        <LabelledIcon
+          alt="PrivatBank"
+          src="/assets/images/privatbank.png"
+          label={t('axe:privat')}
+        />
       </Surface>
     </>
   );

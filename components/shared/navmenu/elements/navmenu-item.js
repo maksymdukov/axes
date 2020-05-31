@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from '../../link/link';
 import { makeStyles } from '@material-ui/core/styles';
+import clsx from 'clsx';
 
 const useStyles = makeStyles((theme) => ({
   navLink: {
@@ -18,13 +19,13 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const NavmenuItem = ({ link }) => {
+const NavmenuItem = ({ link, className }) => {
   const classes = useStyles();
   return (
     <Link
       key={link.to}
       href={link.to}
-      className={classes.navLink}
+      className={clsx(classes.navLink, className)}
       activeClassName={classes.navLinkActive}
     >
       {link.label}
