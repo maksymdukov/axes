@@ -12,10 +12,15 @@ import { getSchema } from './checkout-validators';
 import SuccessScreen from './success-screen';
 import { sendOrder } from '../../actions/cart';
 
-const useStyles = makeStyles(({ palette }) => ({
+const useStyles = makeStyles(({ palette, breakpoints }) => ({
   titleBg: {
     backgroundColor: palette.primary.light,
     color: palette.primary.contrastText
+  },
+  dialog: {
+    [breakpoints.down('xs')]: {
+      width: '100%'
+    }
   }
 }));
 
@@ -70,6 +75,9 @@ const CartDialog = ({ isOpened, handleClose }) => {
   };
   return (
     <Dialog
+      classes={{
+        paperWidthMd: classes.dialog
+      }}
       onExited={handleDialogClose}
       open={isOpened}
       onClose={handleClose}

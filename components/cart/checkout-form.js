@@ -11,7 +11,8 @@ import CheckoutFields from './elements/checkout-fields';
 const useStyles = makeStyles(({ spacing }) => ({
   form: {
     width: '100%',
-    maxWidth: '300px',
+    maxWidth: '350px',
+    margin: 'auto',
     '& > *': {
       marginBottom: spacing()
     }

@@ -1,12 +1,13 @@
 import React from 'react';
-import { Box } from '@material-ui/core';
+import { Box, Hidden } from '@material-ui/core';
 import { useTranslation } from 'next-translate';
-import CartDialogTable from './cart-dialog-table';
+import CartListDesktop from './cart-list-desktop';
 import { useCart } from '../../context/cart/hooks';
 import Typography from '@material-ui/core/Typography';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import CtaButton from '../shared/buttons/cta-button';
 import CenteredBox from '../shared/box/centered-box';
+import CartListMobile from './cart-list-mobile';
 
 const Cart = ({ onNextClick, totalPrice }) => {
   const { t } = useTranslation();
@@ -15,7 +16,12 @@ const Cart = ({ onNextClick, totalPrice }) => {
     <div>
       {!!cart.totalCount && (
         <>
-          <CartDialogTable />
+          <Hidden implementation="css" xsDown>
+            <CartListDesktop />
+          </Hidden>
+          <Hidden implementation="css" smUp>
+            <CartListMobile />
+          </Hidden>
           <Box mt={2}>
             <Typography variant="h5">
               {t('common:cart.total')}: {totalPrice} грн

@@ -12,7 +12,7 @@ import CartQuantity from '../shared/cart-quantity/cart-quantity';
 import { useTranslation } from 'next-translate';
 import { getFirstImage } from '../../utils/image';
 
-const CartDialogTable = () => {
+const CartListDesktop = () => {
   const { t } = useTranslation();
   const { cart, deleteItem, addItem, decreaseItem } = useCart();
   return (
@@ -39,6 +39,7 @@ const CartDialogTable = () => {
               <TableCell align="center">
                 <img
                   src={getFirstImage(row.images)}
+                  // TODO
                   alt=""
                   width="auto"
                   height={50}
@@ -63,4 +64,4 @@ const CartDialogTable = () => {
   );
 };
 
-export default CartDialogTable;
+export default CartListDesktop;
