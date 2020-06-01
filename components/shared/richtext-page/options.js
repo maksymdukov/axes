@@ -7,6 +7,7 @@ import { getHeaderOptions } from './headers';
 import { getMarkOptions } from './mark';
 import { EmbeddedAsset } from './embedded-asset';
 import { renderHyperlink } from './inlines';
+import { renderParagraph } from './paragraph';
 
 /**
  * @type {Options}
@@ -16,7 +17,7 @@ export const richtextDocumentOptions = {
   renderNode: {
     ...getHeaderOptions(),
     [INLINES.HYPERLINK]: renderHyperlink,
-    [BLOCKS.PARAGRAPH]: (node, children) => <Typography>{children}</Typography>,
+    [BLOCKS.PARAGRAPH]: renderParagraph,
     [BLOCKS.EMBEDDED_ASSET]: (node) => (
       <EmbeddedAsset
         src={node.data.target.fields.file.url}
