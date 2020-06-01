@@ -15,10 +15,10 @@ const useStyles = makeStyles((theme) => ({
   swiper: {
     margin: '1rem 0',
     width: '100%',
-    maxHeight: '90vh',
     lineHeight: 0,
     '& .swiper-container': {
-      height: 'auto'
+      height: 'auto',
+      maxHeight: '80vh'
     }
   },
   fullScreenSwiper: {
@@ -30,10 +30,12 @@ const useStyles = makeStyles((theme) => ({
   },
   imageSlide: {
     objectFit: 'contain',
-    height: '100%'
+    height: '100%',
+    maxHeight: '80vh'
   },
   imagePreview: {
-    height: '100%'
+    height: '100%',
+    maxHeight: '80vh'
   },
   imageSlideFullScreen: {
     position: 'static',
