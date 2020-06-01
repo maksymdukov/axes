@@ -70,7 +70,8 @@ const MySwiper = ({
   imageQuality = 60,
   isRatioPadding = true,
   withPreview = true,
-  width
+  width,
+  previewWidth = 200
 }) => {
   const classes = useStyles();
   const params = {
@@ -170,7 +171,9 @@ const MySwiper = ({
             />
             {withPreview && (
               <img
-                src={`${image.url}?q=5&w=200`}
+                src={`${image.url}?q=5${
+                  previewWidth ? `&w=${previewWidth}` : ''
+                }`}
                 alt={image.title}
                 className={clsx(
                   classes.imagePreview,

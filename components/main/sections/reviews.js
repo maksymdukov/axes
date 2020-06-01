@@ -21,11 +21,12 @@ const useStyles = makeStyles(({ palette }) => ({
     }
   },
   slideWrapper: {
-    maxWidth: '80vw',
+    position: 'relative',
     height: 'auto',
     width: 'auto',
-    paddingBottom: 0,
-    maxHeight: '80vh'
+    maxWidth: '90vw',
+    maxHeight: '90vh',
+    paddingBottom: 0
   },
   image: {
     opacity: 1,
@@ -45,8 +46,10 @@ const Reviews = ({ reviewSlides }) => {
       <section className={classes.container}>
         <MainHeader>{t('index:reviews')}</MainHeader>
         <MySwiper
-          lazy={false}
-          withPreview={false}
+          lazy={true}
+          width={1000}
+          previewWidth={1000}
+          withPreview={true}
           isRatioPadding={false}
           images={reviewSlides}
           classes={{
@@ -54,6 +57,9 @@ const Reviews = ({ reviewSlides }) => {
             image: classes.image
           }}
           options={{
+            preloadImages: false,
+            watchSlidesVisibility: true,
+            shouldSwiperUpdate: true,
             effect: 'coverflow',
             grabCursor: true,
             centeredSlides: true,
