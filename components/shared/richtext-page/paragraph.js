@@ -3,7 +3,7 @@ import { Typography, makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles(({ spacing }) => ({
   paragraph: {
-    marginBottom: spacing(1.5)
+    marginBottom: spacing(2)
   }
 }));
 
