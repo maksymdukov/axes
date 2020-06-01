@@ -5,6 +5,7 @@ import makeStyles from '@material-ui/core/styles/makeStyles';
 import ClientOnlyPortal from '../../shared/portal/portal';
 import { noImage } from '../../../utils/image';
 import { usePreviousValue } from '~/hooks/common';
+import clsx from 'clsx';
 
 const useStyles = makeStyles((theme) => ({
   backdrop: {
@@ -28,7 +29,11 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   imageSlide: {
-    objectFit: 'contain'
+    objectFit: 'contain',
+    height: '100%'
+  },
+  imagePreview: {
+    height: '100%'
   },
   imageSlideFullScreen: {
     position: 'static',
@@ -41,6 +46,9 @@ const useStyles = makeStyles((theme) => ({
     alignSelf: 'center',
     position: 'relative',
     cursor: 'pointer'
+  },
+  slideWrapperGallery: {
+    paddingBottom: '75%'
   }
 }));
 
@@ -79,8 +87,10 @@ const Gallery = ({ axe }) => {
         classes={{
           root: classes.swiper,
           image: classes.imageSlide,
-          slideWrapper: classes.slideWrapper
+          slideWrapper: clsx(classes.slideWrapper, classes.slideWrapperGallery),
+          preview: classes.imagePreview
         }}
+        isRatioPadding={false}
         images={images}
         imageQuality={80}
         width={800}
