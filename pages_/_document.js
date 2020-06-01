@@ -2,7 +2,7 @@ import React from 'react';
 import Document, { Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheets } from '@material-ui/core/styles';
 import theme from '../components/shared/theme/theme';
-import i18nConfig from '../i18n.json';
+import documentLang from 'next-translate/documentLang';
 
 // You can find a benchmark of the available CSS minifiers under
 // https://github.com/GoalSmashers/css-minification-benchmark
@@ -22,14 +22,6 @@ if (process.env.NODE_ENV === 'production') {
 
   prefixer = postcss([autoprefixer]);
   cleanCSS = new CleanCSS();
-}
-
-function documentLang({ __NEXT_DATA__ }) {
-  const { page } = __NEXT_DATA__;
-  const [, langQuery] = page.split('/');
-  const lang = i18nConfig.allLanguages.find((l) => l === langQuery);
-
-  return lang || i18nConfig.defaultLanguage;
 }
 
 export default class MyDocument extends Document {
