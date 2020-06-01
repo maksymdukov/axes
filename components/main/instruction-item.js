@@ -8,11 +8,11 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-const InstructionItem = ({ number, label }) => {
+const InstructionItem = ({ number, label, animate, delay }) => {
   const classes = useStyles();
   return (
     <div className={classes.itemWrapper}>
-      <NumberIcon number={number} />
+      <NumberIcon number={number} animate={animate} delay={delay} />
       <span>{label}</span>
     </div>
   );

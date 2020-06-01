@@ -125,6 +125,8 @@ const Individual = () => {
               <div className={classes.instructions}>
                 <InstructionItem
                   number={1}
+                  animate={visible}
+                  delay={0}
                   label={t('index:instructions.step1')}
                 />
                 <PawIcon
@@ -135,6 +137,8 @@ const Individual = () => {
                 />
                 <InstructionItem
                   number={2}
+                  animate={visible}
+                  delay={2}
                   label={t('index:instructions.step2')}
                 />
                 <FormIcon
@@ -145,6 +149,8 @@ const Individual = () => {
                 />
                 <InstructionItem
                   number={3}
+                  animate={visible}
+                  delay={4}
                   label={t('index:instructions.step3')}
                 />
                 <div className={classes.merge}>
