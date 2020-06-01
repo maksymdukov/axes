@@ -54,6 +54,7 @@ const Slider = ({ slides }) => {
     <MySwiper
       isRatioPadding={false}
       options={{
+        grabCursor: true,
         autoplay: {
           delay: 6000,
           disableOnInteraction: false

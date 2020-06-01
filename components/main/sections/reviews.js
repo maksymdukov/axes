@@ -30,10 +30,15 @@ const useStyles = makeStyles(({ palette }) => ({
   },
   image: {
     opacity: 1,
-    position: 'static',
     maxHeight: '100%',
     width: 'auto',
     height: 'auto'
+  },
+  preview: {
+    width: 'auto',
+    height: 'auto',
+    maxHeight: '100%',
+    position: 'static'
   }
 }));
 
@@ -54,7 +59,8 @@ const Reviews = ({ reviewSlides }) => {
           images={reviewSlides}
           classes={{
             slideWrapper: classes.slideWrapper,
-            image: classes.image
+            image: classes.image,
+            preview: classes.preview
           }}
           options={{
             preloadImages: false,
@@ -65,7 +71,7 @@ const Reviews = ({ reviewSlides }) => {
             centeredSlides: true,
             slidesPerView: 'auto',
             coverflowEffect: {
-              rotate: 20,
+              rotate: 10,
               stretch: 0,
               depth: 100,
               modifier: 2,
