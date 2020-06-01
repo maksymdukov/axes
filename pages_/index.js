@@ -1,120 +1,34 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Swiper from '../components/shared/swiper/swiper';
-import Container from '@material-ui/core/Container';
-import MainHeader from '../components/shared/typography/main-header';
-import Cards from '../components/shared/card/cards';
-import { useTranslation } from 'next-translate';
-import Layout from '../components/layout/layout';
 import { getFeaturedAxes, getLastAxes } from '../actions/axe';
 import { getSlides } from '../actions/slider';
-import Individual from '../components/main/individual';
-import Head from '../components/shared/head/head';
-import { Wave } from '../components/main/wave';
+import Slider from '@Components/main/sections/slider';
+import BestWorks from '@Components/main/sections/best-works';
+import NewWorks from '@Components/main/sections/new-works';
+import Feedback from '@Components/main/sections/feedback';
+import IndividualOrder from '@Components/main/sections/individual-order';
+import Head from '@Components/shared/head/head';
+import Layout from '@Components/layout/layout';
 
-const useStyles = makeStyles(({ palette, breakpoints }) => ({
+const useStyles = makeStyles({
   bgPattern: {
     background:
       "linear-gradient( rgba(0, 0, 0, 0.01), rgba(0, 0, 0, 0.20) ), url('/assets/svg/pattern.svg')",
     backgroundRepeat: 'repeat repeat'
-  },
-  swiperWrapper: {
-    // minHeight: '34.5vw'
-  },
-  slideWrapper: {
-    paddingBottom: '34.5%',
-    [breakpoints.down('xs')]: {
-      paddingBottom: '75%'
-    }
-  },
-  slide: {
-    maxWidth: '100%',
-    height: 'auto',
-    width: '100%',
-    margin: '0 auto',
-    maxHeight: '90vh',
-    '&.swiper-lazy-loaded': {
-      display: 'block'
-    },
-    [breakpoints.down('xs')]: {
-      display: 'none',
-      '&.swiper-lazy-loaded': {
-        display: 'none'
-      }
-    }
-  },
-  slideSmall: {
-    [breakpoints.up('sm')]: {
-      display: 'none',
-      '&.swiper-lazy-loaded': {
-        display: 'none'
-      }
-    }
-  },
-  preview: {
-    [breakpoints.down('xs')]: {
-      display: 'none'
-    }
-  },
-  previewSmall: {
-    [breakpoints.up('sm')]: {
-      display: 'none'
-    }
-  },
-  mainContainer: {
-    paddingTop: '3rem',
-    paddingBottom: '4rem'
-  },
-  contrastContainer: {
-    paddingBottom: '4rem',
-    background: palette.tertiary.main,
-    color: 'white'
   }
-}));
+});
 
 const Home = ({ featuredAxes, lastAxes, slides }) => {
   const classes = useStyles();
-  const { t } = useTranslation();
   return (
     <Layout>
       <Head i18Page="index" />
       <div className={classes.bgPattern}>
-        <Swiper
-          isRatioPadding={false}
-          options={{
-            autoplay: {
-              delay: 6000,
-              disableOnInteraction: false
-            }
-          }}
-          images={slides}
-          classes={{
-            root: classes.swiperWrapper,
-            slideWrapper: classes.slideWrapper,
-            image: classes.slide,
-            smallImage: classes.slideSmall,
-            preview: classes.preview,
-            smallPreview: classes.previewSmall
-          }}
-        />
-        <section className={classes.mainContainer}>
-          <Container maxWidth="xl">
-            <MainHeader>{t('index:bestWorks')}</MainHeader>
-            <Cards cards={featuredAxes} className={classes.mb} />
-          </Container>
-        </section>
-        <section className={classes.mainContainer}>
-          <Container maxWidth="xl">
-            <MainHeader>{t('index:newWorks')}</MainHeader>
-            <Cards cards={lastAxes} />
-          </Container>
-        </section>
-        <section>
-          <Wave />
-          <div className={classes.contrastContainer}>
-            <Individual />
-          </div>
-        </section>
+        <Slider slides={slides} />
+        <BestWorks featuredAxes={featuredAxes} />
+        <NewWorks lastAxes={lastAxes} />
+        {/* <Feedback /> */}
+        <IndividualOrder />
       </div>
     </Layout>
   );
