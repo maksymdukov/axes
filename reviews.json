@@ -1,0 +1,543 @@
+{
+  "sys": {
+    "space": {
+      "sys": {
+        "type": "Link",
+        "linkType": "Space",
+        "id": "cktdau1pzjar"
+      }
+    },
+    "id": "4K2pBRoR3sHFCPXfgaxaJ2",
+    "type": "Entry",
+    "createdAt": "2020-06-01T08:35:19.729Z",
+    "updatedAt": "2020-06-01T08:36:17.059Z",
+    "environment": {
+      "sys": {
+        "id": "master",
+        "type": "Link",
+        "linkType": "Environment"
+      }
+    },
+    "revision": 3,
+    "contentType": {
+      "sys": {
+        "type": "Link",
+        "linkType": "ContentType",
+        "id": "reviewSlides"
+      }
+    },
+    "locale": "uk"
+  },
+  "fields": {
+    "title": "отзывы (не удалять эту запись)",
+    "reviewSlides": [
+      {
+        "sys": {
+          "space": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Space",
+              "id": "cktdau1pzjar"
+            }
+          },
+          "id": "3p4I5yIHI2MxwlhkxfoYPB",
+          "type": "Asset",
+          "createdAt": "2020-06-01T08:34:00.246Z",
+          "updatedAt": "2020-06-01T08:34:00.246Z",
+          "environment": {
+            "sys": {
+              "id": "master",
+              "type": "Link",
+              "linkType": "Environment"
+            }
+          },
+          "revision": 1,
+          "locale": "uk"
+        },
+        "fields": {
+          "title": "Image 2",
+          "file": {
+            "url": "//images.ctfassets.net/cktdau1pzjar/3p4I5yIHI2MxwlhkxfoYPB/0769b89a96992d12dd426f0c3d247065/Image_2.jpg",
+            "details": {
+              "size": 117560,
+              "image": {
+                "width": 876,
+                "height": 444
+              }
+            },
+            "fileName": "Image 2.jpg",
+            "contentType": "image/jpeg"
+          }
+        }
+      },
+      {
+        "sys": {
+          "space": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Space",
+              "id": "cktdau1pzjar"
+            }
+          },
+          "id": "vgPuhf6F8RkmJG62QJO8b",
+          "type": "Asset",
+          "createdAt": "2020-06-01T08:34:00.150Z",
+          "updatedAt": "2020-06-01T08:34:00.150Z",
+          "environment": {
+            "sys": {
+              "id": "master",
+              "type": "Link",
+              "linkType": "Environment"
+            }
+          },
+          "revision": 1,
+          "locale": "uk"
+        },
+        "fields": {
+          "title": "Image 15",
+          "file": {
+            "url": "//images.ctfassets.net/cktdau1pzjar/vgPuhf6F8RkmJG62QJO8b/a004ed75a6f7ddfa191bcb9d9517951a/Image_15.jpg",
+            "details": {
+              "size": 51094,
+              "image": {
+                "width": 435,
+                "height": 157
+              }
+            },
+            "fileName": "Image 15.jpg",
+            "contentType": "image/jpeg"
+          }
+        }
+      },
+      {
+        "sys": {
+          "space": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Space",
+              "id": "cktdau1pzjar"
+            }
+          },
+          "id": "4RGRApZod7GjcUa0qvUi4Z",
+          "type": "Asset",
+          "createdAt": "2020-06-01T08:34:00.127Z",
+          "updatedAt": "2020-06-01T08:34:00.127Z",
+          "environment": {
+            "sys": {
+              "id": "master",
+              "type": "Link",
+              "linkType": "Environment"
+            }
+          },
+          "revision": 1,
+          "locale": "uk"
+        },
+        "fields": {
+          "title": "screen (8)",
+          "file": {
+            "url": "//images.ctfassets.net/cktdau1pzjar/4RGRApZod7GjcUa0qvUi4Z/d2db2062c5ed76d77de0b91bca85104d/screen__8_.jpg",
+            "details": {
+              "size": 28835,
+              "image": {
+                "width": 733,
+                "height": 184
+              }
+            },
+            "fileName": "screen (8).jpg",
+            "contentType": "image/jpeg"
+          }
+        }
+      },
+      {
+        "sys": {
+          "space": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Space",
+              "id": "cktdau1pzjar"
+            }
+          },
+          "id": "6WobxD52Rj4FlEYua6BATo",
+          "type": "Asset",
+          "createdAt": "2020-06-01T08:34:00.124Z",
+          "updatedAt": "2020-06-01T08:34:00.124Z",
+          "environment": {
+            "sys": {
+              "id": "master",
+              "type": "Link",
+              "linkType": "Environment"
+            }
+          },
+          "revision": 1,
+          "locale": "uk"
+        },
+        "fields": {
+          "title": "screen (10)",
+          "file": {
+            "url": "//images.ctfassets.net/cktdau1pzjar/6WobxD52Rj4FlEYua6BATo/145f7e283cd0c8bb70be8d71a24d1039/screen__10_.jpg",
+            "details": {
+              "size": 76966,
+              "image": {
+                "width": 872,
+                "height": 334
+              }
+            },
+            "fileName": "screen (10).jpg",
+            "contentType": "image/jpeg"
+          }
+        }
+      },
+      {
+        "sys": {
+          "space": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Space",
+              "id": "cktdau1pzjar"
+            }
+          },
+          "id": "1133LlDB6uuJCkgz67mkNK",
+          "type": "Asset",
+          "createdAt": "2020-06-01T08:34:00.122Z",
+          "updatedAt": "2020-06-01T08:34:00.122Z",
+          "environment": {
+            "sys": {
+              "id": "master",
+              "type": "Link",
+              "linkType": "Environment"
+            }
+          },
+          "revision": 1,
+          "locale": "uk"
+        },
+        "fields": {
+          "title": "screen",
+          "file": {
+            "url": "//images.ctfassets.net/cktdau1pzjar/1133LlDB6uuJCkgz67mkNK/e94fe18b2369f789605e9e65ad8ec880/screen.jpg",
+            "details": {
+              "size": 108443,
+              "image": {
+                "width": 749,
+                "height": 511
+              }
+            },
+            "fileName": "screen.jpg",
+            "contentType": "image/jpeg"
+          }
+        }
+      },
+      {
+        "sys": {
+          "space": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Space",
+              "id": "cktdau1pzjar"
+            }
+          },
+          "id": "6xouRHHvn6cAm00epFDuos",
+          "type": "Asset",
+          "createdAt": "2020-06-01T08:34:00.115Z",
+          "updatedAt": "2020-06-01T08:34:00.115Z",
+          "environment": {
+            "sys": {
+              "id": "master",
+              "type": "Link",
+              "linkType": "Environment"
+            }
+          },
+          "revision": 1,
+          "locale": "uk"
+        },
+        "fields": {
+          "title": "screen (4)",
+          "file": {
+            "url": "//images.ctfassets.net/cktdau1pzjar/6xouRHHvn6cAm00epFDuos/3dc5e344d4f3d5de0de92ca36d539a64/screen__4_.jpg",
+            "details": {
+              "size": 99288,
+              "image": {
+                "width": 748,
+                "height": 485
+              }
+            },
+            "fileName": "screen (4).jpg",
+            "contentType": "image/jpeg"
+          }
+        }
+      },
+      {
+        "sys": {
+          "space": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Space",
+              "id": "cktdau1pzjar"
+            }
+          },
+          "id": "6GbEos16uyGsEDpLTqS9Pl",
+          "type": "Asset",
+          "createdAt": "2020-06-01T08:34:00.052Z",
+          "updatedAt": "2020-06-01T08:34:00.052Z",
+          "environment": {
+            "sys": {
+              "id": "master",
+              "type": "Link",
+              "linkType": "Environment"
+            }
+          },
+          "revision": 1,
+          "locale": "uk"
+        },
+        "fields": {
+          "title": "screen (7)",
+          "file": {
+            "url": "//images.ctfassets.net/cktdau1pzjar/6GbEos16uyGsEDpLTqS9Pl/4a7354314b255ba827cf33d3bbfd02e2/screen__7_.jpg",
+            "details": {
+              "size": 103662,
+              "image": {
+                "width": 405,
+                "height": 459
+              }
+            },
+            "fileName": "screen (7).jpg",
+            "contentType": "image/jpeg"
+          }
+        }
+      },
+      {
+        "sys": {
+          "space": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Space",
+              "id": "cktdau1pzjar"
+            }
+          },
+          "id": "7xVgfuVePUjCpil5oKYmwA",
+          "type": "Asset",
+          "createdAt": "2020-06-01T08:33:59.960Z",
+          "updatedAt": "2020-06-01T08:33:59.960Z",
+          "environment": {
+            "sys": {
+              "id": "master",
+              "type": "Link",
+              "linkType": "Environment"
+            }
+          },
+          "revision": 1,
+          "locale": "uk"
+        },
+        "fields": {
+          "title": "screen (6)",
+          "file": {
+            "url": "//images.ctfassets.net/cktdau1pzjar/7xVgfuVePUjCpil5oKYmwA/20e2603f44e9221d151a957db9a4636b/screen__6_.jpg",
+            "details": {
+              "size": 71607,
+              "image": {
+                "width": 730,
+                "height": 361
+              }
+            },
+            "fileName": "screen (6).jpg",
+            "contentType": "image/jpeg"
+          }
+        }
+      },
+      {
+        "sys": {
+          "space": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Space",
+              "id": "cktdau1pzjar"
+            }
+          },
+          "id": "55YCfIIs13j4GfwbHwaoOu",
+          "type": "Asset",
+          "createdAt": "2020-06-01T08:33:59.953Z",
+          "updatedAt": "2020-06-01T08:33:59.953Z",
+          "environment": {
+            "sys": {
+              "id": "master",
+              "type": "Link",
+              "linkType": "Environment"
+            }
+          },
+          "revision": 1,
+          "locale": "uk"
+        },
+        "fields": {
+          "title": "screen (3)",
+          "file": {
+            "url": "//images.ctfassets.net/cktdau1pzjar/55YCfIIs13j4GfwbHwaoOu/e7cc0d483a46445ed39496709b67ce8a/screen__3_.jpg",
+            "details": {
+              "size": 54087,
+              "image": {
+                "width": 743,
+                "height": 285
+              }
+            },
+            "fileName": "screen (3).jpg",
+            "contentType": "image/jpeg"
+          }
+        }
+      },
+      {
+        "sys": {
+          "space": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Space",
+              "id": "cktdau1pzjar"
+            }
+          },
+          "id": "2fFCs3TK6JDIaXSvuNayjZ",
+          "type": "Asset",
+          "createdAt": "2020-06-01T08:33:59.950Z",
+          "updatedAt": "2020-06-01T08:33:59.950Z",
+          "environment": {
+            "sys": {
+              "id": "master",
+              "type": "Link",
+              "linkType": "Environment"
+            }
+          },
+          "revision": 1,
+          "locale": "uk"
+        },
+        "fields": {
+          "title": "screen (2)",
+          "file": {
+            "url": "//images.ctfassets.net/cktdau1pzjar/2fFCs3TK6JDIaXSvuNayjZ/aa3e0a69ffbe7008a659b22da3fb6c40/screen__2_.jpg",
+            "details": {
+              "size": 101042,
+              "image": {
+                "width": 761,
+                "height": 411
+              }
+            },
+            "fileName": "screen (2).jpg",
+            "contentType": "image/jpeg"
+          }
+        }
+      },
+      {
+        "sys": {
+          "space": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Space",
+              "id": "cktdau1pzjar"
+            }
+          },
+          "id": "7wtPyzshUK3JxDvW4euqLA",
+          "type": "Asset",
+          "createdAt": "2020-06-01T08:33:59.949Z",
+          "updatedAt": "2020-06-01T08:33:59.949Z",
+          "environment": {
+            "sys": {
+              "id": "master",
+              "type": "Link",
+              "linkType": "Environment"
+            }
+          },
+          "revision": 1,
+          "locale": "uk"
+        },
+        "fields": {
+          "title": "Image 001",
+          "file": {
+            "url": "//images.ctfassets.net/cktdau1pzjar/7wtPyzshUK3JxDvW4euqLA/2c3db1f5b045d3ea95455796f0565a10/Image_001.jpg",
+            "details": {
+              "size": 51489,
+              "image": {
+                "width": 718,
+                "height": 233
+              }
+            },
+            "fileName": "Image 001.jpg",
+            "contentType": "image/jpeg"
+          }
+        }
+      },
+      {
+        "sys": {
+          "space": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Space",
+              "id": "cktdau1pzjar"
+            }
+          },
+          "id": "5E7Let4jOdbsjfa5TkjZVu",
+          "type": "Asset",
+          "createdAt": "2020-06-01T08:33:59.948Z",
+          "updatedAt": "2020-06-01T08:33:59.948Z",
+          "environment": {
+            "sys": {
+              "id": "master",
+              "type": "Link",
+              "linkType": "Environment"
+            }
+          },
+          "revision": 1,
+          "locale": "uk"
+        },
+        "fields": {
+          "title": "screen (9)",
+          "file": {
+            "url": "//images.ctfassets.net/cktdau1pzjar/5E7Let4jOdbsjfa5TkjZVu/7c12426730b07d448c59a43949bb4c35/screen__9_.jpg",
+            "details": {
+              "size": 67932,
+              "image": {
+                "width": 868,
+                "height": 293
+              }
+            },
+            "fileName": "screen (9).jpg",
+            "contentType": "image/jpeg"
+          }
+        }
+      },
+      {
+        "sys": {
+          "space": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Space",
+              "id": "cktdau1pzjar"
+            }
+          },
+          "id": "6fyh6V5eymcsk7JXA7t2Px",
+          "type": "Asset",
+          "createdAt": "2020-06-01T08:33:59.886Z",
+          "updatedAt": "2020-06-01T08:33:59.886Z",
+          "environment": {
+            "sys": {
+              "id": "master",
+              "type": "Link",
+              "linkType": "Environment"
+            }
+          },
+          "revision": 1,
+          "locale": "uk"
+        },
+        "fields": {
+          "title": "screen (5)",
+          "file": {
+            "url": "//images.ctfassets.net/cktdau1pzjar/6fyh6V5eymcsk7JXA7t2Px/c2dd5651c188da1afce35d0c98519e72/screen__5_.jpg",
+            "details": {
+              "size": 119051,
+              "image": {
+                "width": 725,
+                "height": 532
+              }
+            },
+            "fileName": "screen (5).jpg",
+            "contentType": "image/jpeg"
+          }
+        }
+      }
+    ]
+  }
+}
