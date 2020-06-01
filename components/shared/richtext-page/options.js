@@ -1,8 +1,7 @@
 // eslint-disable-next-line
 import { Options } from '@contentful/rich-text-react-renderer';
-import { BLOCKS, INLINES } from '@contentful/rich-text-types';
-import { Typography } from '@material-ui/core';
 import React from 'react';
+import { BLOCKS, INLINES } from '@contentful/rich-text-types';
 import { getHeaderOptions } from './headers';
 import { getMarkOptions } from './mark';
 import { EmbeddedAsset } from './embedded-asset';
