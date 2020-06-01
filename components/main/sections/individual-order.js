@@ -4,6 +4,9 @@ import Individual from '../individual';
 import { makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles(({ palette }) => ({
+  section: {
+    marginTop: -90
+  },
   contrastContainer: {
     paddingBottom: '4rem',
     background: palette.tertiary.main,
@@ -14,7 +17,7 @@ const useStyles = makeStyles(({ palette }) => ({
 const IndividualOrder = () => {
   const classes = useStyles();
   return (
-    <section>
+    <section className={classes.section}>
       <Wave />
       <div className={classes.contrastContainer}>
         <Individual />

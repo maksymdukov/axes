@@ -5,10 +5,11 @@ import { getSlides } from '../actions/slider';
 import Slider from '@Components/main/sections/slider';
 import BestWorks from '@Components/main/sections/best-works';
 import NewWorks from '@Components/main/sections/new-works';
-import Feedback from '@Components/main/sections/feedback';
+import Reviews from '@Components/main/sections/reviews';
 import IndividualOrder from '@Components/main/sections/individual-order';
 import Head from '@Components/shared/head/head';
 import Layout from '@Components/layout/layout';
+import { getReviewSlides } from '~/actions/review-slides';
 
 const useStyles = makeStyles({
   bgPattern: {
@@ -18,7 +19,7 @@ const useStyles = makeStyles({
   }
 });
 
-const Home = ({ featuredAxes, lastAxes, slides }) => {
+const Home = ({ featuredAxes, lastAxes, slides, reviewSlides }) => {
   const classes = useStyles();
   return (
     <Layout>
@@ -27,7 +28,7 @@ const Home = ({ featuredAxes, lastAxes, slides }) => {
         <Slider slides={slides} />
         <BestWorks featuredAxes={featuredAxes} />
         <NewWorks lastAxes={lastAxes} />
-        {/* <Feedback /> */}
+        <Reviews reviewSlides={reviewSlides} />
         <IndividualOrder />
       </div>
     </Layout>
@@ -37,11 +38,21 @@ const Home = ({ featuredAxes, lastAxes, slides }) => {
 export default Home;
 
 export const getStaticProps = async ({ lang }) => {
+  const promises = [
+    getFeaturedAxes,
+    getLastAxes,
+    getSlides,
+    getReviewSlides
+  ].map((fn) => fn(lang));
+  const [featuredAxes, lastAxes, slides, reviewSlides] = await Promise.all(
+    promises
+  );
   return {
     props: {
-      featuredAxes: await getFeaturedAxes(lang),
-      lastAxes: await getLastAxes(lang),
-      slides: await getSlides()
+      featuredAxes: featuredAxes,
+      lastAxes: lastAxes,
+      slides: slides,
+      reviewSlides: reviewSlides
     }
   };
 };
