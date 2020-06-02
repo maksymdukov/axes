@@ -71,6 +71,7 @@ const MySwiper = ({
   isRatioPadding = true,
   withPreview = true,
   width,
+  smallWidth,
   previewWidth = 200
 }) => {
   const classes = useStyles();
@@ -125,11 +126,21 @@ const MySwiper = ({
   const getSmallScreenImage = (image, idx) => (
     <>
       <img
-        src={lazy ? undefined : `${image.smallImage.url}?q=${imageQuality}`}
+        src={
+          lazy
+            ? undefined
+            : `${image.smallImage.url}?q=${imageQuality}${
+                smallWidth ? `&w=${smallWidth}` : ''
+              }`
+        }
         alt={image.title}
         onLoad={lazy ? onImageLoaded('small', idx) : undefined}
         data-src={
-          lazy ? `${image.smallImage.url}?q=${imageQuality}` : undefined
+          lazy
+            ? `${image.smallImage.url}?q=${imageQuality}${
+                smallWidth ? `&w=${smallWidth}` : ''
+              }`
+            : undefined
         }
         className={smallImageClass}
       />
@@ -157,7 +168,13 @@ const MySwiper = ({
             style={getWrapperStyle(image)}
           >
             <img
-              src={lazy ? undefined : `${image.url}?q=${imageQuality}`}
+              src={
+                lazy
+                  ? undefined
+                  : `${image.url}?q=${imageQuality}${
+                      width ? `&w=${width}` : ''
+                    }`
+              }
               alt={image.title}
               onLoad={lazy ? onImageLoaded('big', idx) : undefined}
               data-src={

@@ -53,6 +53,7 @@ const Slider = ({ slides }) => {
   return (
     <MySwiper
       width={1920}
+      smallWidth={600}
       isRatioPadding={false}
       options={{
         grabCursor: true,
