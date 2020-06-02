@@ -48,7 +48,7 @@ const Axe = ({ axe, adjacentAxes }) => {
   const ogImage = axe.images && addPrefix(axe.images[0].url);
   const ogImageSecure = axe.images && addPrefix(axe.images[0].url, true);
   return (
-    <Layout>
+    <Layout key={axe.id}>
       <Head
         title={`${title}`}
         description={`${t('axe:seo.description1')} ${title}. ${t(
