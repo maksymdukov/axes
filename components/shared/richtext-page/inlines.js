@@ -1,5 +1,7 @@
 import React from 'react';
-import { Link, makeStyles } from '@material-ui/core';
+import { Link as MuiLink, makeStyles } from '@material-ui/core';
+import { parseUrl, parseFullPath } from '~/utils/url';
+import Link from '../link/link';
 
 const useStyles = makeStyles(({ palette }) => ({
   link: {
@@ -9,11 +11,20 @@ const useStyles = makeStyles(({ palette }) => ({
 
 export const renderHyperlink = (node, children) => {
   const classes = useStyles();
-  // TODO - parse string to use next-translate link if it's local to origin
-  // const url = new URL(node.data.uri);
-  // url.pathname
+
+  // parse string to use next-translate link if it has the same origin
+  const url = parseUrl(node.data.uri);
+  // not the same origin
+  if (!url.isSameOrigin) {
+    return (
+      <MuiLink href={node.data.uri} className={classes.link}>
+        {children}
+      </MuiLink>
+    );
+  }
+  const { lang, path } = parseFullPath(url.pathname)();
   return (
-    <Link href={node.data.uri} className={classes.link}>
+    <Link href={path} lang={lang} className={classes.link}>
       {children}
     </Link>
   );

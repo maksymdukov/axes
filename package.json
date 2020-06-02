@@ -39,9 +39,11 @@
     "react-visibility-sensor": "^5.1.1",
     "sass": "^1.26.7",
     "swiper": "^5.4.1",
+    "url-parse": "^1.4.7",
     "yup": "^0.29.1"
   },
   "devDependencies": {
+    "@types/url-parse": "^1.4.3",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.1.0",
     "eslint-plugin-react": "^7.20.0",

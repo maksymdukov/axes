@@ -11,7 +11,7 @@ import {
   getUserLanguageSetting,
   setUserLanguageSetting
 } from '~/utils/language';
-import { parseUrl } from '~/hooks/url';
+import { parseFullPath } from '~/utils/url';
 import Router from 'next-translate/Router';
 import Preloader from '@Components/shared/preloader/preloader';
 
@@ -37,8 +37,8 @@ class MyApp extends App {
     // Save default language
     const savedLang = getUserLanguageSetting();
     if (savedLang) {
-      const { lang, path: asPath } = parseUrl(this.props.router.asPath)();
-      const { path: url } = parseUrl(this.props.router.pathname)();
+      const { lang, path: asPath } = parseFullPath(this.props.router.asPath)();
+      const { path: url } = parseFullPath(this.props.router.pathname)();
       if (lang !== savedLang) {
         // Not the best solution
         // Can be alleviated by showing fullscreen loader
