@@ -15,8 +15,10 @@ import { useTranslation } from 'next-translate';
 import { capitalize } from '../../utils/header';
 import { addPrefix } from '~/utils/url';
 import WithBreadcrumbs from '@Components/shared/with-breadcrumbs/with-breadcrumbs';
-import { Typography } from '@material-ui/core';
 import AdjacentCards from '@Components/axe/adjacent-cards';
+import { getCommentsBySlug } from '~/actions/comments';
+import SecondaryHeader from '@Components/shared/typography/secondary-header';
+import Comments from '@Components/axe/comments/comments';
 
 const useStyles = makeStyles(({ spacing, breakpoints }) => ({
   container: {
@@ -29,17 +31,14 @@ const useStyles = makeStyles(({ spacing, breakpoints }) => ({
       paddingLeft: 0
     }
   },
-  adjacentTitle: {
-    marginBottom: spacing(2)
-  },
   adjacentCards: {
     marginBottom: spacing(2)
   }
 }));
 
-const Axe = ({ axe, adjacentAxes }) => {
+const Axe = ({ axe, adjacentAxes, comments }) => {
   const classes = useStyles();
-  const { t } = useTranslation();
+  const { t, lang } = useTranslation();
   const breadcrumbs = [
     { href: '/axes', label: 'common:nav.axes' },
     { pureLabel: axe.title }
@@ -67,13 +66,9 @@ const Axe = ({ axe, adjacentAxes }) => {
               <RightSide axe={axe} />
             </Grid>
           </Grid>
-          <Typography
-            variant="h5"
-            component="h2"
-            className={classes.adjacentTitle}
-          >
-            {t('axe:adjacentTitle')}
-          </Typography>
+          <SecondaryHeader>{t('axe:commentsTitle')}</SecondaryHeader>
+          <Comments comments={comments} lang={lang} t={t} />
+          <SecondaryHeader>{t('axe:adjacentTitle')}</SecondaryHeader>
           <AdjacentCards
             t={t}
             adjacentAxes={adjacentAxes}
@@ -87,6 +82,7 @@ const Axe = ({ axe, adjacentAxes }) => {
 
 export async function getStaticProps({ params, lang }) {
   const axe = await getAxeBySlug(lang, params.axeId);
+  const comments = await getCommentsBySlug({ slug: params.axeId });
 
   // Fetch adjacent axes to show them in 'You might like section'
   let adjacentAxes = await getAxesAroundDate({ lang, date: axe.createdAt });
@@ -99,7 +95,7 @@ export async function getStaticProps({ params, lang }) {
     });
   }
   return {
-    props: { axe, adjacentAxes }
+    props: { axe, adjacentAxes, comments }
   };
 }
 

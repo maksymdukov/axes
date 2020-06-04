@@ -1,6 +1,16 @@
-export const apiRequest = async ({ method, url, data, options }) => {
+import { config } from '~/config/config';
+
+const fetch = require('node-fetch');
+
+export const apiRequest = async ({
+  method = 'GET',
+  url,
+  data,
+  options,
+  baseUrl = location.origin
+}) => {
   const response = await fetch(
-    `${location.origin}${url}`,
+    `${baseUrl}${url}`,
     options || {
       method,
       headers: { 'Content-Type': 'application/json' },
@@ -10,5 +20,9 @@ export const apiRequest = async ({ method, url, data, options }) => {
   if (!response.ok) {
     throw new Error('Not ok');
   }
-  return response;
+  return response.json();
+};
+
+export const commentsApiRequest = (args) => {
+  return apiRequest({ ...args, baseUrl: config.COMMENTS_SERVICE_URL });
 };
