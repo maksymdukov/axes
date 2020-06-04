@@ -30,7 +30,7 @@ const useStyles = makeStyles(({ palette, spacing }) => ({
 const Comment = ({ comment, locale }) => {
   const classes = useStyles();
   return (
-    <Card elevation={0} className={classes.card}>
+    <Card elevation={0} className={classes.card} component="article">
       <header className={clsx(classes.padding)}>
         <Typography variant="subtitle2">
           {capitalize(comment.author?.name)}

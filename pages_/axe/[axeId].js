@@ -67,7 +67,7 @@ const Axe = ({ axe, adjacentAxes, comments }) => {
             </Grid>
           </Grid>
           <SecondaryHeader>{t('axe:commentsTitle')}</SecondaryHeader>
-          <Comments comments={comments} lang={lang} t={t} />
+          <Comments comments={comments} lang={lang} t={t} axe={axe} />
           <SecondaryHeader>{t('axe:adjacentTitle')}</SecondaryHeader>
           <AdjacentCards
             t={t}
