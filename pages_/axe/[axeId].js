@@ -95,7 +95,11 @@ export async function getStaticProps({ params, lang }) {
     });
   }
   return {
-    props: { axe, adjacentAxes, comments }
+    props: { axe, adjacentAxes, comments },
+    // we will attempt to re-generate the page:
+    // - when a request comes in
+    // - at most once every 10 seconds
+    unstable_revalidate: 10
   };
 }
 
