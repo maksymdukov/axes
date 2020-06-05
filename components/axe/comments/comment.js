@@ -56,7 +56,12 @@ const Comment = ({ comment, locale }) => {
       <Divider className={classes.divider} />
       <CardContent>
         {comment.rating && (
-          <Rating name="read-only" value={comment.rating} readOnly className={classes.rating} />
+          <Rating
+            name="read-only"
+            value={comment.rating}
+            readOnly
+            className={classes.rating}
+          />
         )}
         <Typography variant="body2">{message}</Typography>
       </CardContent>

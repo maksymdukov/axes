@@ -1,7 +1,5 @@
 import { config } from '~/config/config';
 
-const fetch = require('node-fetch');
-
 export const apiRequest = async ({
   method = 'GET',
   url,
