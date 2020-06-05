@@ -10,3 +10,11 @@ export const getCommentsBySlug = async ({
     url: `/api/comments/${slug}?page=${page}&size=${size}`
   });
 };
+
+export const postComment = async ({ values }) => {
+  return commentsApiRequest({
+    url: `/api/comments`,
+    method: 'POST',
+    data: values
+  });
+};

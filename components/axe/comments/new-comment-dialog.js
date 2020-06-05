@@ -9,6 +9,7 @@ import {
   DialogContent
 } from '@material-ui/core';
 import { useTranslation } from 'next-translate';
+import NewComment from './new-comment';
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   titleBg: {
@@ -35,7 +36,9 @@ const NewCommentDialog = ({ open, onClose, axe }) => {
           </IconButton>
         </Box>
       </DialogTitle>
-      <DialogContent>Boohoo</DialogContent>
+      <DialogContent>
+        <NewComment slug={axe.slug} />
+      </DialogContent>
     </Dialog>
   );
 };

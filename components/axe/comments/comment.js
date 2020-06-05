@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import {
   Card,
   makeStyles,
@@ -27,8 +27,19 @@ const useStyles = makeStyles(({ palette, spacing }) => ({
   }
 }));
 
+const splitNewLines = (text) => text.split(/\r\n|\r|\n/g);
+
 const Comment = ({ comment, locale }) => {
   const classes = useStyles();
+  const message = useMemo(
+    () =>
+      splitNewLines(comment.message).map((line, idx) => (
+        <React.Fragment key={idx}>
+          {line} <br />
+        </React.Fragment>
+      )),
+    [comment.message]
+  );
   return (
     <Card elevation={0} className={classes.card} component="article">
       <header className={clsx(classes.padding)}>
@@ -36,7 +47,7 @@ const Comment = ({ comment, locale }) => {
           {capitalize(comment.author?.name)}
         </Typography>
         <Typography variant="body2" className={classes.date}>
-          {format(new Date(comment.createdAt), 'd LLLL yyyy', { locale })}
+          {format(new Date(comment.createdAt), 'd MMMM yyyy', { locale })}
         </Typography>
         {comment.rating && (
           <Rating name="read-only" value={comment.rating} readOnly />
@@ -44,7 +55,7 @@ const Comment = ({ comment, locale }) => {
       </header>
       <Divider className={classes.divider} />
       <CardContent>
-        <Typography variant="body2">some text blablabalbalb</Typography>
+        <Typography variant="body2">{message}</Typography>
       </CardContent>
     </Card>
   );
