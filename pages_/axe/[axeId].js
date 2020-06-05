@@ -98,8 +98,8 @@ export async function getStaticProps({ params, lang }) {
     props: { axe, adjacentAxes, comments },
     // we will attempt to re-generate the page:
     // - when a request comes in
-    // - at most once every 10 seconds
-    unstable_revalidate: 10
+    // - at most once every 1 hour
+    unstable_revalidate: 3600 * 2
   };
 }
 
