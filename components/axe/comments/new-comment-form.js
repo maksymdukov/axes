@@ -36,6 +36,7 @@ const NewCommentForm = ({ onSuccess, slug }) => {
     try {
       setError(null);
       setSuccess(false);
+      // no need to send rating if it's not set
       if (values.rating === null) {
         delete values.rating;
       }
