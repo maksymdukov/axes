@@ -24,6 +24,9 @@ const useStyles = makeStyles(({ palette, spacing }) => ({
   },
   date: {
     fontWeight: 300
+  },
+  rating: {
+    marginBottom: spacing(2)
   }
 }));
 
@@ -49,12 +52,12 @@ const Comment = ({ comment, locale }) => {
         <Typography variant="body2" className={classes.date}>
           {format(new Date(comment.createdAt), 'd MMMM yyyy', { locale })}
         </Typography>
-        {comment.rating && (
-          <Rating name="read-only" value={comment.rating} readOnly />
-        )}
       </header>
       <Divider className={classes.divider} />
       <CardContent>
+        {comment.rating && (
+          <Rating name="read-only" value={comment.rating} readOnly className={classes.rating} />
+        )}
         <Typography variant="body2">{message}</Typography>
       </CardContent>
     </Card>
