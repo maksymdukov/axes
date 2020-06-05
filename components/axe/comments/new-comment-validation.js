@@ -5,6 +5,9 @@ export let getSchema = (t, additional) =>
     name: string()
       .min(3, t('common:errors.min3'))
       .required(t('common:errors.required')),
+    email: string()
+      .email(t('common:errors.email'))
+      .required(t('common:errors.required')),
     message: string()
       .min(3, t('common:errors.min3'))
       .required(t('common:errors.required')),

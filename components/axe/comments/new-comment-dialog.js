@@ -9,7 +9,7 @@ import {
   DialogContent
 } from '@material-ui/core';
 import { useTranslation } from 'next-translate';
-import NewComment from './new-comment';
+import NewCommentForm from './new-comment-form';
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   titleBg: {
@@ -37,7 +37,7 @@ const NewCommentDialog = ({ open, onClose, axe }) => {
         </Box>
       </DialogTitle>
       <DialogContent>
-        <NewComment slug={axe.slug} />
+        <NewCommentForm slug={axe.slug} />
       </DialogContent>
     </Dialog>
   );
