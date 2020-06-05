@@ -3,6 +3,8 @@ import Comment from './comment';
 import { uk, ru } from 'date-fns/locale';
 import { Button, makeStyles } from '@material-ui/core';
 import NewCommentDialog from './new-comment-dialog';
+import MoreCommentsBtn from './more-comments-btn';
+import { getCommentsBySlug } from '~/actions/comments';
 
 const useStyles = makeStyles(({ spacing }) => ({
   btn: {
@@ -11,10 +13,37 @@ const useStyles = makeStyles(({ spacing }) => ({
 }));
 
 const Comments = ({ comments, lang, t, axe }) => {
+  const [lazyComments, setLazyComments] = useState(comments);
+  const [status, setStatus] = useState({ loading: false, error: null });
+  const { page, size, total, items } = lazyComments;
+
+  const onMoreClick = async () => {
+    setStatus((prevState) => ({ ...prevState, loading: true }));
+    try {
+      const moreComments = await getCommentsBySlug({
+        slug: axe.slug,
+        page: page + 1
+      });
+      setLazyComments({
+        page: page + 1,
+        size,
+        total,
+        items: items.concat(moreComments.items)
+      });
+      setStatus((prevState) => ({ ...prevState, loading: false }));
+    } catch (error) {
+      console.error(error);
+      setStatus((prevState) => ({
+        ...prevState,
+        loading: false,
+        error: 'Error'
+      }));
+    }
+  };
+
   const classes = useStyles();
   const [dialog, setDialog] = useState(false);
   const locale = lang === 'ru' ? ru : uk;
-
   const openDialog = () => setDialog(true);
   const closeDialog = () => setDialog(false);
   return (
@@ -28,9 +57,16 @@ const Comments = ({ comments, lang, t, axe }) => {
       >
         {t('axe:leaveComment')}
       </Button>
-      {comments.items.map((comment) => (
+      {items.map((comment) => (
         <Comment key={comment.id} comment={comment} locale={locale} />
       ))}
+      <MoreCommentsBtn
+        loading={status.loading}
+        page={page}
+        size={size}
+        total={total}
+        onMoreClick={onMoreClick}
+      />
     </div>
   );
 };
