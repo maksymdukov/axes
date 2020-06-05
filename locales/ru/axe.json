@@ -17,6 +17,8 @@
   "adjacentTitle": "Также вас могут заинтересовать",
   "commentsTitle": "Отзывы",
   "leaveComment": "Написать отзыв",
+  "moreCommentsBtn": "Загрузить ещё...",
+  "noComments": "Нет отзывов",
   "commentForm": {
     "name": "Имя",
     "message": "Комментарий",

@@ -1,14 +1,20 @@
 import React, { useState } from 'react';
 import Comment from './comment';
 import { uk, ru } from 'date-fns/locale';
-import { Button, makeStyles } from '@material-ui/core';
+import { Button, makeStyles, Typography } from '@material-ui/core';
 import NewCommentDialog from './new-comment-dialog';
 import MoreCommentsBtn from './more-comments-btn';
 import { getCommentsBySlug } from '~/actions/comments';
 
-const useStyles = makeStyles(({ spacing }) => ({
+const useStyles = makeStyles(({ spacing, palette }) => ({
   btn: {
     marginBottom: spacing(2)
+  },
+  noComments: {
+    fontSize: '1.2rem',
+    marginLeft: spacing(),
+    marginBottom: spacing(),
+    color: palette.grey[400]
   }
 }));
 
@@ -17,7 +23,7 @@ const Comments = ({ comments, lang, t, axe }) => {
   const [status, setStatus] = useState({ loading: false, error: null });
   const { page, size, total, items } = lazyComments;
 
-  const onMoreClick = async () => {
+  const onMoreCommentsClick = async () => {
     setStatus((prevState) => ({ ...prevState, loading: true }));
     try {
       const moreComments = await getCommentsBySlug({
@@ -49,6 +55,11 @@ const Comments = ({ comments, lang, t, axe }) => {
   return (
     <div>
       <NewCommentDialog open={dialog} onClose={closeDialog} axe={axe} />
+      {!items.length && (
+        <Typography className={classes.noComments}>
+          {t('axe:noComments')}
+        </Typography>
+      )}
       <Button
         className={classes.btn}
         variant="contained"
@@ -65,8 +76,10 @@ const Comments = ({ comments, lang, t, axe }) => {
         page={page}
         size={size}
         total={total}
-        onMoreClick={onMoreClick}
-      />
+        onMoreClick={onMoreCommentsClick}
+      >
+        {t('axe:moreCommentsBtn')}
+      </MoreCommentsBtn>
     </div>
   );
 };

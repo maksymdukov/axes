@@ -17,6 +17,8 @@
   "adjacentTitle": "Також вас можуть зацікавити",
   "commentsTitle": "Відгуки",
   "leaveComment": "Написати відгук",
+  "moreCommentsBtn": "Завантажити ще...",
+  "noComments": "Немає відгуків",
   "commentForm": {
     "name": "Ім'я",
     "message": "Коментар",
