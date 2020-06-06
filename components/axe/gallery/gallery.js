@@ -77,7 +77,16 @@ const Gallery = ({ axe }) => {
       container.classList.remove(blurredClassName);
     };
   }, [backdropOpened, setBackdropOpened]);
-  const closeFullScreen = () => setBackdropOpened(-1);
+  const closeFullScreen = (e) => {
+    const target = e.target;
+    if (
+      target.classList.contains('swiper-button-next') ||
+      target.classList.contains('swiper-button-prev')
+    ) {
+      return;
+    }
+    setBackdropOpened(-1);
+  };
   const images = axe.images || [{ url: noImage, title: 'No image' }];
 
   return (
@@ -116,7 +125,7 @@ const Gallery = ({ axe }) => {
                 image: classes.imageSlideFullScreen
               }}
               options={{ activeSlideKey: String(backdropOpened) }}
-              onImageClick={closeFullScreen}
+              onWrapperClick={closeFullScreen}
               withPreview={false}
               lazy={false}
               isRatioPadding={false}

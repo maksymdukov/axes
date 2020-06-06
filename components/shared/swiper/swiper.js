@@ -67,6 +67,7 @@ const MySwiper = ({
   images,
   options,
   onImageClick,
+  onWrapperClick,
   imageQuality = 60,
   isRatioPadding = true,
   withPreview = true,
@@ -158,7 +159,10 @@ const MySwiper = ({
     </>
   );
   return (
-    <div className={clsx(classes.swiperWrapper, customClasses.root)}>
+    <div
+      className={clsx(classes.swiperWrapper, customClasses.root)}
+      onClick={onWrapperClick}
+    >
       <Swiper {...params}>
         {images.map((image, idx) => (
           <div
