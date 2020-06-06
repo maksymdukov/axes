@@ -45,7 +45,6 @@ const Axe = ({ axe, adjacentAxes, comments }) => {
   ];
   const title = capitalize(axe.title);
   const ogImage = axe.images && addPrefix(axe.images[0]);
-  const viberShareFix = axe.images && `<!-- <img src='${ogImage.url}'/>-->`;
   return (
     <Layout key={axe.id}>
       <Head
@@ -57,7 +56,6 @@ const Axe = ({ axe, adjacentAxes, comments }) => {
         ogImageSecure={ogImage.urlSecure}
       />
       <PageLayout>
-        <div dangerouslySetInnerHTML={{ __html: viberShareFix }} />
         <WithBreadcrumbs paths={breadcrumbs}>
           <Grid container className={classes.container}>
             <Grid item xs={12} md={6}>

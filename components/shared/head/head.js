@@ -20,16 +20,23 @@ const Head = ({
       <meta name="description" content={pageDescription} />
       <meta property="og:title" content={pageTitle} />
       <meta property="og:description" content={pageDescription} />
-      <meta
-        property="og:image"
-        content={ogImage?.url || `/assets/images/axe-white.png`}
-      />
-      <meta property="og:image:width" content={ogImage?.width || 512} />
-      <meta property="og:image:height" content={ogImage?.height || 512} />
       <meta property="og:site_name" content="Sokyra.net.ua" />
-      {ogImageSecureUrl && (
-        <meta property="og:image:secure_url" content={ogImageSecureUrl} />
+      {ogImage && (
+        <>
+          <meta
+            property="og:image"
+            content={ogImage?.url || `/assets/images/axe-white.png`}
+          />
+          <meta property="og:image:width" content={ogImage?.width} />
+          <meta property="og:image:height" content={ogImage?.height} />
+          {ogImageSecureUrl && (
+            <meta property="og:image:secure_url" content={ogImageSecureUrl} />
+          )}
+        </>
       )}
+      <meta property="og:image" content="/assets/images/axe-white.png" />
+      <meta property="og:image:width" content={512} />
+      <meta property="og:image:height" content={512} />
       {children}
       {/* <meta property="og:url" /> */}
     </NextHead>
