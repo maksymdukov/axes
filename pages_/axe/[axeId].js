@@ -44,8 +44,7 @@ const Axe = ({ axe, adjacentAxes, comments }) => {
     { pureLabel: axe.title }
   ];
   const title = capitalize(axe.title);
-  const ogImage = axe.images && addPrefix(axe.images[0].url);
-  const ogImageSecure = axe.images && addPrefix(axe.images[0].url, true);
+  const ogImage = axe.images && addPrefix(axe.images[0]);
   return (
     <Layout key={axe.id}>
       <Head
@@ -54,7 +53,7 @@ const Axe = ({ axe, adjacentAxes, comments }) => {
           'axe:seo.description2'
         )}`}
         ogImage={ogImage}
-        ogImageSecure={ogImageSecure}
+        ogImageSecure={ogImage.urlSecure}
       />
       <PageLayout>
         <WithBreadcrumbs paths={breadcrumbs}>

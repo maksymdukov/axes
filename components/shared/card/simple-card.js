@@ -16,7 +16,7 @@ const SimpleCard = ({ card, t }) => {
   const classes = useStyles();
   const renderCustomActions = () => (
     <div className={classes.actions}>
-      <Typography variant="h5" className={classes.priceTag}>
+      <Typography variant="h6" className={classes.priceTag}>
         {card.price} грн
       </Typography>
     </div>
@@ -26,7 +26,7 @@ const SimpleCard = ({ card, t }) => {
     <MediaCard
       card={card}
       isDescription={false}
-      titleVariant="subtitle1"
+      titleVariant="caption"
       t={t}
       renderCustomActions={renderCustomActions}
     />

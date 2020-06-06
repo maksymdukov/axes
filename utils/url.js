@@ -8,8 +8,13 @@ import { config } from '~/config/config';
  * @param {Boolean} isSecure
  */
 
-export const addPrefix = (url, isSecure = false) => {
-  return `${isSecure ? 'https:' : 'http:'}${url}`;
+export const addPrefix = (image) => {
+  return {
+    width: image.width,
+    height: image.height,
+    url: `http:${image.url}`,
+    urlSecure: `https:${image.url}`
+  };
 };
 
 export const parseFullPath = (fullPath) => () => {

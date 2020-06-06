@@ -2,12 +2,11 @@ import React from 'react';
 import NextHead from 'next/head';
 import { getTitle } from '../../../utils/header';
 import { useTranslation } from 'next-translate';
-import { config } from '../../../config/config';
 
 const Head = ({
   i18Page,
   ogImage,
-  ogImageSecure,
+  ogImageSecureUrl,
   title,
   description,
   children
@@ -23,10 +22,13 @@ const Head = ({
       <meta property="og:description" content={pageDescription} />
       <meta
         property="og:image"
-        content={ogImage || `${config.PUBLIC_URL}/assets/images/axe-white.png`}
+        content={ogImage?.url || `/assets/images/axe-white.png`}
       />
-      {ogImageSecure && (
-        <meta property="og:image:secure_url" content={ogImageSecure} />
+      <meta property="og:image:width" content={ogImage?.width || 512} />
+      <meta property="og:image:height" content={ogImage?.height || 512} />
+      <meta property="og:site_name" content="Sokyra.net.ua" />
+      {ogImageSecureUrl && (
+        <meta property="og:image:secure_url" content={ogImageSecureUrl} />
       )}
       {children}
       {/* <meta property="og:url" /> */}

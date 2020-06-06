@@ -1,6 +1,5 @@
 import React from 'react';
 import Surface from './surface/surface';
-import Typography from '@material-ui/core/Typography';
 import { useTranslation } from 'next-translate';
 import { makeStyles } from '@material-ui/core/styles';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
@@ -25,14 +24,12 @@ const RightSide = ({ axe }) => {
   );
   return (
     <>
-      <Surface header={t('axe:descrHeader')}>{richTextDocument}</Surface>
-      {axe.characteristics && (
-        <Surface header={t('axe:specHeader')}>
-          <Typography component="div">
-            {/* <ReactMarkdown source={axe.characteristics} /> */}
-          </Typography>
-        </Surface>
-      )}
+      <Surface header={t('axe:descrHeader')}>
+        <div>{richTextDocument}</div>
+        <div>
+          <Link href="/sovety">{t('common:nav.sovety')} &#8594;</Link>
+        </div>
+      </Surface>
       <Surface header={t('axe:deliveryHeader')}>
         <LabelledIcon
           alt="Nova poshta"

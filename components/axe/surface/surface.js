@@ -19,6 +19,7 @@ const Surface = ({ children, header, disableMargin }) => {
     <Paper
       variant="outlined"
       className={clsx(classes.spacing, !disableMargin && classes.mb)}
+      component="section"
     >
       <Typography variant="h5" component="h2" color="secondary" gutterBottom>
         {header}

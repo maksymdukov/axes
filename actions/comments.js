@@ -6,9 +6,20 @@ export const getCommentsBySlug = async ({
   page = 1,
   size = config.COMMENTS_SIZE
 }) => {
-  return commentsApiRequest({
-    url: `/api/comments/${slug}?page=${page}&size=${size}`
-  });
+  let comments = {
+    items: [],
+    size,
+    total: 0,
+    page
+  };
+  try {
+    comments = await commentsApiRequest({
+      url: `/api/comments/${slug}?page=${page}&size=${size}`
+    });
+  } catch (error) {
+    console.error(error);
+  }
+  return comments;
 };
 
 export const postComment = async ({ values }) => {
