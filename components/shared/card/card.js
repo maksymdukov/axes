@@ -11,6 +11,7 @@ import { useCart } from '../../../context/cart/hooks';
 import { getFirstImage } from '../../../utils/image';
 import { useCartSnackbar } from '../../../context/snackbar/snackbar-hooks';
 import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
+import clsx from 'clsx';
 
 const useStyles = makeStyles(({ shadows, palette }) => ({
   root: {
@@ -32,6 +33,10 @@ const useStyles = makeStyles(({ shadows, palette }) => ({
         color: palette.common.white
       }
     }
+  },
+  title: {
+    fontWeight: 300,
+    fontSize: '1.2rem'
   },
   priceTag: {
     fontWeight: 300,
@@ -110,7 +115,8 @@ export default function MediaCard({
           <CardContent>
             <Typography
               gutterBottom
-              variant={titleVariant || 'h5'}
+              className={clsx(!titleVariant && classes.title)}
+              variant={titleVariant}
               component="h2"
             >
               {card.title}
