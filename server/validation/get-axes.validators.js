@@ -27,7 +27,7 @@ export const schema = {
   },
   lang: {
     type: 'enum',
-    values: [locales.ru, locales.ua],
+    values: [locales.ru, locales.uk],
     default: locales.ru
   },
   page: {
