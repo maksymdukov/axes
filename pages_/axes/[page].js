@@ -28,10 +28,9 @@ export const AxesPage = ({ items, page, size, total }) => {
     },
     [doRequest]
   );
-  // TODO error handling and loading skeleton
-  console.log('data', data);
-  console.log('error', error);
-  console.log('loading', loading);
+
+  // TODO error handling and query changing in browser
+  // canonical tag
 
   const title =
     page !== 1 && `${t('axes:seo.title')} ${t('axes:seo.page')} ${page}`;
@@ -41,7 +40,7 @@ export const AxesPage = ({ items, page, size, total }) => {
       <PageLayout>
         <WithBreadcrumbs paths={breadcrumbs}>
           <Sort onSortChange={handleSortChange} />
-          <Cards cards={data.items} />
+          <Cards cards={data.items} loading={loading} />
           <Pagination page={page} size={size} total={total} />
         </WithBreadcrumbs>
       </PageLayout>
