@@ -1,7 +1,6 @@
 import React from 'react';
-import Document, { Head, Main, NextScript } from 'next/document';
+import Document, { Head, Main, NextScript, Html } from 'next/document';
 import { ServerStyleSheets } from '@material-ui/core/styles';
-import theme from '../components/shared/theme/theme';
 import documentLang from 'next-translate/documentLang';
 
 // You can find a benchmark of the available CSS minifiers under
@@ -27,20 +26,13 @@ if (process.env.NODE_ENV === 'production') {
 export default class MyDocument extends Document {
   render() {
     return (
-      <html lang={documentLang(this.props)}>
-        <Head>
-          {/* PWA primary color */}
-          <meta name="theme-color" content={theme.palette.primary.main} />
-          <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-          />
-        </Head>
+      <Html lang={documentLang(this.props)}>
+        <Head />
         <body>
           <Main />
           <NextScript />
         </body>
-      </html>
+      </Html>
     );
   }
 }
