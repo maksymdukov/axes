@@ -7,7 +7,7 @@ const AXE_PAGE_SIZE = 10;
 export const getAxeEntries = (lang, options) =>
   client.getEntries({
     content_type: 'axe',
-    locale: locales[lang],
+    locale: locales[lang] || locales.ua,
     ...options
   });
 
@@ -63,7 +63,7 @@ export const getAxes = async ({
 
 export const getAxesSlugs = async () => {
   try {
-    const entries = await getAxeEntries(locales.ua, {
+    const entries = await getAxeEntries(undefined, {
       select: 'fields.slug'
     });
     return entries.items.map((itm) => itm.fields.slug);
