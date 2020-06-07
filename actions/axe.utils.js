@@ -23,3 +23,5 @@ export const normalizeAxe = (axe) => {
   }
   return normalized;
 };
+
+export const numberOfPages = ({ total, size }) => Math.ceil(total / size);

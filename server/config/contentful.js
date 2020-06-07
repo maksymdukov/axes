@@ -9,3 +9,8 @@ exports.locales = {
   ua: 'uk',
   ru: 'ru'
 };
+
+exports.C_SORT_ORDER = {
+  asc: '',
+  desc: '-'
+};

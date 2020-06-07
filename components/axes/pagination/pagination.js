@@ -3,8 +3,9 @@ import PaginationItem from '@material-ui/lab/PaginationItem';
 import Link from '../../shared/link/link';
 import { Box } from '@material-ui/core';
 import { Pagination as MuiPagination } from '@material-ui/lab';
+import { numberOfPages } from '~/actions/axe.utils';
 
-const Pagination = ({ page, pageCount }) => {
+const Pagination = ({ page, size, total }) => {
   return (
     <Box display="flex" justifyContent="center" my={3}>
       <MuiPagination
@@ -12,7 +13,7 @@ const Pagination = ({ page, pageCount }) => {
         shape="rounded"
         size="large"
         page={page}
-        count={pageCount}
+        count={numberOfPages({ total, size })}
         renderItem={(item) => (
           <PaginationItem
             component={Link}

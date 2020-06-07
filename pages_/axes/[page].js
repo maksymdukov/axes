@@ -7,10 +7,11 @@ import WithBreadcrumbs from '../../components/shared/with-breadcrumbs/with-bread
 import { getAxes } from '../../actions/axe';
 import Head from '../../components/shared/head/head';
 import { useTranslation } from 'next-translate';
+import { numberOfPages } from '~/actions/axe.utils';
 
 const breadcrumbs = [{ href: '/axes', label: 'common:nav.axes' }];
 
-export const AxesPage = ({ axes, page, pageCount }) => {
+export const AxesPage = ({ items: axes, page, size, total }) => {
   const { t } = useTranslation();
   const title =
     page !== 1 && `${t('axes:seo.title')} ${t('axes:seo.page')} ${page}`;
@@ -20,7 +21,7 @@ export const AxesPage = ({ axes, page, pageCount }) => {
       <PageLayout>
         <WithBreadcrumbs paths={breadcrumbs}>
           <Cards cards={axes} />
-          <Pagination page={Number(page)} pageCount={Number(pageCount)} />
+          <Pagination page={page} size={size} total={total} />
         </WithBreadcrumbs>
       </PageLayout>
     </Layout>
@@ -28,17 +29,27 @@ export const AxesPage = ({ axes, page, pageCount }) => {
 };
 
 export async function getStaticProps({ lang, params }) {
-  const { data, pageCount } = await getAxes(lang, params.page);
+  const { items, total, size, page } = await getAxes({
+    lang,
+    page: params.page
+  });
   return {
-    props: { axes: data, page: params.page, pageCount }
+    props: {
+      items,
+      total,
+      size,
+      page
+    }
   };
 }
 
 export async function getStaticPaths({ lang }) {
-  const { pageCount } = await getAxes(lang, 1);
-  const paths = Array.from({ length: pageCount }).map((_, idx) => ({
-    params: { page: String(idx + 1) }
-  }));
+  const { total, size } = await getAxes({ lang });
+  const paths = Array.from({ length: numberOfPages({ total, size }) }).map(
+    (_, idx) => ({
+      params: { page: String(idx + 1) }
+    })
+  );
   return {
     paths,
     fallback: false
