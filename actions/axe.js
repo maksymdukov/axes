@@ -1,5 +1,6 @@
-import { client, locales } from '../server/config/contentful';
+import { client, locales, C_SORT_ORDER } from '../server/config/contentful';
 import { normalizeAxe } from './axe.utils';
+import { AXES_SORT } from './axe.constants';
 
 const AXE_PAGE_SIZE = 10;
 
@@ -35,17 +36,24 @@ export const getLastAxes = async (lang) => {
   }
 };
 
-export const getAxes = async (lang, page) => {
+export const getAxes = async ({
+  lang,
+  page = 1,
+  size = AXE_PAGE_SIZE,
+  sort = AXES_SORT.createdAt,
+  sortOrder = C_SORT_ORDER.desc
+}) => {
   try {
     const entries = await getAxeEntries(lang, {
       select: 'fields',
       limit: AXE_PAGE_SIZE,
       skip: (page - 1) * AXE_PAGE_SIZE,
-      order: '-sys.createdAt'
+      order: `${sortOrder}${sort}`
     });
     return {
-      data: entries.items.map(normalizeAxe),
-      pageCount: Math.ceil(entries.total / AXE_PAGE_SIZE),
+      items: entries.items.map(normalizeAxe),
+      size,
+      page,
       total: entries.total
     };
   } catch (e) {

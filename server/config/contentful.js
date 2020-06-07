@@ -7,5 +7,11 @@ exports.client = client;
 
 exports.locales = {
   ua: 'uk',
-  ru: 'ru'
+  ru: 'ru',
+  uk: 'ua'
+};
+
+exports.C_SORT_ORDER = {
+  asc: '',
+  desc: '-'
 };

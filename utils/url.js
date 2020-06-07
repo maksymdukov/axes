@@ -39,3 +39,20 @@ export const parseUrl = (originalUrl) => {
   url.isSameOrigin = url.hostname === config.PUBLIC_DOMAIN.toLowerCase();
   return url;
 };
+
+export const getQueryString = (queries) => {
+  let stringQuery = '';
+  for (let idx = 0; idx < queries.length; idx++) {
+    const { name, value } = queries[idx];
+    const coercedValue = String(value);
+    if (typeof value === undefined || !coercedValue) {
+      continue;
+    }
+    if (idx === 0) {
+      stringQuery += `?${name}=${coercedValue}`;
+      continue;
+    }
+    stringQuery += `&${name}=${coercedValue}`;
+  }
+  return stringQuery;
+};

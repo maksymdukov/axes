@@ -13,7 +13,7 @@ import { useCartSnackbar } from '../../../context/snackbar/snackbar-hooks';
 import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
 import clsx from 'clsx';
 
-const useStyles = makeStyles(({ shadows, palette }) => ({
+export const useCardStyles = makeStyles(({ shadows, palette }) => ({
   root: {
     width: '100%',
     height: '100%',
@@ -87,7 +87,7 @@ export default function MediaCard({
   isDescription = true,
   titleVariant
 }) {
-  const classes = useStyles();
+  const classes = useCardStyles();
   const { cart, isInCart, addItem, deleteItem } = useCart();
   const { showSnackbar } = useCartSnackbar();
 
