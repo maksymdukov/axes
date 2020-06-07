@@ -10,9 +10,9 @@ const useStyles = makeStyles({
 });
 
 export const sortOptions = (t) => [
-  { label: 'Новинки', value: 'createdAt.desc' },
-  { label: 'От дешевых к дорогим', value: 'price.asc' },
-  { label: 'От дорогих к дешевым', value: 'price.desc' }
+  { label: t('axes:filter.new'), value: 'createdAt.desc' },
+  { label: t('axes:filter.toExpensive'), value: 'price.asc' },
+  { label: t('axes:filter.toCheap'), value: 'price.desc' }
 ];
 
 const SortFilter = ({ defaultOption, onChange, getOptions }) => {
