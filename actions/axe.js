@@ -6,7 +6,7 @@ const {
 const { normalizeAxe, numberOfPages } = require('./axe.utils');
 const { AXES_SORT } = require('./axe.constants');
 
-const AXE_PAGE_SIZE = 5;
+const AXE_PAGE_SIZE = 10;
 
 const getAxeEntries = (lang, options) =>
   client.getEntries({
