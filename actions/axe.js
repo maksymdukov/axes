@@ -1,17 +1,21 @@
-import { client, locales, C_SORT_ORDER } from '../server/config/contentful';
-import { normalizeAxe } from './axe.utils';
-import { AXES_SORT } from './axe.constants';
+const {
+  client,
+  locales,
+  C_SORT_ORDER
+} = require('../server/config/contentful');
+const { normalizeAxe, numberOfPages } = require('./axe.utils');
+const { AXES_SORT } = require('./axe.constants');
 
-const AXE_PAGE_SIZE = 10;
+const AXE_PAGE_SIZE = 5;
 
-export const getAxeEntries = (lang, options) =>
+const getAxeEntries = (lang, options) =>
   client.getEntries({
     content_type: 'axe',
     locale: locales[lang] || locales.ua,
     ...options
   });
 
-export const getFeaturedAxes = async (lang) => {
+const getFeaturedAxes = async (lang) => {
   try {
     const entries = await getAxeEntries(lang, {
       select: 'fields',
@@ -23,7 +27,7 @@ export const getFeaturedAxes = async (lang) => {
   }
 };
 
-export const getLastAxes = async (lang) => {
+const getLastAxes = async (lang) => {
   try {
     const entries = await getAxeEntries(lang, {
       select: 'fields',
@@ -36,13 +40,13 @@ export const getLastAxes = async (lang) => {
   }
 };
 
-export const getAxes = async ({
+const getAxes = async ({
   lang,
   page = 1,
   size = AXE_PAGE_SIZE,
   sort = AXES_SORT.createdAt,
   sortOrder = C_SORT_ORDER.desc
-}) => {
+} = {}) => {
   try {
     const entries = await getAxeEntries(lang, {
       select: 'fields',
@@ -61,7 +65,12 @@ export const getAxes = async ({
   }
 };
 
-export const getAxesSlugs = async () => {
+const getNumberOfAxesPages = async () => {
+  const { total, size } = await getAxes({});
+  return numberOfPages({ total, size });
+};
+
+const getAxesSlugs = async () => {
   try {
     const entries = await getAxeEntries(undefined, {
       select: 'fields.slug'
@@ -72,7 +81,7 @@ export const getAxesSlugs = async () => {
   }
 };
 
-export const getAxeBySlug = async (lang, slug) => {
+const getAxeBySlug = async (lang, slug) => {
   try {
     const entries = await getAxeEntries(lang, {
       select: 'fields',
@@ -84,16 +93,21 @@ export const getAxeBySlug = async (lang, slug) => {
   }
 };
 
-export const getAxesAroundDate = async ({
-  lang,
-  date,
-  limit = 5,
-  forward = true
-}) => {
+const getAxesAroundDate = async ({ lang, date, limit = 5, forward = true }) => {
   const direction = forward ? 'gt' : 'lt';
   const entries = await getAxeEntries(lang, {
     [`sys.createdAt[${direction}]`]: date,
     limit
   });
   return entries.items.map(normalizeAxe);
+};
+
+module.exports = {
+  getFeaturedAxes,
+  getLastAxes,
+  getAxes,
+  getAxesSlugs,
+  getAxeBySlug,
+  getAxesAroundDate,
+  getNumberOfAxesPages
 };

@@ -4,10 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next-translate && next dev",
-    "build": "next-translate && next build",
+    "build": "npm run sitemap && next-translate && next build",
     "prettify": "prettier --write  \"**/*.js\"",
     "eslint": "eslint ./",
     "check": "npm run prettify && npm run eslint",
+    "sitemap": "node utils/sitemap/sitemap-gen.js",
     "start": "next start"
   },
   "dependencies": {
@@ -30,6 +31,7 @@
     "formik-material-ui": "^2.0.0-beta.1",
     "next": "^9.4.4",
     "next-translate": "^0.17.1",
+    "nextjs-sitemap-generator": "^1.0.0",
     "nodemailer": "^6.4.8",
     "postcss": "^7.0.32",
     "react": "16.13.1",

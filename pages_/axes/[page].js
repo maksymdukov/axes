@@ -4,7 +4,7 @@ import PageLayout from '../../components/layout/page-layout';
 import Cards from '../../components/shared/card/cards';
 import Pagination from '../../components/axes/pagination/pagination';
 import WithBreadcrumbs from '../../components/shared/with-breadcrumbs/with-breadcrumbs';
-import { getAxes } from '../../actions/axe';
+import { getNumberOfAxesPages, getAxes } from '../../actions/axe';
 import Head from '../../components/shared/head/head';
 import { useTranslation } from 'next-translate';
 import { numberOfPages } from '~/actions/axe.utils';
@@ -63,13 +63,13 @@ export async function getStaticProps({ lang, params }) {
   };
 }
 
-export async function getStaticPaths({ lang }) {
-  const { total, size } = await getAxes({ lang });
-  const paths = Array.from({ length: numberOfPages({ total, size }) }).map(
-    (_, idx) => ({
-      params: { page: String(idx + 1) }
-    })
-  );
+export async function getStaticPaths() {
+  const number = await getNumberOfAxesPages();
+  const paths = Array.from({ length: number }).map((_, idx) => ({
+    params: { page: String(idx + 1) }
+  }));
+  // Remove first page. it's already rendered as index.js
+  paths.shift();
   return {
     paths,
     fallback: false
