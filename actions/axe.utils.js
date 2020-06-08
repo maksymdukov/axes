@@ -1,4 +1,4 @@
-export const normalizeAxe = (axe) => {
+const normalizeAxe = (axe) => {
   const normalized = {
     ...axe.fields,
     id: axe.sys.id,
@@ -24,4 +24,6 @@ export const normalizeAxe = (axe) => {
   return normalized;
 };
 
-export const numberOfPages = ({ total, size }) => Math.ceil(total / size);
+const numberOfPages = ({ total, size }) => Math.ceil(total / size);
+
+module.exports = { numberOfPages, normalizeAxe };

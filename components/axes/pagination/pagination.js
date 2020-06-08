@@ -12,7 +12,7 @@ const Pagination = ({ page, size, total }) => {
         color="primary"
         shape="rounded"
         size="large"
-        page={page}
+        page={Number(page)}
         count={numberOfPages({ total, size })}
         renderItem={(item) => (
           <PaginationItem
