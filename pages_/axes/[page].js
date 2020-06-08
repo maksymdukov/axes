@@ -7,7 +7,6 @@ import WithBreadcrumbs from '../../components/shared/with-breadcrumbs/with-bread
 import { getNumberOfAxesPages, getAxes } from '../../actions/axe';
 import Head from '../../components/shared/head/head';
 import { useTranslation } from 'next-translate';
-import { numberOfPages } from '~/actions/axe.utils';
 import Sort from '@Components/axes/filters/sort';
 import { getAxesApi } from '~/client-api/get-axes';
 import { useApiCall } from '~/hooks/use-api-call';
