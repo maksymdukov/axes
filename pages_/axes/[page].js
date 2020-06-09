@@ -10,6 +10,7 @@ import { useTranslation } from 'next-translate';
 import Sort from '@Components/axes/filters/sort';
 import { getAxesApi } from '~/client-api/get-axes';
 import { useApiCall } from '~/hooks/use-api-call';
+import MainHeader from '@Components/shared/typography/main-header';
 
 const breadcrumbs = [{ href: '/axes', label: 'common:nav.axes' }];
 
@@ -32,12 +33,13 @@ export const AxesPage = ({ items, page, size, total }) => {
   // canonical tag
 
   const title =
-    page !== 1 && `${t('axes:seo.title')} ${t('axes:seo.page')} ${page}`;
+    page !== 1 && `${t('axes:seo.title')} - ${t('axes:seo.page')} ${page}`;
   return (
     <Layout>
       <Head i18Page="axes" title={title} />
       <PageLayout>
         <WithBreadcrumbs paths={breadcrumbs}>
+          <MainHeader component="h1">{t('axes:header')}</MainHeader>
           <Sort onSortChange={handleSortChange} />
           <Cards cards={data.items} loading={loading} />
           <Pagination page={page} size={size} total={total} />

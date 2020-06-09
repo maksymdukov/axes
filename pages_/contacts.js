@@ -39,8 +39,8 @@ const Contacts = () => {
     <Layout>
       <Head i18Page="contacts" />
       <PageLayout>
-        <MainHeader component="h1">{t('contacts:header')}</MainHeader>
         <WithBreadcrumbs paths={breadcrumbs}>
+          <MainHeader component="h1">{t('contacts:header')}</MainHeader>
           <Grid container>
             <Grid item sm={6} xs={12}>
               <Box display="flex" justifyContent="center">

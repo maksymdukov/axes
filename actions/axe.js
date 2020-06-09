@@ -5,8 +5,7 @@ const {
 } = require('../server/config/contentful');
 const { normalizeAxe, numberOfPages } = require('./axe.utils');
 const { AXES_SORT } = require('./axe.constants');
-
-const AXE_PAGE_SIZE = 10;
+const { config } = require('../config/config');
 
 const getAxeEntries = (lang, options) =>
   client.getEntries({
@@ -43,15 +42,15 @@ const getLastAxes = async (lang) => {
 const getAxes = async ({
   lang,
   page = 1,
-  size = AXE_PAGE_SIZE,
+  size = config.AXE_PAGE_SIZE,
   sort = AXES_SORT.createdAt,
   sortOrder = C_SORT_ORDER.desc
 } = {}) => {
   try {
     const entries = await getAxeEntries(lang, {
       select: 'fields',
-      limit: AXE_PAGE_SIZE,
-      skip: (page - 1) * AXE_PAGE_SIZE,
+      limit: config.AXE_PAGE_SIZE,
+      skip: (page - 1) * config.AXE_PAGE_SIZE,
       order: `${sortOrder}${sort}`
     });
     return {

@@ -101,7 +101,7 @@ export default function MediaCard({
   };
   const handleRemoveFromCart = () => deleteItem(card.id);
   return (
-    <Card className={classes.root} elevation={3}>
+    <Card className={classes.root} elevation={3} component="article">
       <NextLink href={`/axe/[axeId]`} as={`/axe/${card.slug}`} passHref>
         <CardActionArea className={classes.actionArea}>
           <div className={classes.imageRatioWrapper}>

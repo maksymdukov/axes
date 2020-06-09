@@ -5,8 +5,15 @@ import { useTranslation } from 'next-translate';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
 import clsx from 'clsx';
+import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
 
 const useStyles = makeStyles({
+  home: {
+    display: 'inline-block'
+  },
+  homeIcon: {
+    verticalAlign: 'bottom'
+  },
   crumbs: {
     margin: '1rem 0'
   }
@@ -21,8 +28,13 @@ const WithBreadcrumbs = ({ paths, className, children }) => {
         className={clsx(classes.crumbs, className)}
         aria-label="breadcrumb"
       >
-        <Link color="inherit" href="/">
-          {t('common:nav.main')}
+        <Link
+          color="inherit"
+          href="/"
+          className={classes.home}
+          title={t('common:nav.main')}
+        >
+          <HomeOutlinedIcon className={classes.homeIcon} />
         </Link>
         {paths.map((path, idx) => {
           let props = {

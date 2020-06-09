@@ -3,9 +3,9 @@ import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 
-const useStyles = makeStyles(({ spacing }) => ({
+const useStyles = makeStyles(() => ({
   page: {
-    paddingTop: spacing(4)
+    // paddingTop: spacing(4)
   }
 }));
 
