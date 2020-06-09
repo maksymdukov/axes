@@ -1,4 +1,4 @@
-import { client, locales } from '../server/config/contentful';
+import { client, locales } from '../../server/config/contentful';
 import { normalizeReviewSlides } from './review-slides.utils';
 
 export const getReviewSlideEntries = (options) =>

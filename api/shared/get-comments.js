@@ -1,8 +1,6 @@
 import { commentsApiRequest } from '~/utils/api';
 import { config } from '~/config/config';
 
-// TODO: move to client-api folder
-
 export const getCommentsBySlug = async ({
   slug,
   page = 1,

@@ -3,7 +3,7 @@ import PaginationItem from '@material-ui/lab/PaginationItem';
 import Link from '../../shared/link/link';
 import { Box } from '@material-ui/core';
 import { Pagination as MuiPagination } from '@material-ui/lab';
-import { numberOfPages } from '~/actions/axe.utils';
+import { numberOfPages } from '~/api/server/axe.utils';
 
 const Pagination = ({ page, size, total }) => {
   return (

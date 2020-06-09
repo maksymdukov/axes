@@ -2,10 +2,10 @@ const {
   client,
   locales,
   C_SORT_ORDER
-} = require('../server/config/contentful');
+} = require('../../server/config/contentful');
 const { normalizeAxe, numberOfPages } = require('./axe.utils');
 const { AXES_SORT } = require('./axe.constants');
-const { config } = require('../config/config');
+const { config } = require('../../config/config');
 
 const getAxeEntries = (lang, options) =>
   client.getEntries({

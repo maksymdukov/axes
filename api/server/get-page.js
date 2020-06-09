@@ -1,4 +1,4 @@
-import { client, locales } from '../server/config/contentful';
+import { client, locales } from '../../server/config/contentful';
 
 export const getFullPages = (lang, options) =>
   client.getEntries({

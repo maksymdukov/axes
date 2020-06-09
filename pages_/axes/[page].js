@@ -4,11 +4,11 @@ import PageLayout from '../../components/layout/page-layout';
 import Cards from '../../components/shared/card/cards';
 import Pagination from '../../components/axes/pagination/pagination';
 import WithBreadcrumbs from '../../components/shared/with-breadcrumbs/with-breadcrumbs';
-import { getNumberOfAxesPages, getAxes } from '../../actions/axe';
+import { getNumberOfAxesPages, getAxes } from '../../api/server/axe';
 import Head from '../../components/shared/head/head';
 import { useTranslation } from 'next-translate';
 import Sort from '@Components/axes/filters/sort';
-import { getAxesApi } from '~/client-api/get-axes';
+import { getAxesApi } from '~/api/client/get-axes';
 import { useApiCall } from '~/hooks/use-api-call';
 import MainHeader from '@Components/shared/typography/main-header';
 

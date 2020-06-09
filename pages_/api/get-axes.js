@@ -1,6 +1,6 @@
-import { getAxes } from '~/actions/axe';
+import { getAxes } from '~/api/server/axe';
 import contentfulConfig from '~/server/config/contentful';
-import { AXES_SORT } from '~/actions/axe.constants';
+import { AXES_SORT } from '~/api/server/axe.constants';
 import { schema, v } from '~/server/validation/get-axes.validators';
 
 export default async (req, res) => {

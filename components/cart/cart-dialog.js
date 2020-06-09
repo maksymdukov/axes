@@ -10,7 +10,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { useCart } from '../../context/cart/hooks';
 import { getSchema } from './checkout-validators';
 import SuccessScreen from './success-screen';
-import { sendOrder } from '../../actions/cart';
+import { sendOrder } from '../../api/server/cart';
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   titleBg: {

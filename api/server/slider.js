@@ -1,4 +1,4 @@
-import { client, locales } from '../server/config/contentful';
+import { client, locales } from '../../server/config/contentful';
 import { normalizeSlide } from './slider.utils';
 
 export const getSliderEntries = (options) =>
