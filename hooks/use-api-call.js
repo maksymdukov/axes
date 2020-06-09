@@ -25,12 +25,12 @@ export const useApiCall = ({ fetcher, args, data }) => {
           loading: false
         }));
       } catch (error) {
-        console.error(error);
         setState((prevState) => ({
           ...prevState,
           loading: false,
           error: 'An error occured'
         }));
+        throw error;
       }
     },
     [fetcher, setState, args]
