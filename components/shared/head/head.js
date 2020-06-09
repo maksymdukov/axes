@@ -14,6 +14,7 @@ const Head = ({
   const { t } = useTranslation();
   const pageTitle = getTitle(title || t(`${i18Page}:seo.title`));
   const pageDescription = description || t(`${i18Page}:seo.description`);
+  // TODO Link ref="alternate" for languages
   return (
     <NextHead>
       <title>{pageTitle}</title>

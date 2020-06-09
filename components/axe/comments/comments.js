@@ -52,6 +52,7 @@ const Comments = ({ comments, lang, t, axe }) => {
   const locale = lang === 'ru' ? ru : uk;
   const openDialog = () => setDialog(true);
   const closeDialog = () => setDialog(false);
+  // TODO add schema for ratings like in Rozetka
   return (
     <div>
       <NewCommentDialog open={dialog} onClose={closeDialog} axe={axe} />
