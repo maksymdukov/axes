@@ -2,6 +2,7 @@ import React from 'react';
 import NextHead from 'next/head';
 import { getTitle } from '../../../utils/header';
 import { useTranslation } from 'next-translate';
+import { usePurePathname } from '~/hooks/url';
 
 const Head = ({
   i18Page,
@@ -11,10 +12,13 @@ const Head = ({
   description,
   children
 }) => {
-  const { t } = useTranslation();
+  const { t, lang: currentLang } = useTranslation();
+  const { path } = usePurePathname();
+  // TODO Link ref="alternate" for languages
+
   const pageTitle = getTitle(title || t(`${i18Page}:seo.title`));
   const pageDescription = description || t(`${i18Page}:seo.description`);
-  // TODO Link ref="alternate" for languages
+
   return (
     <NextHead>
       <title>{pageTitle}</title>

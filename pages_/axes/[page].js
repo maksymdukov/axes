@@ -11,36 +11,37 @@ import Sort from '@Components/axes/filters/sort';
 import { getAxesApi } from '~/api/client/get-axes';
 import { useApiCall } from '~/hooks/use-api-call';
 import MainHeader from '@Components/shared/typography/main-header';
+import { config } from '~/config/config';
+import { useRouter } from 'next/router';
+import ErrorAlert from '@Components/shared/alerts/alerts';
 
 const breadcrumbs = [{ href: '/axes', label: 'common:nav.axes' }];
 
 export const AxesPage = ({ items, page, size, total }) => {
   const { t, lang } = useTranslation();
+
+  const { asPath } = useRouter();
+
   const { data, doRequest, error, loading } = useApiCall({
     fetcher: getAxesApi,
     args: { page, size, lang },
     data: { items, page, size, total }
   });
 
-  const handleSortChange = useCallback(
-    ([sort, order]) => {
-      doRequest({ sort, order });
-    },
-    [doRequest]
-  );
-
-  // TODO error handling and query changing in browser
-  // canonical tag
+  // TODO query changing in browser
 
   const title =
     page !== 1 && `${t('axes:seo.title')} - ${t('axes:seo.page')} ${page}`;
   return (
     <Layout>
-      <Head i18Page="axes" title={title} />
+      <Head i18Page="axes" title={title}>
+        <link rel="canonical" href={`${config.PUBLIC_URL}${asPath}`} />
+      </Head>
       <PageLayout>
         <WithBreadcrumbs paths={breadcrumbs}>
           <MainHeader component="h1">{t('axes:header')}</MainHeader>
-          <Sort onSortChange={handleSortChange} />
+          {error && <ErrorAlert />}
+          <Sort doRequest={doRequest} />
           <Cards cards={data.items} loading={loading} />
           <Pagination page={page} size={size} total={total} />
         </WithBreadcrumbs>
