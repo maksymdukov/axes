@@ -8,7 +8,7 @@ import { richtextDocumentOptions } from '../components/shared/richtext-page/opti
 import { makeStyles, Paper } from '@material-ui/core';
 import Head from '../components/shared/head/head';
 import MainHeader from '../components/shared/typography/main-header';
-import { getAboutPage } from '../api/server/get-page';
+import { getAboutPage } from '../apis/server/get-page';
 
 const useStyles = makeStyles(({ spacing }) => ({
   paper: {

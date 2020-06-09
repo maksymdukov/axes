@@ -4,7 +4,7 @@ import { uk, ru } from 'date-fns/locale';
 import { Button, makeStyles, Typography } from '@material-ui/core';
 import NewCommentDialog from './new-comment-dialog';
 import MoreCommentsBtn from './more-comments-btn';
-import { getCommentsBySlug } from '~/api/shared/get-comments';
+import { getCommentsBySlug } from '~/apis/shared/get-comments';
 
 const useStyles = makeStyles(({ spacing, palette }) => ({
   btn: {

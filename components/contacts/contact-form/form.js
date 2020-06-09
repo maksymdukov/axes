@@ -3,7 +3,7 @@ import { Formik } from 'formik';
 import { makeStyles } from '@material-ui/core/styles';
 import { useTranslation } from 'next-translate';
 import { getSchema } from './validators';
-import { sendMessage } from '../../../api/server/contacts';
+import { sendMessage } from '../../../apis/client/send-contacts';
 import ContactsGenericForm from '../../shared/contacts/form';
 
 const useStyles = makeStyles(({ spacing, breakpoints }) => ({

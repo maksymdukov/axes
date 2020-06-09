@@ -5,7 +5,7 @@ import WithBreadcrumbs from '../components/shared/with-breadcrumbs/with-breadcru
 import PageLayout from '../components/layout/page-layout';
 import MainHeader from '../components/shared/typography/main-header';
 import { Paper, makeStyles } from '@material-ui/core';
-import { getSovetyPage } from '../api/server/get-page';
+import { getSovetyPage } from '../apis/server/get-page';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { richtextDocumentOptions } from '../components/shared/richtext-page/options';
 import Head from '../components/shared/head/head';

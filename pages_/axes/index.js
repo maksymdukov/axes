@@ -1,5 +1,5 @@
 import AxesPage from './[page]';
-import { getAxes } from '../../api/server/axe';
+import { getAxes } from '../../apis/server/axe';
 
 export async function getStaticProps({ lang }) {
   const { items, page, total, size } = await getAxes({ lang });

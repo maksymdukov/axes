@@ -3,7 +3,7 @@ import { Formik } from 'formik';
 import VerticalStepper from './vertical-stepper';
 import { getValidationSchema } from './validators';
 import { useTranslation } from 'next-translate';
-import { sendCustomOrder } from '../../api/server/custom-order';
+import { sendCustomOrder } from '../../apis/client/send-custom-order';
 
 const FormWrapper = () => {
   const { t } = useTranslation();

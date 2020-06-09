@@ -7,7 +7,7 @@ import {
   getAxeBySlug,
   getAxesSlugs,
   getAxesAroundDate
-} from '../../api/server/axe';
+} from '../../apis/server/axe';
 import LeftSide from '../../components/axe/left-side';
 import RightSide from '../../components/axe/right-side';
 import Head from '../../components/shared/head/head';
@@ -16,7 +16,7 @@ import { capitalize } from '../../utils/header';
 import { addPrefix } from '~/utils/url';
 import WithBreadcrumbs from '@Components/shared/with-breadcrumbs/with-breadcrumbs';
 import AdjacentCards from '@Components/axe/adjacent-cards';
-import { getCommentsBySlug } from '~/api/shared/get-comments';
+import { getCommentsBySlug } from '~/apis/shared/get-comments';
 import SecondaryHeader from '@Components/shared/typography/secondary-header';
 import Comments from '@Components/axe/comments/comments';
 

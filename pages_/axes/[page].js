@@ -1,14 +1,14 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import Layout from '../../components/layout/layout';
 import PageLayout from '../../components/layout/page-layout';
 import Cards from '../../components/shared/card/cards';
 import Pagination from '../../components/axes/pagination/pagination';
 import WithBreadcrumbs from '../../components/shared/with-breadcrumbs/with-breadcrumbs';
-import { getNumberOfAxesPages, getAxes } from '../../api/server/axe';
+import { getNumberOfAxesPages, getAxes } from '../../apis/server/axe';
 import Head from '../../components/shared/head/head';
 import { useTranslation } from 'next-translate';
 import Sort from '@Components/axes/filters/sort';
-import { getAxesApi } from '~/api/client/get-axes';
+import { getAxesApi } from '~/apis/client/get-axes';
 import { useApiCall } from '~/hooks/use-api-call';
 import MainHeader from '@Components/shared/typography/main-header';
 import { config } from '~/config/config';
