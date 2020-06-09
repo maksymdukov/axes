@@ -28,6 +28,7 @@ const MobileListItem = ({
   closeCartWidget
 }) => {
   const classes = useStyles();
+  const firstImage = getFirstImage(cartItem.images);
   return (
     <>
       <Box display="flex" alignItems="center" mb={2}>
@@ -39,9 +40,8 @@ const MobileListItem = ({
         >
           <img
             className={classes.itemImage}
-            src={getFirstImage(cartItem.images)}
-            // TODO
-            alt=""
+            src={firstImage.url}
+            alt={firstImage.title}
           />
         </Link>
         <Box flexGrow="1">

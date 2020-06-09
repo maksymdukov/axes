@@ -38,9 +38,8 @@ const CartListDesktop = () => {
 
               <TableCell align="center">
                 <img
-                  src={getFirstImage(row.images)}
-                  // TODO
-                  alt=""
+                  src={getFirstImage(row.images).url}
+                  alt={row.title}
                   width="auto"
                   height={50}
                 />
