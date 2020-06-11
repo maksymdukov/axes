@@ -14,47 +14,24 @@ const getAxeEntries = (lang, options) =>
     ...options
   });
 
-const getFeaturedAxes = async (lang) => {
-  try {
-    const entries = await getAxeEntries(lang, {
-      select: 'fields',
-      'fields.featured': true
-    });
-    return entries.items.map(normalizeAxe);
-  } catch (e) {
-    console.error(e);
-  }
-};
-
-const getLastAxes = async (lang) => {
-  try {
-    const entries = await getAxeEntries(lang, {
-      select: 'fields',
-      'fields.featured[ne]': true,
-      limit: 5
-    });
-    return entries.items.map(normalizeAxe);
-  } catch (e) {
-    console.error(e);
-  }
-};
-
 const getAxes = async ({
   lang,
   page = 1,
   size = config.AXE_PAGE_SIZE,
   sort = AXES_SORT.createdAt,
-  sortOrder = C_SORT_ORDER.desc
+  sortOrder = C_SORT_ORDER.desc,
+  ...otherOpts
 } = {}) => {
   try {
     const entries = await getAxeEntries(lang, {
       select: 'fields',
       limit: config.AXE_PAGE_SIZE,
       skip: (page - 1) * config.AXE_PAGE_SIZE,
-      order: `${sortOrder}${sort}`
+      order: `${sortOrder}${sort}`,
+      ...otherOpts
     });
     return {
-      items: entries.items.map(normalizeAxe),
+      items: entries.items?.map(normalizeAxe) ?? [],
       size,
       page,
       total: entries.total
@@ -62,6 +39,21 @@ const getAxes = async ({
   } catch (e) {
     console.error(e);
   }
+};
+
+const getFeaturedAxes = async (lang) => {
+  return getAxes({
+    lang,
+    'fields.featured': true
+  });
+};
+
+const getLastAxes = async (lang) => {
+  return getAxes({
+    lang,
+    size: 5,
+    'fields.featured[ne]': true
+  });
 };
 
 const getNumberOfAxesPages = async () => {
@@ -92,13 +84,27 @@ const getAxeBySlug = async (lang, slug) => {
   }
 };
 
-const getAxesAroundDate = async ({ lang, date, limit = 5, forward = true }) => {
+const getAxesAroundDate = async ({ lang, date, size = 5, forward = true }) => {
   const direction = forward ? 'gt' : 'lt';
-  const entries = await getAxeEntries(lang, {
-    [`sys.createdAt[${direction}]`]: date,
-    limit
+  return getAxes({
+    lang,
+    size,
+    [`sys.createdAt[${direction}]`]: date
   });
-  return entries.items.map(normalizeAxe);
+};
+
+const getAdjacentAxes = async ({ lang, date }) => {
+  // Fetch adjacent axes to show them in 'You might like section'
+  let adjacentAxes = await getAxesAroundDate({ lang, date });
+  // If not found try finding later posts
+  if (!(Array.isArray(adjacentAxes.items) && adjacentAxes.items.length)) {
+    adjacentAxes = await getAxesAroundDate({
+      lang,
+      date,
+      forward: false
+    });
+  }
+  return adjacentAxes;
 };
 
 module.exports = {
@@ -107,6 +113,6 @@ module.exports = {
   getAxes,
   getAxesSlugs,
   getAxeBySlug,
-  getAxesAroundDate,
+  getAdjacentAxes,
   getNumberOfAxesPages
 };

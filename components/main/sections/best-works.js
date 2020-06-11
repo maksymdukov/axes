@@ -12,7 +12,7 @@ const BestWorks = ({ featuredAxes }) => {
     <section className={classes.mainContainer}>
       <Container maxWidth="xl">
         <MainHeader>{t('index:bestWorks')}</MainHeader>
-        <Cards cards={featuredAxes} className={classes.mb} />
+        <Cards cards={featuredAxes.items} className={classes.mb} />
       </Container>
     </section>
   );

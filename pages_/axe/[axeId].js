@@ -6,7 +6,7 @@ import Grid from '@material-ui/core/Grid';
 import {
   getAxeBySlug,
   getAxesSlugs,
-  getAxesAroundDate
+  getAdjacentAxes
 } from '../../apis/server/axe';
 import LeftSide from '../../components/axe/left-side';
 import RightSide from '../../components/axe/right-side';
@@ -82,17 +82,8 @@ const Axe = ({ axe, adjacentAxes, comments }) => {
 export async function getStaticProps({ params, lang }) {
   const axe = await getAxeBySlug(lang, params.axeId);
   const comments = await getCommentsBySlug({ slug: params.axeId });
+  const adjacentAxes = await getAdjacentAxes({ lang, date: axe.createdAt });
 
-  // Fetch adjacent axes to show them in 'You might like section'
-  let adjacentAxes = await getAxesAroundDate({ lang, date: axe.createdAt });
-  // If not found try finding later posts
-  if (!adjacentAxes.length) {
-    adjacentAxes = await getAxesAroundDate({
-      lang,
-      date: axe.createdAt,
-      forward: false
-    });
-  }
   return {
     props: { axe, adjacentAxes, comments },
     // we will attempt to re-generate the page:

@@ -12,7 +12,7 @@ const NewWorks = ({ lastAxes }) => {
     <section className={classes.mainContainer}>
       <Container maxWidth="xl">
         <MainHeader>{t('index:newWorks')}</MainHeader>
-        <Cards cards={lastAxes} />
+        <Cards cards={lastAxes.items} />
       </Container>
     </section>
   );
