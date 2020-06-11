@@ -31,7 +31,7 @@ const getAxes = async ({
       ...otherOpts
     });
     return {
-      items: entries.items?.map(normalizeAxe) ?? [],
+      items: (entries.items && entries.items.map(normalizeAxe)) || [],
       size,
       page,
       total: entries.total
