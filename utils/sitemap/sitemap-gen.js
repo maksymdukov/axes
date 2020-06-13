@@ -1,13 +1,13 @@
 const path = require('path');
 const sitemap = require('nextjs-sitemap-generator');
-
-if (process.env.NODE_ENV !== 'production') {
+const { isProd } = require('../env');
+if (!isProd) {
   require('dotenv').config();
 }
-
 const { getExtraPaths } = require('./get-extra-paths');
+const { config } = require('~/config/config');
 
-const baseUrl = 'https://sokyra.net.ua';
+const baseUrl = config.PUBLIC_URL;
 const workingDir = process.cwd();
 
 const generate = async () => {
