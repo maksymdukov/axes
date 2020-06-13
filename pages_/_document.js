@@ -2,6 +2,8 @@ import React from 'react';
 import Document, { Head, Main, NextScript, Html } from 'next/document';
 import { ServerStyleSheets } from '@material-ui/core/styles';
 import documentLang from 'next-translate/documentLang';
+import { isProd } from '~/utils/env';
+import { config } from '~/config/config';
 
 // You can find a benchmark of the available CSS minifiers under
 // https://github.com/GoalSmashers/css-minification-benchmark
@@ -12,7 +14,7 @@ import documentLang from 'next-translate/documentLang';
 // It's using .browserslistrc
 let prefixer;
 let cleanCSS;
-if (process.env.NODE_ENV === 'production') {
+if (isProd) {
   /* eslint-disable global-require */
   const postcss = require('postcss');
   const autoprefixer = require('autoprefixer');
@@ -24,10 +26,35 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 export default class MyDocument extends Document {
+  renderGoogleAnalytics() {
+    return isProd ? (
+      <>
+        {/* Global Site Tag (gtag.js) - Google Analytics */}
+        <script
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=${config.GA_TRACKING_ID}`}
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${config.GA_TRACKING_ID}', {
+              page_path: window.location.pathname,
+            });
+          `
+          }}
+        />
+      </>
+    ) : null;
+  }
+
   render() {
     return (
       <Html lang={documentLang(this.props)}>
         <Head />
+        {this.renderGoogleAnalytics()}
         <body>
           <Main />
           <NextScript />

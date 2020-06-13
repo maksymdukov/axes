@@ -14,6 +14,8 @@ import {
 import { parseFullPath } from '~/utils/url';
 import Router from 'next-translate/Router';
 import Preloader from '@Components/shared/preloader/preloader';
+import { pageview } from '~/libs/gtag';
+import { isProd } from '~/utils/env';
 
 class MyApp extends App {
   state = {
@@ -23,17 +25,58 @@ class MyApp extends App {
 
   backdropref = React.createRef();
 
-  componentDidMount() {
+  async componentDidMount() {
+    // Hide preloader on transitionend
+    this.backdropref.current.addEventListener(
+      'transitionend',
+      this.handlePreloaderTransitionEnd
+    );
+
+    this.removeServerSideCss();
+
+    // Wait till possible lanugage changed
+    await this.saveOrNavigateToLang();
+
+    // Only then add GA handler to prevent counting falsy pageview
+    // Google analiytics stuff
+    if (isProd) {
+      Router.events.on('routeChangeComplete', this.handleRouteChange);
+    }
+  }
+
+  componentWillUnmount() {
+    this.removeListeners();
+  }
+
+  removeServerSideCss() {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side');
     if (jssStyles) {
       jssStyles.parentElement.removeChild(jssStyles);
     }
+  }
 
-    this.backdropref.current.addEventListener('transitionend', () => {
-      this.backdropref.current.style.display = 'none';
-    });
+  removeListeners() {
+    this.backdropref.current.removeListeners(
+      'transitionend',
+      this.handlePreloaderTransitionEnd
+    );
+    if (isProd) {
+      Router.events.off('routeChangeComplete', this.handleRouteChange);
+    }
+  }
 
+  handlePreloaderTransitionEnd = () => {
+    this.backdropref.current.style.display = 'none';
+  };
+
+  handleRouteChange = (url) => {
+    console.log(url);
+
+    pageview(url);
+  };
+
+  async saveOrNavigateToLang() {
     // Save default language
     const savedLang = getUserLanguageSetting();
     if (savedLang) {
@@ -44,13 +87,12 @@ class MyApp extends App {
         // Can be alleviated by showing fullscreen loader
         // Since we use SSG there is no way to save preferred user lang in cookie
         // That's why preloader is necessary
-        Router.pushI18n({
+        await Router.replaceI18n({
           url: url,
           as: asPath,
           options: { lang: savedLang }
-        }).then(() => {
-          this.setState({ languageChanged: true });
         });
+        this.setState({ languageChanged: true });
         return;
       }
     }
