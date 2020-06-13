@@ -2,7 +2,7 @@
 
 const path = require('path');
 // eslint-disable-next-line
-const webpack = require('webpack');
+// const webpack = require('webpack');
 
 module.exports = {
   webpack: (config) => {

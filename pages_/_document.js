@@ -100,7 +100,7 @@ MyDocument.getInitialProps = async (ctx) => {
 
   let css = sheets.toString();
   // It might be undefined, e.g. after an error.
-  if (css && process.env.NODE_ENV === 'production') {
+  if (css && isProd) {
     const result1 = await prefixer.process(css, { from: undefined });
     css = result1.css;
     const output = cleanCSS.minify(css);
