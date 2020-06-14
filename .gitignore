@@ -29,3 +29,6 @@ yarn-error.log*
 /pages
 .now
 /.project
+
+#sitemap
+/public/sitemap.xml

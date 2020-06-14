@@ -5,7 +5,7 @@ if (!isProd) {
   require('dotenv').config();
 }
 const { getExtraPaths } = require('./get-extra-paths');
-const { config } = require('~/config/config');
+const { config } = require('../../config/config');
 
 const baseUrl = config.PUBLIC_URL;
 const workingDir = process.cwd();
