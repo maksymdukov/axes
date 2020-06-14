@@ -16,5 +16,9 @@ module.exports = {
     config.resolve.alias['~'] = path.resolve(__dirname);
     config.resolve.alias['@Components'] = path.resolve(__dirname, 'components');
     return config;
+  },
+  // env variables used by webpack
+  env: {
+    COMMENTS_SERVICE_URL: process.env.COMMENTS_SERVICE_URL
   }
 };
