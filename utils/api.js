@@ -21,6 +21,6 @@ export const apiRequest = async ({
   return response.json();
 };
 
-export const commentsApiRequest = (args) => {
-  return apiRequest({ ...args, baseUrl: config.COMMENTS_SERVICE_URL });
+export const serviceApiRequest = (args) => {
+  return apiRequest({ ...args, baseUrl: config.API_SERVICE_URL });
 };

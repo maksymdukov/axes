@@ -1,5 +1,5 @@
-import { commentsApiRequest } from '~/utils/api';
 import { config } from '~/config/config';
+import { serviceApiRequest } from '~/utils/api';
 
 export const getCommentsBySlug = async ({
   slug,
@@ -13,8 +13,8 @@ export const getCommentsBySlug = async ({
     page
   };
   try {
-    comments = await commentsApiRequest({
-      url: `/api/comments/${slug}?page=${page}&size=${size}`
+    comments = await serviceApiRequest({
+      url: `/comments/${slug}?page=${page}&size=${size}`
     });
   } catch (error) {
     console.error(error);
@@ -23,8 +23,8 @@ export const getCommentsBySlug = async ({
 };
 
 export const postComment = async ({ values }) => {
-  return commentsApiRequest({
-    url: `/api/comments`,
+  return serviceApiRequest({
+    url: `/comments`,
     method: 'POST',
     data: values
   });

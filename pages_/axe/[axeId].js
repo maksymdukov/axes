@@ -16,7 +16,7 @@ import { capitalize } from '../../utils/header';
 import { addPrefix } from '~/utils/url';
 import WithBreadcrumbs from '@Components/shared/with-breadcrumbs/with-breadcrumbs';
 import AdjacentCards from '@Components/axe/adjacent-cards';
-import { getCommentsBySlug } from '~/apis/shared/get-comments';
+import { getCommentsBySlug } from '~/apis/shared/comments';
 import SecondaryHeader from '@Components/shared/typography/secondary-header';
 import Comments from '@Components/axe/comments/comments';
 

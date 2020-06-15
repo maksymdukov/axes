@@ -3,7 +3,7 @@ import { Formik, Form } from 'formik';
 import { getSchema } from './new-comment-validation';
 import { useTranslation } from 'next-translate';
 import { makeStyles, Typography } from '@material-ui/core';
-import { postComment } from '~/apis/shared/get-comments';
+import { postComment } from '~/apis/shared/comments';
 import NewCommentFields from './new-comment-fields';
 
 const useStyles = makeStyles(({ spacing, palette }) => ({

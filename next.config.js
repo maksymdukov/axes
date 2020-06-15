@@ -19,6 +19,6 @@ module.exports = {
   },
   // env variables used by webpack
   env: {
-    COMMENTS_SERVICE_URL: process.env.COMMENTS_SERVICE_URL
+    API_SERVICE_URL: process.env.API_SERVICE_URL
   }
 };
