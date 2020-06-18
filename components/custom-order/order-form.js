@@ -23,7 +23,7 @@ const OrderForm = () => {
       component={TextField}
       variant="outlined"
       fullWidth
-      name="message"
+      name="comments"
       multiline
       rows={5}
       type="text"

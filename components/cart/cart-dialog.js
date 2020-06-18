@@ -64,7 +64,11 @@ const CartDialog = ({ isOpened, handleClose }) => {
   const doSendOrder = async (values, { setSubmitting }) => {
     try {
       setError(null);
-      await sendOrder({ ...values, cart: cart.items });
+      await sendOrder({
+        ...values,
+        phone: values.phone.replace(/\(|\)|-/g, ''),
+        items: cart.items
+      });
       setScreen(3);
       clearCart();
     } catch (e) {

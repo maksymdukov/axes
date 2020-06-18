@@ -1,8 +1,8 @@
-import { apiRequest } from '../../utils/api';
+import { serviceApiRequest } from '../../utils/api';
 
 export const sendOrder = async (data) => {
-  return apiRequest({
-    url: '/api/send-order',
+  return serviceApiRequest({
+    url: '/order',
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     data

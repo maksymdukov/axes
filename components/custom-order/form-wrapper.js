@@ -13,7 +13,7 @@ const FormWrapper = () => {
     surname: '',
     email: '',
     phone: '',
-    message: '',
+    comments: '',
     delivery: '',
     npNumber: '',
     ukrAddress: ''
@@ -28,13 +28,13 @@ const FormWrapper = () => {
       formData.append('name', values.name);
       formData.append('surname', values.surname);
       formData.append('email', values.email);
-      formData.append('phone', values.phone);
+      formData.append('phone', values.phone.replace(/\(|\)|-/g, ''));
       formData.append('delivery', values.delivery);
       formData.append('npNumber', values.npNumber);
       formData.append('ukrAddress', values.ukrAddress);
-      formData.append('message', values.message);
+      formData.append('comments', values.comments);
       values.files.forEach((file, idx) => {
-        formData.append(`${idx}-${file.name}`, file);
+        formData.append(`file${idx}`, file);
       });
 
       await sendCustomOrder(formData);
