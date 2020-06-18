@@ -18,21 +18,9 @@ const useStyles = makeStyles(({ spacing }) => ({
 const OrderForm = () => {
   const classes = useStyles();
   const { t } = useTranslation();
-  const additionalFields = (
-    <Field
-      component={TextField}
-      variant="outlined"
-      fullWidth
-      name="comments"
-      multiline
-      rows={5}
-      type="text"
-      label={t('contacts:form.messageCustom')}
-    />
-  );
   return (
     <Form className={classes.form}>
-      <CheckoutFields t={t} additionalFields={additionalFields} />
+      <CheckoutFields t={t} />
     </Form>
   );
 };

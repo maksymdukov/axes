@@ -26,5 +26,6 @@ export let getSchema = (t, additional) =>
       is: 'ukrposhta',
       then: string().required(t('common:errors.required'))
     }),
+    comments: string().min(3, t('common:errors.min3')).max(5000),
     ...additional
   });

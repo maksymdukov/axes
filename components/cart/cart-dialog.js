@@ -35,7 +35,8 @@ const CartDialog = ({ isOpened, handleClose }) => {
     phone: '',
     delivery: '',
     npNumber: '',
-    ukrAddress: ''
+    ukrAddress: '',
+    comments: ''
   });
   const { t } = useTranslation();
   const { cart, clearCart } = useCart();

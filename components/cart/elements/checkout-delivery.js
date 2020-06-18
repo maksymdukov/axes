@@ -76,6 +76,16 @@ const CheckoutDelivery = () => {
           fullWidth
         />
       )}
+      <Field
+        component={TextField}
+        variant="outlined"
+        fullWidth
+        name="comments"
+        multiline
+        rows={5}
+        type="text"
+        label={t('common:checkout.comments')}
+      />
     </>
   );
 };
