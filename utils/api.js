@@ -15,6 +15,7 @@ export const apiRequest = async ({
       body: JSON.stringify(data)
     }
   );
+
   if (!response.ok) {
     throw new Error('Not ok');
   }
