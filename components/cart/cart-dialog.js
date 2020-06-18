@@ -64,6 +64,12 @@ const CartDialog = ({ isOpened, handleClose }) => {
   const doSendOrder = async (values, { setSubmitting }) => {
     try {
       setError(null);
+      if (!values.npNumber) {
+        delete values.npNumber;
+      }
+      if (!values.ukrAddress) {
+        delete values.ukrAddress;
+      }
       await sendOrder({
         ...values,
         phone: values.phone.replace(/\(|\)|-/g, ''),

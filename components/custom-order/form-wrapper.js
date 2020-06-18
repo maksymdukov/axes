@@ -30,8 +30,12 @@ const FormWrapper = () => {
       formData.append('email', values.email);
       formData.append('phone', values.phone.replace(/\(|\)|-/g, ''));
       formData.append('delivery', values.delivery);
-      formData.append('npNumber', values.npNumber);
-      formData.append('ukrAddress', values.ukrAddress);
+      if (values.npNumber) {
+        formData.append('npNumber', values.npNumber);
+      }
+      if (values.ukrAddress) {
+        formData.append('ukrAddress', values.ukrAddress);
+      }
       formData.append('comments', values.comments);
       values.files.forEach((file, idx) => {
         formData.append(`file${idx}`, file);
