@@ -41,10 +41,10 @@ export default async (req, res) => {
       html
     });
     res.statusCode = 200;
-    res.end();
+    res.json({});
   } catch (e) {
     console.error(e);
     res.statusCode = 500;
-    res.end('Error occurred');
+    res.json({ error: 'An error occured' });
   }
 };

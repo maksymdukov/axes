@@ -36,6 +36,7 @@ const ContactForm = () => {
       resetForm();
       setSuccess(true);
     } catch (e) {
+      console.error(e);
       setNetError('Произошла ошибка, попробуйте позже');
     } finally {
       setSubmitting(false);
