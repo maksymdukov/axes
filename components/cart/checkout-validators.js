@@ -22,6 +22,12 @@ export let getSchema = (t, additional) =>
         .required(t('common:errors.required'))
         .min(1, t('common:errors.number'))
     }),
+    npSettlement: string().when('delivery', {
+      is: 'novaposhta',
+      then: string(t('common:errors.required'))
+        .min(3, t('common:errors.min3'))
+        .required(t('common:errors.required'))
+    }),
     ukrAddress: string().when('delivery', {
       is: 'ukrposhta',
       then: string().required(t('common:errors.required'))

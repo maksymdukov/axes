@@ -61,12 +61,20 @@ const CheckoutDelivery = () => {
         )}
       </FormControl>
       {values.delivery === 'novaposhta' && (
-        <Field
-          name="npNumber"
-          label={t('common:checkout.npNumber')}
-          component={TextField}
-          fullWidth
-        />
+        <>
+          <Field
+            name="npSettlement"
+            label={t('common:checkout.npSettlement')}
+            component={TextField}
+            fullWidth
+          />
+          <Field
+            name="npNumber"
+            label={t('common:checkout.npNumber')}
+            component={TextField}
+            fullWidth
+          />
+        </>
       )}
       {values.delivery === 'ukrposhta' && (
         <Field

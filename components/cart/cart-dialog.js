@@ -35,6 +35,7 @@ const CartDialog = ({ isOpened, handleClose }) => {
     phone: '',
     delivery: '',
     npNumber: '',
+    npSettlement: '',
     ukrAddress: '',
     comments: ''
   });

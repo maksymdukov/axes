@@ -15,6 +15,7 @@ const FormWrapper = () => {
     phone: '',
     comments: '',
     delivery: '',
+    npSettlement: '',
     npNumber: '',
     ukrAddress: ''
   };
