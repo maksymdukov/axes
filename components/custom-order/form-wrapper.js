@@ -34,10 +34,15 @@ const FormWrapper = () => {
       if (values.npNumber) {
         formData.append('npNumber', values.npNumber);
       }
+      if (values.npSettlement) {
+        formData.append('npSettlement', values.npSettlement);
+      }
       if (values.ukrAddress) {
         formData.append('ukrAddress', values.ukrAddress);
       }
-      formData.append('comments', values.comments);
+      if (values.comments) {
+        formData.append('comments', values.comments);
+      }
       values.files.forEach((file, idx) => {
         formData.append(`file${idx}`, file);
       });
