@@ -11,6 +11,7 @@ import { useCart } from '../../context/cart/hooks';
 import { getSchema } from './checkout-validators';
 import SuccessScreen from './success-screen';
 import { sendOrder } from '../../apis/client/send-order';
+import { sanitizePhone } from '~/utils/sanitizers';
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({
   titleBg: {
@@ -74,7 +75,7 @@ const CartDialog = ({ isOpened, handleClose }) => {
       }
       await sendOrder({
         ...values,
-        phone: values.phone.replace(/\(|\)|-/g, ''),
+        phone: sanitizePhone(values.phone),
         items: cart.items
       });
       setScreen(3);

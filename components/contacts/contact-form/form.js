@@ -3,8 +3,9 @@ import { Formik } from 'formik';
 import { makeStyles } from '@material-ui/core/styles';
 import { useTranslation } from 'next-translate';
 import { getSchema } from './validators';
-import { sendMessage } from '../../../apis/client/send-contacts';
+import { sendMessage } from '../../../apis/client/send-pm';
 import ContactsGenericForm from '../../shared/contacts/form';
+import { sanitizePhone } from '~/utils/sanitizers';
 
 const useStyles = makeStyles(({ spacing, breakpoints }) => ({
   form: {
@@ -32,7 +33,13 @@ const ContactForm = () => {
     try {
       setSuccess(false);
       setNetError(null);
-      await sendMessage(values);
+      if (!values.phone) {
+        delete values.phone;
+      }
+      await sendMessage({
+        ...values,
+        ...(values.phone && { phone: sanitizePhone(values.phone) })
+      });
       resetForm();
       setSuccess(true);
     } catch (e) {

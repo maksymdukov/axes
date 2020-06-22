@@ -4,6 +4,7 @@ import VerticalStepper from './vertical-stepper';
 import { getValidationSchema } from './validators';
 import { useTranslation } from 'next-translate';
 import { sendCustomOrder } from '../../apis/client/send-custom-order';
+import { sanitizePhone } from '~/utils/sanitizers';
 
 const FormWrapper = () => {
   const { t } = useTranslation();
@@ -29,7 +30,7 @@ const FormWrapper = () => {
       formData.append('name', values.name);
       formData.append('surname', values.surname);
       formData.append('email', values.email);
-      formData.append('phone', values.phone.replace(/\(|\)|-/g, ''));
+      formData.append('phone', sanitizePhone(values.phone));
       formData.append('delivery', values.delivery);
       if (values.npNumber) {
         formData.append('npNumber', values.npNumber);
