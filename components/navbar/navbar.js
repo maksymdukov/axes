@@ -7,7 +7,7 @@ import makeStyles from '@material-ui/core/styles/makeStyles';
 import { Hidden } from '@material-ui/core';
 import Navmenu from '../shared/navmenu/navmenu';
 import Logo from './components/logo';
-import { useTranslation } from 'next-translate';
+import useTranslation from 'next-translate/useTranslation';
 import LanguageToggler from './components/language-toggler';
 import Drawer from './components/drawer';
 import CartWidget from '../cart/cart-widget';

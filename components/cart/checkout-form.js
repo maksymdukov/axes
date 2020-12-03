@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
-import { useTranslation } from 'next-translate';
+import useTranslation from 'next-translate/useTranslation';
 import Box from '@material-ui/core/Box';
 import CtaButton from '../shared/buttons/cta-button';
 import Typography from '@material-ui/core/Typography';

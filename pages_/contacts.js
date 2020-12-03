@@ -8,7 +8,7 @@ import ContactForm from '../components/contacts/contact-form/form';
 import { makeStyles } from '@material-ui/core/styles';
 import WithBreadcrumbs from '../components/shared/with-breadcrumbs/with-breadcrumbs';
 import Typography from '@material-ui/core/Typography';
-import { useTranslation } from 'next-translate';
+import useTranslation from 'next-translate/useTranslation';
 import MainHeader from '../components/shared/typography/main-header';
 import Head from '../components/shared/head/head';
 

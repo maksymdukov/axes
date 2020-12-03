@@ -3,6 +3,7 @@
 const path = require('path');
 // eslint-disable-next-line
 // const webpack = require('webpack');
+const { locales, defaultLocale } = require('./i18n.json');
 
 module.exports = {
   webpack: (config) => {
@@ -20,5 +21,6 @@ module.exports = {
   // env variables used by webpack
   env: {
     API_SERVICE_URL: process.env.API_SERVICE_URL
-  }
+  },
+  i18n: { locales, defaultLocale }
 };

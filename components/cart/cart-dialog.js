@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Box, Dialog, DialogContent, DialogTitle } from '@material-ui/core';
-import { useTranslation } from 'next-translate';
+import useTranslation from 'next-translate/useTranslation';
 import IconButton from '@material-ui/core/IconButton';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import Cart from './cart';

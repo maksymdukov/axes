@@ -6,7 +6,7 @@ import Pagination from '../../components/axes/pagination/pagination';
 import WithBreadcrumbs from '../../components/shared/with-breadcrumbs/with-breadcrumbs';
 import { getNumberOfAxesPages, getAxes } from '../../apis/server/axe';
 import Head from '../../components/shared/head/head';
-import { useTranslation } from 'next-translate';
+import useTranslation from 'next-translate/useTranslation';
 import Sort from '@Components/axes/filters/sort';
 import { getAxesApi } from '~/apis/client/get-axes';
 import { useApiCall } from '~/hooks/use-api-call';
@@ -50,9 +50,10 @@ export const AxesPage = ({ items, page, size, total }) => {
   );
 };
 
-export async function getStaticProps({ lang, params }) {
+export async function getStaticProps({ locale, params }) {
+  console.log('locale', locale);
   const { items, total, size, page } = await getAxes({
-    lang,
+    lang: locale,
     page: params.page
   });
   return {
@@ -65,7 +66,8 @@ export async function getStaticProps({ lang, params }) {
   };
 }
 
-export async function getStaticPaths() {
+export async function getStaticPaths({ locales }) {
+  console.log('locales', locales);
   const number = await getNumberOfAxesPages();
   const paths = Array.from({ length: number }).map((_, idx) => ({
     params: { page: String(idx + 1) }

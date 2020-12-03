@@ -2,7 +2,7 @@ import React from 'react';
 import { Link as MuiLink, makeStyles } from '@material-ui/core';
 import { parseUrl, parseFullPath } from '~/utils/url';
 import Link from '../link/link';
-import { useTranslation } from 'next-translate';
+import useTranslation from 'next-translate/useTranslation';
 
 const useStyles = makeStyles(({ palette }) => ({
   link: {

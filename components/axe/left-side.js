@@ -5,7 +5,7 @@ import Box from '@material-ui/core/Box';
 import CartQuantity from '../shared/cart-quantity/cart-quantity';
 import Button from '@material-ui/core/Button';
 import CtaButton from '../shared/buttons/cta-button';
-import { useTranslation } from 'next-translate';
+import useTranslation from 'next-translate/useTranslation';
 import { useCart } from '../../context/cart/hooks';
 import { useCartSnackbar } from '../../context/snackbar/snackbar-hooks';
 import { makeStyles } from '@material-ui/core/styles';

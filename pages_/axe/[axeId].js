@@ -11,7 +11,7 @@ import {
 import LeftSide from '../../components/axe/left-side';
 import RightSide from '../../components/axe/right-side';
 import Head from '../../components/shared/head/head';
-import { useTranslation } from 'next-translate';
+import useTranslation from 'next-translate/useTranslation';
 import { capitalize } from '../../utils/header';
 import { addPrefix } from '~/utils/url';
 import WithBreadcrumbs from '@Components/shared/with-breadcrumbs/with-breadcrumbs';
@@ -79,17 +79,20 @@ const Axe = ({ axe, adjacentAxes, comments }) => {
   );
 };
 
-export async function getStaticProps({ params, lang }) {
-  const axe = await getAxeBySlug(lang, params.axeId);
+export async function getStaticProps({ params, locale }) {
+  const axe = await getAxeBySlug(locale, params.axeId);
   const comments = await getCommentsBySlug({ slug: params.axeId });
-  const adjacentAxes = await getAdjacentAxes({ lang, date: axe.createdAt });
+  const adjacentAxes = await getAdjacentAxes({
+    lang: locale,
+    date: axe.createdAt
+  });
 
   return {
     props: { axe, adjacentAxes, comments },
     // we will attempt to re-generate the page:
     // - when a request comes in
     // - at most once every 1 hour
-    unstable_revalidate: 3600
+    revalidate: 3600
   };
 }
 

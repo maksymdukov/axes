@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form } from 'formik';
 import CheckoutFields from '../cart/elements/checkout-fields';
-import { useTranslation } from 'next-translate';
+import useTranslation from 'next-translate/useTranslation';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(({ spacing }) => ({

@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { Formik } from 'formik';
 import { makeStyles } from '@material-ui/core/styles';
-import { useTranslation } from 'next-translate';
+import useTranslation from 'next-translate/useTranslation';
 import { getSchema } from './validators';
 import { sendMessage } from '../../../apis/client/send-pm';
 import ContactsGenericForm from '../../shared/contacts/form';

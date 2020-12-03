@@ -20,9 +20,9 @@ export const addPrefix = (image) => {
 export const parseFullPath = (fullPath) => () => {
   const slugs = fullPath.split('/');
   let startIdx = 1;
-  let language = i18Config.defaultLanguage;
-  const notDefaultLanguage = i18Config.allLanguages.find(
-    (lng) => lng === slugs[1] && lng !== i18Config.defaultLanguage
+  let language = i18Config.defaultLocale;
+  const notDefaultLanguage = i18Config.locales.find(
+    (lng) => lng === slugs[1] && lng !== i18Config.defaultLocale
   );
   if (notDefaultLanguage) {
     startIdx = 2;

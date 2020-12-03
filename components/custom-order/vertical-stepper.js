@@ -5,7 +5,7 @@ import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import StepContent from '@material-ui/core/StepContent';
 import { StepConnector } from '@material-ui/core';
-import { useTranslation } from 'next-translate';
+import useTranslation from 'next-translate/useTranslation';
 import StepperActions from './stepper-actions';
 import { getStepContent, getSteps } from './stepper-helpers';
 

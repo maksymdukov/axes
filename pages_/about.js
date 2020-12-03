@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTranslation } from 'next-translate';
+import useTranslation from 'next-translate/useTranslation';
 import Layout from '../components/layout/layout';
 import WithBreadcrumbs from '../components/shared/with-breadcrumbs/with-breadcrumbs';
 import PageLayout from '../components/layout/page-layout';

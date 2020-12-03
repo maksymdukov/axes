@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { makeStyles } from '@material-ui/core/styles';
-import { useTranslation } from 'next-translate';
+import useTranslation from 'next-translate/useTranslation';
 import IconButton from '@material-ui/core/IconButton';
 import CancelIcon from '@material-ui/icons/Cancel';
 import Button from '@material-ui/core/Button';

@@ -4,7 +4,7 @@ import PageLayout from '../components/layout/page-layout';
 import { makeStyles } from '@material-ui/core/styles';
 import WithBreadcrumbs from '../components/shared/with-breadcrumbs/with-breadcrumbs';
 import MainHeader from '../components/shared/typography/main-header';
-import { useTranslation } from 'next-translate';
+import useTranslation from 'next-translate/useTranslation';
 import FormWrapper from '../components/custom-order/form-wrapper';
 import Information from '../components/custom-order/information';
 import Head from '../components/shared/head/head';

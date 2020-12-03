@@ -12,8 +12,8 @@ import CtaButton from '../shared/buttons/cta-button';
 import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt';
 import VisibilitySensor from 'react-visibility-sensor';
 import clsx from 'clsx';
-import { useTranslation } from 'next-translate';
-import { default as NextLink } from 'next-translate/Link';
+import useTranslation from 'next-translate/useTranslation';
+import { default as NextLink } from 'next/link';
 
 const useStyles = makeStyles(({ palette, breakpoints, spacing }) => ({
   sectionWrapper: {

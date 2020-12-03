@@ -9,7 +9,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import TableContainer from '@material-ui/core/TableContainer';
 import { useCart } from '../../context/cart/hooks';
 import CartQuantity from '../shared/cart-quantity/cart-quantity';
-import { useTranslation } from 'next-translate';
+import useTranslation from 'next-translate/useTranslation';
 import { getFirstImage } from '../../utils/image';
 
 const CartListDesktop = () => {

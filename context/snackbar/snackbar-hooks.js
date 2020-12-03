@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { SnackbarContext } from './snackbar-context';
 import { useCart } from '../cart/hooks';
-import { useTranslation } from 'next-translate';
+import useTranslation from 'next-translate/useTranslation';
 import IconButton from '@material-ui/core/IconButton';
 import CartIcon from '@material-ui/icons/ShoppingBasket';
 import Box from '@material-ui/core/Box';

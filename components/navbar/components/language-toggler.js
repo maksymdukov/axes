@@ -1,6 +1,6 @@
 import React from 'react';
 import MenuItem from '@material-ui/core/MenuItem';
-import { useTranslation } from 'next-translate';
+import useTranslation from 'next-translate/useTranslation';
 import Select from '@material-ui/core/Select';
 import { makeStyles } from '@material-ui/core/styles';
 import FlagRUIcon from '../../shared/icons/flag-ru';

@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import { Formik } from 'formik';
 import VerticalStepper from './vertical-stepper';
 import { getValidationSchema } from './validators';
-import { useTranslation } from 'next-translate';
+import useTranslation from 'next-translate/useTranslation';
 import { sendCustomOrder } from '../../apis/client/send-custom-order';
 import { sanitizePhone } from '~/utils/sanitizers';
 

@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Contacts from '../contacts/profile/contacts';
 import Grid from '@material-ui/core/Grid';
 import Block from './block';
-import { useTranslation } from 'next-translate';
+import useTranslation from 'next-translate/useTranslation';
 import CenteredBox from '../shared/box/centered-box';
 import Link from '../shared/link/link';
 import { setUserLanguageSetting } from '~/utils/language';

@@ -1,7 +1,7 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import MediaCard from './card';
-import { useTranslation } from 'next-translate';
+import useTranslation from 'next-translate/useTranslation';
 import { makeStyles } from '@material-ui/core';
 import clsx from 'clsx';
 

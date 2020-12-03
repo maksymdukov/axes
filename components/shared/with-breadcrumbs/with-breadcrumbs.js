@@ -1,7 +1,7 @@
 import React from 'react';
 import { default as MuiBreadCrumbs } from '@material-ui/core/Breadcrumbs';
 import Link from '../link/link';
-import { useTranslation } from 'next-translate';
+import useTranslation from 'next-translate/useTranslation';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
 import clsx from 'clsx';

@@ -1,7 +1,6 @@
 import React from 'react';
 import Document, { Head, Main, NextScript, Html } from 'next/document';
 import { ServerStyleSheets } from '@material-ui/core/styles';
-import documentLang from 'next-translate/documentLang';
 import { isProd } from '~/utils/env';
 import { config } from '~/config/config';
 
@@ -52,7 +51,7 @@ export default class MyDocument extends Document {
 
   render() {
     return (
-      <Html lang={documentLang(this.props)}>
+      <Html>
         <Head />
         {this.renderGoogleAnalytics()}
         <body>

@@ -4,7 +4,7 @@ import { TextField } from 'formik-material-ui';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import { useTranslation } from 'next-translate';
+import useTranslation from 'next-translate/useTranslation';
 import PhoneInput from '../../shared/inputs/phone-input';
 import Box from '@material-ui/core/Box';
 import { CircularProgress } from '@material-ui/core';

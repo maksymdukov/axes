@@ -1,6 +1,6 @@
 import React from 'react';
 import Surface from './surface/surface';
-import { useTranslation } from 'next-translate';
+import useTranslation from 'next-translate/useTranslation';
 import { makeStyles } from '@material-ui/core/styles';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { richtextDocumentOptions } from '../shared/richtext-page/options';

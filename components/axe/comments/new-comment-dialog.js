@@ -8,7 +8,7 @@ import {
   IconButton,
   DialogContent
 } from '@material-ui/core';
-import { useTranslation } from 'next-translate';
+import useTranslation from 'next-translate/useTranslation';
 import NewCommentForm from './new-comment-form';
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({

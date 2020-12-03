@@ -2,7 +2,7 @@ import React from 'react';
 import CenteredBox from '../shared/box/centered-box';
 import { makeStyles } from '@material-ui/core/styles';
 import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
-import { useTranslation } from 'next-translate';
+import useTranslation from 'next-translate/useTranslation';
 
 const useStyles = makeStyles(({ spacing }) => ({
   alertIcon: {

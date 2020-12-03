@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Hidden } from '@material-ui/core';
-import { useTranslation } from 'next-translate';
+import useTranslation from 'next-translate/useTranslation';
 import CartListDesktop from './cart-list-desktop';
 import { useCart } from '../../context/cart/hooks';
 import Typography from '@material-ui/core/Typography';

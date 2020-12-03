@@ -6,7 +6,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import { default as NextLink } from 'next-translate/Link';
+import { default as NextLink } from 'next/link';
 import { useCart } from '../../../context/cart/hooks';
 import { getFirstImage } from '../../../utils/image';
 import { useCartSnackbar } from '../../../context/snackbar/snackbar-hooks';

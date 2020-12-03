@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
-import { default as NextLink } from 'next-translate/Link';
+import { default as NextLink } from 'next/link';
 import MuiLink from '@material-ui/core/Link';
 import { usePurePathname } from '~/hooks/url';
 import { DisableLinkContext } from '~/context/404-page/disable-link-context';
@@ -10,7 +10,7 @@ const NextComposed = React.forwardRef(function NextComposed(props, ref) {
   const { as, href, lang, ...other } = props;
 
   return (
-    <NextLink href={href} as={as} lang={lang}>
+    <NextLink href={href} as={as} locale={lang}>
       <a ref={ref} {...other} />
     </NextLink>
   );

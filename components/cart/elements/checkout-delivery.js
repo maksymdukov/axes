@@ -5,7 +5,7 @@ import { Field, useFormikContext } from 'formik';
 import { Select, TextField } from 'formik-material-ui';
 import MenuItem from '@material-ui/core/MenuItem';
 import { makeStyles } from '@material-ui/core/styles';
-import { useTranslation } from 'next-translate';
+import useTranslation from 'next-translate/useTranslation';
 import FormHelperText from '@material-ui/core/FormHelperText';
 
 const useStyles = makeStyles(() => ({

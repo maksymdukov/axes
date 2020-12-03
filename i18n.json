@@ -1,6 +1,6 @@
 {
-  "allLanguages": ["ua", "ru"],
-  "defaultLanguage": "ru",
+  "locales": ["ua", "ru"],
+  "defaultLocale": "ru",
   "pages": {
     "*": ["common"],
     "/": ["index"],

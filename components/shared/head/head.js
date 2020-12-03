@@ -1,7 +1,7 @@
 import React from 'react';
 import NextHead from 'next/head';
 import { getTitle } from '../../../utils/header';
-import { useTranslation } from 'next-translate';
+import useTranslation from 'next-translate/useTranslation';
 
 const Head = ({
   i18Page,

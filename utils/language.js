@@ -1,6 +1,6 @@
 import i18nConfig from '../i18n.json';
 
-const { allLanguages, defaultLanguage } = i18nConfig;
+const { locales, defaultLocale } = i18nConfig;
 
 const LANGUAGE_KEY = 'language';
 
@@ -15,6 +15,6 @@ export const setUserLanguageSetting = (lang) => {
 
 export const getCurrentLanguage = () => {
   const slugs = window.location.pathname.split('/');
-  const currLang = allLanguages.find((lng) => lng === slugs[1]);
-  return currLang || defaultLanguage;
+  const currLang = locales.find((lng) => lng === slugs[1]);
+  return currLang || defaultLocale;
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import NavmenuItem from './elements/navmenu-item';
-import { useTranslation } from 'next-translate';
+import useTranslation from 'next-translate/useTranslation';
 import clsx from 'clsx';
 
 const useStyles = makeStyles({
