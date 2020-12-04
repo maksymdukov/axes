@@ -1,4 +1,4 @@
-import { apiRequest } from '../../utils/api';
+import { apiRequest } from '~/utils/api';
 
 export const sendMessage = async (data) => {
   return apiRequest({

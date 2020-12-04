@@ -1,4 +1,4 @@
-const { getAxesSlugs, getNumberOfAxesPages } = require('../../apis/server/axe');
+const { getAxesSlugs, getNumberOfAxesPages } = require('../../apis/axe');
 
 const getExtraPaths = async () => {
   const extraPaths = [];

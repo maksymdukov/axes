@@ -6,7 +6,7 @@ import PageLayout from '../components/layout/page-layout';
 import { makeStyles, Paper } from '@material-ui/core';
 import Head from '../components/shared/head/head';
 import MainHeader from '../components/shared/typography/main-header';
-import { getAboutPage } from '../apis/server/get-page';
+import { getAboutPage } from '../apis/get-page';
 
 const useStyles = makeStyles(({ spacing }) => ({
   paper: {

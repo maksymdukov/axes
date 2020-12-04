@@ -5,7 +5,7 @@ import WithBreadcrumbs from '../components/shared/with-breadcrumbs/with-breadcru
 import PageLayout from '../components/layout/page-layout';
 import MainHeader from '../components/shared/typography/main-header';
 import { Paper, makeStyles } from '@material-ui/core';
-import { getSovetyPage } from '../apis/server/get-page';
+import { getSovetyPage } from '../apis/get-page';
 import Head from '../components/shared/head/head';
 
 const useStyles = makeStyles(({ spacing }) => ({

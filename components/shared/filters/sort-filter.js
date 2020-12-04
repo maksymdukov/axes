@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { Select, makeStyles } from '@material-ui/core';
 import useTranslation from 'next-translate/useTranslation';
-import { AXES_SORT, C_SORT_ORDER } from '~/apis/server/axe.constants';
+import { AXES_SORT, C_SORT_ORDER } from '~/apis/axe.constants';
 
 const useStyles = makeStyles({
   outlined: {
