@@ -1,40 +1,20 @@
-export const normalizeSlide = ({
-  sys: { id },
-  fields: {
-    title,
-    image: {
-      fields: {
-        file: {
-          url,
-          details: {
-            image: { width, height }
-          }
-        }
-      }
-    },
-    imageSmall: {
-      fields: {
-        file: {
-          url: urlSmall,
-          details: {
-            image: { width: widthSmall, height: heightSmall }
-          }
-        }
-      }
-    }
-  }
-}) => {
-  const slide = {
+import { normalizeImage } from './axe.utils';
+
+export const normalizeSlide = (slide) => {
+  const { id, bigImage, smallImage } = slide;
+  const bImage = normalizeImage(bigImage);
+  const sImage = normalizeImage(smallImage);
+
+  return {
     id: id,
-    title: title,
-    url,
-    width,
-    height,
+    title: bImage.title,
+    url: bImage.url,
+    width: bImage.width,
+    height: bImage.height,
     smallImage: {
-      url: urlSmall,
-      width: widthSmall,
-      height: heightSmall
+      url: sImage.url,
+      width: sImage.width,
+      height: sImage.height
     }
   };
-  return slide;
 };

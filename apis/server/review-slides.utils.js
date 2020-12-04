@@ -1,21 +1,9 @@
-export const normalizeReviewSlides = (entry) => {
-  const {
-    fields: { reviewSlides }
-  } = entry;
-
-  return reviewSlides.map((reviewSlide) => {
+export const normalizeReviewSlides = (entries) => {
+  return entries.map((reviewSlide) => {
     const {
-      sys: { id },
-      fields: {
-        title,
-        file: {
-          url,
-          details: {
-            image: { width, height }
-          }
-        }
-      }
+      id,
+      image: { url, width, height, languages }
     } = reviewSlide;
-    return { id, title, url, width, height };
+    return { id, title: languages[0].title, url, width, height };
   });
 };

@@ -37,13 +37,13 @@ const Home = ({ featuredAxes, lastAxes, slides, reviewSlides }) => {
 
 export default Home;
 
-export const getStaticProps = async ({ lang }) => {
+export const getStaticProps = async ({ locale }) => {
   const promises = [
     getFeaturedAxes,
     getLastAxes,
     getSlides,
     getReviewSlides
-  ].map((fn) => fn(lang));
+  ].map((fn) => fn(locale));
   const [featuredAxes, lastAxes, slides, reviewSlides] = await Promise.all(
     promises
   );

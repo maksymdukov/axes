@@ -1,29 +1,25 @@
 const normalizeAxe = (axe) => {
   const normalized = {
-    ...axe.fields,
-    id: axe.sys.id,
-    createdAt: axe.sys.createdAt
+    ...axe,
+    ...axe.languages[0]
   };
+  normalized.images = [];
+  normalized.mainImage && normalized.images.push(normalizeImage(axe.mainImage));
   if (normalized.images) {
-    normalized.images = axe.fields.images.map(
-      ({
-        fields: {
-          title,
-          file: {
-            url,
-            details: {
-              image: { width, height }
-            }
-          }
-        }
-      }) => {
-        return { title, url, width, height };
-      }
+    normalized.images = normalized.images.concat(
+      axe.images.map(normalizeImage)
     );
   }
   return normalized;
 };
 
+const normalizeImage = ({ url, width, height, languages }) => ({
+  url,
+  width,
+  height,
+  title: languages[0].title
+});
+
 const numberOfPages = ({ total, size }) => Math.ceil(total / size);
 
-module.exports = { numberOfPages, normalizeAxe };
+module.exports = { numberOfPages, normalizeAxe, normalizeImage };

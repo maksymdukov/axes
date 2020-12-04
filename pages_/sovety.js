@@ -6,8 +6,6 @@ import PageLayout from '../components/layout/page-layout';
 import MainHeader from '../components/shared/typography/main-header';
 import { Paper, makeStyles } from '@material-ui/core';
 import { getSovetyPage } from '../apis/server/get-page';
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import { richtextDocumentOptions } from '../components/shared/richtext-page/options';
 import Head from '../components/shared/head/head';
 
 const useStyles = makeStyles(({ spacing }) => ({
@@ -20,10 +18,6 @@ const useStyles = makeStyles(({ spacing }) => ({
 const breadcrumbs = [{ href: '/sovety', label: 'common:nav.sovety' }];
 
 const Advice = ({ document }) => {
-  const richTextDocument = documentToReactComponents(
-    document,
-    richtextDocumentOptions
-  );
   const { t } = useTranslation();
   const classes = useStyles();
   return (
@@ -32,9 +26,11 @@ const Advice = ({ document }) => {
       <PageLayout>
         <WithBreadcrumbs paths={breadcrumbs}>
           <MainHeader component="h1">{t('sovety:header')}</MainHeader>
-          <Paper variant="outlined" className={classes.paper}>
-            {richTextDocument}
-          </Paper>
+          <Paper
+            variant="outlined"
+            className={classes.paper}
+            dangerouslySetInnerHTML={{ __html: document }}
+          />
         </WithBreadcrumbs>
       </PageLayout>
     </Layout>

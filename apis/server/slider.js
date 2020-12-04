@@ -1,14 +1,13 @@
-import { client, locales } from '../../server/config/contentful';
+import { apiRequest } from '~/utils/api';
+import { locales } from '../../server/config/contentful';
 import { normalizeSlide } from './slider.utils';
 
-export const getSliderEntries = (options) =>
-  client.getEntries({
-    content_type: 'slider',
-    locale: locales.ua,
-    ...options
+export const getSlides = async (locale) => {
+  const slides = await apiRequest({
+    params: {
+      size: 20,
+      locale: locales[locale]
+    }
   });
-
-export const getSlides = async () => {
-  const slides = await getSliderEntries();
   return slides.items.map(normalizeSlide);
 };

@@ -8,7 +8,6 @@ import { getNumberOfAxesPages, getAxes } from '../../apis/server/axe';
 import Head from '../../components/shared/head/head';
 import useTranslation from 'next-translate/useTranslation';
 import Sort from '@Components/axes/filters/sort';
-import { getAxesApi } from '~/apis/client/get-axes';
 import { useApiCall } from '~/hooks/use-api-call';
 import MainHeader from '@Components/shared/typography/main-header';
 import { config } from '~/config/config';
@@ -23,7 +22,7 @@ export const AxesPage = ({ items, page, size, total }) => {
   const { asPath } = useRouter();
 
   const { data, doRequest, error, loading } = useApiCall({
-    fetcher: getAxesApi,
+    fetcher: getAxes,
     args: { page, size, lang },
     data: { items, page, size, total }
   });

@@ -44,8 +44,8 @@ const FormWrapper = () => {
       if (values.comments) {
         formData.append('comments', values.comments);
       }
-      values.files.forEach((file, idx) => {
-        formData.append(`file${idx}`, file);
+      values.files.forEach((file) => {
+        formData.append(`images`, file);
       });
 
       await sendCustomOrder(formData);

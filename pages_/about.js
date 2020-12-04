@@ -20,10 +20,6 @@ const useStyles = makeStyles(({ spacing }) => ({
 const breadcrumbs = [{ href: '/about', label: 'common:nav.about' }];
 
 const About = ({ document }) => {
-  const richTextDocument = documentToReactComponents(
-    document,
-    richtextDocumentOptions
-  );
   const { t } = useTranslation();
   const classes = useStyles();
   return (
@@ -32,9 +28,11 @@ const About = ({ document }) => {
       <PageLayout>
         <WithBreadcrumbs paths={breadcrumbs}>
           <MainHeader component="h1">{t('about:header')}</MainHeader>
-          <Paper variant="outlined" className={classes.paper}>
-            {richTextDocument}
-          </Paper>
+          <Paper
+            variant="outlined"
+            className={classes.paper}
+            dangerouslySetInnerHTML={{ __html: document }}
+          />
         </WithBreadcrumbs>
       </PageLayout>
     </Layout>

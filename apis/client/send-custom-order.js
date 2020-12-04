@@ -1,11 +1,12 @@
-import { serviceApiRequest } from '../../utils/api';
+import { apiRequest } from '../../utils/api';
 
 export const sendCustomOrder = async (formData) => {
-  return serviceApiRequest({
-    url: '/custom-order',
+  return apiRequest({
+    url: '/v1/orders/custom',
+    method: 'POST',
     options: {
-      method: 'POST',
-      body: formData
+      body: formData,
+      headers: {}
     }
   });
 };

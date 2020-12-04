@@ -12,6 +12,6 @@ exports.locales = {
 };
 
 exports.C_SORT_ORDER = {
-  asc: '',
-  desc: '-'
+  asc: 'ASC',
+  desc: 'DESC'
 };

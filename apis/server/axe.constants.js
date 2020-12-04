@@ -1,6 +1,6 @@
 const AXES_SORT = {
-  createdAt: 'sys.createdAt',
-  price: 'fields.price'
+  createdAt: 'createdAt',
+  price: 'price'
 };
 
 module.exports = { AXES_SORT };

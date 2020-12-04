@@ -1,18 +1,8 @@
-const {
-  client,
-  locales,
-  C_SORT_ORDER
-} = require('../../server/config/contentful');
+const { locales, C_SORT_ORDER } = require('../../server/config/contentful');
 const { normalizeAxe, numberOfPages } = require('./axe.utils');
 const { AXES_SORT } = require('./axe.constants');
 const { config } = require('../../config/config');
-
-const getAxeEntries = (lang, options) =>
-  client.getEntries({
-    content_type: 'axe',
-    locale: locales[lang] || locales.ua,
-    ...options
-  });
+const { apiRequest } = require('~/utils/api');
 
 const getAxes = async ({
   lang,
@@ -20,15 +10,19 @@ const getAxes = async ({
   size = config.AXE_PAGE_SIZE,
   sort = AXES_SORT.createdAt,
   sortOrder = C_SORT_ORDER.desc,
-  ...otherOpts
+  params
 } = {}) => {
   try {
-    const entries = await getAxeEntries(lang, {
-      select: 'fields',
-      limit: config.AXE_PAGE_SIZE,
-      skip: (page - 1) * config.AXE_PAGE_SIZE,
-      order: `${sortOrder}${sort}`,
-      ...otherOpts
+    const entries = await apiRequest({
+      url: '/v1/products',
+      params: {
+        locale: locales[lang] || locales.ua,
+        page,
+        size,
+        sort,
+        order: sortOrder,
+        ...params
+      }
     });
     return {
       items: (entries.items && entries.items.map(normalizeAxe)) || [],
@@ -44,7 +38,9 @@ const getAxes = async ({
 const getFeaturedAxes = async (lang) => {
   return getAxes({
     lang,
-    'fields.featured': true
+    params: {
+      featured: true
+    }
   });
 };
 
@@ -52,7 +48,9 @@ const getLastAxes = async (lang) => {
   return getAxes({
     lang,
     size: 5,
-    'fields.featured[ne]': true
+    params: {
+      featured: false
+    }
   });
 };
 
@@ -63,22 +61,20 @@ const getNumberOfAxesPages = async () => {
 
 const getAxesSlugs = async () => {
   try {
-    const entries = await getAxeEntries(undefined, {
-      select: 'fields.slug'
-    });
-    return entries.items.map((itm) => itm.fields.slug);
+    const entries = await apiRequest({ url: '/v1/products/slugs' });
+    return entries.map((itm) => itm.slug);
   } catch (e) {
     console.error(e);
   }
 };
 
-const getAxeBySlug = async (lang, slug) => {
+const getAxeBySlug = async (locale, slug) => {
   try {
-    const entries = await getAxeEntries(lang, {
-      select: 'fields',
-      'fields.slug': slug
+    const entry = await apiRequest({
+      url: `/v1/products/slug/${slug}`,
+      params: { locale }
     });
-    return normalizeAxe(entries.items[0]);
+    return normalizeAxe(entry);
   } catch (e) {
     console.error(e);
   }
@@ -89,7 +85,11 @@ const getAxesAroundDate = async ({ lang, date, size = 5, forward = true }) => {
   return getAxes({
     lang,
     size,
-    [`sys.createdAt[${direction}]`]: date
+    params: {
+      condition: 'createdAt',
+      direction,
+      date
+    }
   });
 };
 
