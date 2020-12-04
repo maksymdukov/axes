@@ -10,17 +10,22 @@ export const apiRequest = async ({
 }) => {
   const qs = getQueryString(params);
   const targetUrl = `${baseUrl}${url}${qs ? '?' + qs : ''}`;
-  console.log('targetUrl', targetUrl);
   const response = await fetch(targetUrl, {
     method,
     headers: { 'Content-Type': 'application/json' },
     body: data ? JSON.stringify(data) : undefined,
     ...options
   });
-  if (!response.ok) {
-    return Promise.reject(await response.json());
+  let json;
+  try {
+    json = await response.json();
+  } catch (error) {
+    json = null;
   }
-  return response.json();
+  if (!response.ok) {
+    return Promise.reject(json);
+  }
+  return json;
 };
 
 export const serviceApiRequest = (args) => {

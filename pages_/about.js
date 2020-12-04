@@ -3,8 +3,6 @@ import useTranslation from 'next-translate/useTranslation';
 import Layout from '../components/layout/layout';
 import WithBreadcrumbs from '../components/shared/with-breadcrumbs/with-breadcrumbs';
 import PageLayout from '../components/layout/page-layout';
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import { richtextDocumentOptions } from '../components/shared/richtext-page/options';
 import { makeStyles, Paper } from '@material-ui/core';
 import Head from '../components/shared/head/head';
 import MainHeader from '../components/shared/typography/main-header';

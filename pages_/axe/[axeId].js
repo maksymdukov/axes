@@ -96,11 +96,17 @@ export async function getStaticProps({ params, locale }) {
   };
 }
 
-export async function getStaticPaths() {
+export async function getStaticPaths({ locales }) {
   const ids = await getAxesSlugs();
-  const paths = ids.map((id) => ({
-    params: { axeId: id }
-  }));
+  let paths = [];
+  locales.forEach((locale) => {
+    paths = paths.concat(
+      ids.map((id) => ({
+        params: { axeId: id },
+        locale
+      }))
+    );
+  });
   return {
     paths,
     fallback: false

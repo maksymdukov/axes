@@ -12,7 +12,7 @@ import {
   setUserLanguageSetting
 } from '~/utils/language';
 import { parseFullPath } from '~/utils/url';
-import Router from 'next-translate/Router';
+import Router from 'next/router';
 import Preloader from '@Components/shared/preloader/preloader';
 import { pageview } from '~/libs/gtag';
 import { isProd } from '~/utils/env';
@@ -87,11 +87,7 @@ class MyApp extends App {
         // Can be alleviated by showing fullscreen loader
         // Since we use SSG there is no way to save preferred user lang in cookie
         // That's why preloader is necessary
-        await Router.replaceI18n({
-          url: url,
-          as: asPath,
-          options: { lang: savedLang }
-        });
+        await Router.push(url, asPath, { locale: savedLang });
         this.setState({ languageChanged: true });
         return;
       }

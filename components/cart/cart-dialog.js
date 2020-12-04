@@ -30,15 +30,15 @@ const CartDialog = ({ isOpened, handleClose }) => {
   const [screen, setScreen] = useState(1);
   const [error, setError] = useState(null);
   const [initValues, setInitValues] = useState({
-    name: '',
-    surname: '',
+    firstName: '',
+    lastName: '',
     email: '',
     phone: '',
     delivery: '',
     npNumber: '',
     npSettlement: '',
     ukrAddress: '',
-    comments: ''
+    comment: ''
   });
   const { t } = useTranslation();
   const { cart, clearCart } = useCart();
@@ -76,7 +76,8 @@ const CartDialog = ({ isOpened, handleClose }) => {
       await sendOrder({
         ...values,
         phone: sanitizePhone(values.phone),
-        items: cart.items
+        items: cart.items,
+        ...(values.npNumber && { npNumber: +values.npNumber })
       });
       setScreen(3);
       clearCart();

@@ -10,11 +10,11 @@ const FormWrapper = () => {
   const { t } = useTranslation();
   const initialValues = {
     files: [],
-    name: '',
-    surname: '',
+    firstName: '',
+    lastName: '',
     email: '',
     phone: '',
-    comments: '',
+    comment: '',
     delivery: '',
     npSettlement: '',
     npNumber: '',
@@ -27,8 +27,8 @@ const FormWrapper = () => {
   const handleSubmit = async (values, { setSubmitting }) => {
     try {
       const formData = new FormData();
-      formData.append('name', values.name);
-      formData.append('surname', values.surname);
+      formData.append('firstName', values.firstName);
+      formData.append('lastName', values.lastName);
       formData.append('email', values.email);
       formData.append('phone', sanitizePhone(values.phone));
       formData.append('delivery', values.delivery);
@@ -42,7 +42,7 @@ const FormWrapper = () => {
         formData.append('ukrAddress', values.ukrAddress);
       }
       if (values.comments) {
-        formData.append('comments', values.comments);
+        formData.append('comment', values.comment);
       }
       values.files.forEach((file) => {
         formData.append(`images`, file);

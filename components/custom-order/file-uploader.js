@@ -88,7 +88,6 @@ const FileUploader = () => {
       helpers.setValue([
         ...field.value,
         ...acceptedFiles.map((file) => {
-          console.log('file', file);
           return Object.assign(file, {
             preview: URL.createObjectURL(file)
           });

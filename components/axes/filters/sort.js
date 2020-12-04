@@ -17,7 +17,7 @@ const Sort = ({ doRequest }) => {
   const handleSortChange = useCallback(
     async ([sort, order]) => {
       try {
-        await doRequest({ sort, order });
+        await doRequest({ sort, sortOrder: order });
         // TODO trim asPath from any queries before passing to push
         // router.query seems to be wrong choice to look for.
         // Dont pass any queeies when filter is 'Новинки'

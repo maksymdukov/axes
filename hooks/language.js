@@ -1,7 +1,7 @@
 import { usePurePathname } from './url';
 import { useCallback } from 'react';
 import { setUserLanguageSetting } from '~/utils/language';
-import Router from 'next-translate/Router';
+import Router from 'next/router';
 
 export const useLanguageToggler = () => {
   const { path: purePathname, pagePath } = usePurePathname();
@@ -10,11 +10,7 @@ export const useLanguageToggler = () => {
       // localstorage
       setUserLanguageSetting(lng);
 
-      Router.pushI18n({
-        url: pagePath,
-        as: purePathname,
-        options: { lang: lng }
-      });
+      Router.push(pagePath, purePathname, { locale: lng });
     },
     [purePathname]
   );

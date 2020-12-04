@@ -2,10 +2,10 @@ import { string, object, number } from 'yup';
 
 export let getSchema = (t, additional) =>
   object().shape({
-    name: string()
+    firstName: string()
       .min(3, t('common:errors.min3'))
       .required(t('common:errors.required')),
-    surname: string()
+    lastName: string()
       .min(3, t('common:errors.min3'))
       .required(t('common:errors.required')),
     email: string()
@@ -32,6 +32,6 @@ export let getSchema = (t, additional) =>
       is: 'ukrposhta',
       then: string().required(t('common:errors.required'))
     }),
-    comments: string().min(3, t('common:errors.min3')).max(5000),
+    comment: string().min(3, t('common:errors.min3')).max(5000),
     ...additional
   });

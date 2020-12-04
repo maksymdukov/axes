@@ -1,5 +1,6 @@
-import { locales } from '~/server/config/contentful';
+import { locales } from './axe.constants';
 import { apiRequest } from '~/utils/api';
+import { extractPageContent } from './get-page.utils';
 
 export const getFullPage = (lang, page) =>
   apiRequest({
@@ -11,10 +12,10 @@ export const getFullPage = (lang, page) =>
 
 export const getSovetyPage = async (lang) => {
   const data = await getFullPage(lang, 'sovety');
-  return data.languages[0].content;
+  return extractPageContent(data);
 };
 
 export const getAboutPage = async (lang) => {
   const data = await getFullPage(lang, 'about');
-  return data.languages[0].content;
+  return extractPageContent(data);
 };

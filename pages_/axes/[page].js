@@ -50,7 +50,6 @@ export const AxesPage = ({ items, page, size, total }) => {
 };
 
 export async function getStaticProps({ locale, params }) {
-  console.log('locale', locale);
   const { items, total, size, page } = await getAxes({
     lang: locale,
     page: params.page
@@ -66,13 +65,19 @@ export async function getStaticProps({ locale, params }) {
 }
 
 export async function getStaticPaths({ locales }) {
-  console.log('locales', locales);
   const number = await getNumberOfAxesPages();
-  const paths = Array.from({ length: number }).map((_, idx) => ({
-    params: { page: String(idx + 1) }
-  }));
-  // Remove first page. it's already rendered as index.js
-  paths.shift();
+  let paths = [];
+  locales.forEach((locale) => {
+    paths = paths.concat(
+      Array.from({ length: number })
+        .map((_, idx) => ({
+          params: { page: String(idx + 1) },
+          locale
+        }))
+        .shift()
+    );
+    // Remove first page. it's already rendered as index.js
+  });
   return {
     paths,
     fallback: false

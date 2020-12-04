@@ -88,7 +88,7 @@ const CheckoutDelivery = () => {
         component={TextField}
         variant="outlined"
         fullWidth
-        name="comments"
+        name="comment"
         multiline
         rows={5}
         type="text"

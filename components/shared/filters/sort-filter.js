@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { Select, makeStyles } from '@material-ui/core';
 import useTranslation from 'next-translate/useTranslation';
+import { AXES_SORT, C_SORT_ORDER } from '~/apis/server/axe.constants';
 
 const useStyles = makeStyles({
   outlined: {
@@ -10,9 +11,18 @@ const useStyles = makeStyles({
 });
 
 export const sortOptions = (t) => [
-  { label: t('axes:filter.new'), value: 'createdAt.desc' },
-  { label: t('axes:filter.toExpensive'), value: 'price.asc' },
-  { label: t('axes:filter.toCheap'), value: 'price.desc' }
+  {
+    label: t('axes:filter.new'),
+    value: `${AXES_SORT.createdAt}.${C_SORT_ORDER.desc}`
+  },
+  {
+    label: t('axes:filter.toExpensive'),
+    value: `${AXES_SORT.price}.${C_SORT_ORDER.asc}`
+  },
+  {
+    label: t('axes:filter.toCheap'),
+    value: `${AXES_SORT.price}.${C_SORT_ORDER.desc}`
+  }
 ];
 
 const SortFilter = ({ defaultOption, onChange, getOptions }) => {

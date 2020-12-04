@@ -8,13 +8,13 @@ const CheckoutFields = ({ t, additionalFields }) => {
   return (
     <>
       <Field
-        name="name"
+        name="firstName"
         label={t('common:checkout.name')}
         component={TextField}
         fullWidth
       />
       <Field
-        name="surname"
+        name="lastName"
         label={t('common:checkout.surname')}
         component={TextField}
         fullWidth

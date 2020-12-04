@@ -23,7 +23,7 @@ const ContactForm = () => {
   const [netError, setNetError] = useState(null);
   const [success, setSuccess] = useState(false);
   const initialValues = {
-    name: '',
+    firstName: '',
     email: '',
     phone: '',
     message: ''

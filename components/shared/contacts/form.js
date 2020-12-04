@@ -39,7 +39,7 @@ const ContactsGenericForm = ({
       <Field
         component={TextField}
         fullWidth
-        name="name"
+        name="firstName"
         type="text"
         label={t('contacts:form.name')}
       />

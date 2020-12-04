@@ -2,7 +2,7 @@ import { string, object } from 'yup';
 
 export let getSchema = (t) =>
   object().shape({
-    name: string()
+    firstName: string()
       .min(3, t('contacts:form.errors.min3'))
       .required(t('contacts:form.errors.required')),
     email: string()

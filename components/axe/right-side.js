@@ -2,8 +2,6 @@ import React from 'react';
 import Surface from './surface/surface';
 import useTranslation from 'next-translate/useTranslation';
 import { makeStyles } from '@material-ui/core/styles';
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import { richtextDocumentOptions } from '../shared/richtext-page/options';
 import Link from '@Components/shared/link/link';
 import LabelledIcon from './elements/labelled-icon';
 
@@ -18,14 +16,10 @@ const useStyles = makeStyles(({ spacing, palette }) => ({
 const RightSide = ({ axe }) => {
   const classes = useStyles();
   const { t } = useTranslation();
-  const richTextDocument = documentToReactComponents(
-    axe.longDescription,
-    richtextDocumentOptions
-  );
   return (
     <>
       <Surface header={t('axe:descrHeader')}>
-        <div>{richTextDocument}</div>
+        <div dangerouslySetInnerHTML={{ __html: axe.longDescription }} />
         <div>
           <Link href="/sovety">{t('common:nav.sovety')} &#8594;</Link>
         </div>

@@ -1,6 +1,5 @@
-const { locales, C_SORT_ORDER } = require('../../server/config/contentful');
 const { normalizeAxe, numberOfPages } = require('./axe.utils');
-const { AXES_SORT } = require('./axe.constants');
+const { AXES_SORT, locales, C_SORT_ORDER } = require('./axe.constants');
 const { config } = require('../../config/config');
 const { apiRequest } = require('~/utils/api');
 
@@ -72,7 +71,7 @@ const getAxeBySlug = async (locale, slug) => {
   try {
     const entry = await apiRequest({
       url: `/v1/products/slug/${slug}`,
-      params: { locale }
+      params: { locale: locales[locale] }
     });
     return normalizeAxe(entry);
   } catch (e) {
