@@ -1,7 +1,8 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { getFeaturedAxes, getLastAxes } from '../apis/server/axe';
-import { getSlides } from '../apis/server/slider';
+import { getFeaturedAxes, getLastAxes } from '~/apis/axe';
+import { getSlides } from '~/apis/slider';
+import { getReviewSlides } from '~/apis/review-slides';
 import Slider from '@Components/main/sections/slider';
 import BestWorks from '@Components/main/sections/best-works';
 import NewWorks from '@Components/main/sections/new-works';
@@ -9,7 +10,6 @@ import Reviews from '@Components/main/sections/reviews';
 import IndividualOrder from '@Components/main/sections/individual-order';
 import Head from '@Components/shared/head/head';
 import Layout from '@Components/layout/layout';
-import { getReviewSlides } from '~/apis/server/review-slides';
 
 const useStyles = makeStyles({
   bgPattern: {

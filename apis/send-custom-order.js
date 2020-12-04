@@ -1,4 +1,4 @@
-import { apiRequest } from '../../utils/api';
+import { apiRequest } from '../utils/api';
 
 export const sendCustomOrder = async (formData) => {
   return apiRequest({

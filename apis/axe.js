@@ -1,9 +1,9 @@
-const { normalizeAxe, numberOfPages } = require('./axe.utils');
-const { AXES_SORT, locales, C_SORT_ORDER } = require('./axe.constants');
-const { config } = require('../../config/config');
-const { apiRequest } = require('~/utils/api');
+import { config } from '~/config/config';
+import { apiRequest } from '~/utils/api';
+import { AXES_SORT, C_SORT_ORDER, locales } from './axe.constants';
+import { normalizeAxe, numberOfPages } from './axe.utils';
 
-const getAxes = async ({
+export const getAxes = async ({
   lang,
   page = 1,
   size = config.AXE_PAGE_SIZE,
@@ -34,7 +34,7 @@ const getAxes = async ({
   }
 };
 
-const getFeaturedAxes = async (lang) => {
+export const getFeaturedAxes = async (lang) => {
   return getAxes({
     lang,
     params: {
@@ -43,7 +43,7 @@ const getFeaturedAxes = async (lang) => {
   });
 };
 
-const getLastAxes = async (lang) => {
+export const getLastAxes = async (lang) => {
   return getAxes({
     lang,
     size: 5,
@@ -53,12 +53,12 @@ const getLastAxes = async (lang) => {
   });
 };
 
-const getNumberOfAxesPages = async () => {
+export const getNumberOfAxesPages = async () => {
   const { total, size } = await getAxes({});
   return numberOfPages({ total, size });
 };
 
-const getAxesSlugs = async () => {
+export const getAxesSlugs = async () => {
   try {
     const entries = await apiRequest({ url: '/v1/products/slugs' });
     return entries.map((itm) => itm.slug);
@@ -67,7 +67,7 @@ const getAxesSlugs = async () => {
   }
 };
 
-const getAxeBySlug = async (locale, slug) => {
+export const getAxeBySlug = async (locale, slug) => {
   try {
     const entry = await apiRequest({
       url: `/v1/products/slug/${slug}`,
@@ -79,7 +79,12 @@ const getAxeBySlug = async (locale, slug) => {
   }
 };
 
-const getAxesAroundDate = async ({ lang, date, size = 5, forward = true }) => {
+export const getAxesAroundDate = async ({
+  lang,
+  date,
+  size = 5,
+  forward = true
+}) => {
   const direction = forward ? 'gt' : 'lt';
   return getAxes({
     lang,
@@ -92,7 +97,7 @@ const getAxesAroundDate = async ({ lang, date, size = 5, forward = true }) => {
   });
 };
 
-const getAdjacentAxes = async ({ lang, date }) => {
+export const getAdjacentAxes = async ({ lang, date }) => {
   // Fetch adjacent axes to show them in 'You might like section'
   let adjacentAxes = await getAxesAroundDate({ lang, date });
   // If not found try finding later posts
@@ -104,14 +109,4 @@ const getAdjacentAxes = async ({ lang, date }) => {
     });
   }
   return adjacentAxes;
-};
-
-module.exports = {
-  getFeaturedAxes,
-  getLastAxes,
-  getAxes,
-  getAxesSlugs,
-  getAxeBySlug,
-  getAdjacentAxes,
-  getNumberOfAxesPages
 };

@@ -1,4 +1,4 @@
-const normalizeAxe = (axe) => {
+export const normalizeAxe = (axe) => {
   const normalized = {
     ...axe,
     ...axe.languages[0]
@@ -13,13 +13,11 @@ const normalizeAxe = (axe) => {
   return normalized;
 };
 
-const normalizeImage = ({ url, width, height, languages }) => ({
+export const normalizeImage = ({ url, width, height, languages }) => ({
   url,
   width,
   height,
   title: languages[0].title
 });
 
-const numberOfPages = ({ total, size }) => Math.ceil(total / size);
-
-module.exports = { numberOfPages, normalizeAxe, normalizeImage };
+export const numberOfPages = ({ total, size }) => Math.ceil(total / size);

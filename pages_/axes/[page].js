@@ -4,7 +4,7 @@ import PageLayout from '../../components/layout/page-layout';
 import Cards from '../../components/shared/card/cards';
 import Pagination from '../../components/axes/pagination/pagination';
 import WithBreadcrumbs from '../../components/shared/with-breadcrumbs/with-breadcrumbs';
-import { getNumberOfAxesPages, getAxes } from '../../apis/server/axe';
+import { getNumberOfAxesPages, getAxes } from '~/apis/axe';
 import Head from '../../components/shared/head/head';
 import useTranslation from 'next-translate/useTranslation';
 import Sort from '@Components/axes/filters/sort';

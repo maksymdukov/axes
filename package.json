@@ -12,8 +12,6 @@
     "start": "next start"
   },
   "dependencies": {
-    "@contentful/rich-text-react-renderer": "^13.4.0",
-    "@contentful/rich-text-types": "^14.1.0",
     "@material-ui/core": "^4.10.2",
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "^4.0.0-alpha.56",
@@ -21,7 +19,6 @@
     "autoprefixer": "^9.8.0",
     "clean-css": "^4.2.3",
     "clsx": "^1.1.1",
-    "contentful": "^7.14.4",
     "date-fns": "^2.14.0",
     "dotenv": "^8.2.0",
     "ejs": "^3.1.3",

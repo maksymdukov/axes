@@ -10,7 +10,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { useCart } from '../../context/cart/hooks';
 import { getSchema } from './checkout-validators';
 import SuccessScreen from './success-screen';
-import { sendOrder } from '../../apis/client/send-order';
+import { sendOrder } from '~/apis/send-order';
 import { sanitizePhone } from '~/utils/sanitizers';
 
 const useStyles = makeStyles(({ palette, breakpoints }) => ({

@@ -3,11 +3,7 @@ import Layout from '../../components/layout/layout';
 import PageLayout from '../../components/layout/page-layout';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import {
-  getAxeBySlug,
-  getAxesSlugs,
-  getAdjacentAxes
-} from '../../apis/server/axe';
+import { getAxeBySlug, getAxesSlugs, getAdjacentAxes } from '../../apis/axe';
 import LeftSide from '../../components/axe/left-side';
 import RightSide from '../../components/axe/right-side';
 import Head from '../../components/shared/head/head';
@@ -16,7 +12,7 @@ import { capitalize } from '../../utils/header';
 import { addPrefix } from '~/utils/url';
 import WithBreadcrumbs from '@Components/shared/with-breadcrumbs/with-breadcrumbs';
 import AdjacentCards from '@Components/axe/adjacent-cards';
-import { getCommentsBySlug } from '~/apis/shared/comments';
+import { getCommentsBySlug } from '~/apis/comments';
 import SecondaryHeader from '@Components/shared/typography/secondary-header';
 import Comments from '@Components/axe/comments/comments';
 

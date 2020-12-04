@@ -1,4 +1,4 @@
-exports.config = {
+export const config = {
   PUBLIC_DOMAIN: 'Sokyra.net.ua',
   PUBLIC_URL: 'https://sokyra.net.ua',
   API_SERVICE_URL: process.env.API_SERVICE_URL,
