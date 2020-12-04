@@ -39,7 +39,7 @@ const Advice = ({ document }) => {
 
 export default Advice;
 
-export async function getStaticProps({ lang }) {
-  const document = await getSovetyPage(lang);
+export async function getStaticProps({ locale }) {
+  const document = await getSovetyPage(locale);
   return { props: { document } };
 }

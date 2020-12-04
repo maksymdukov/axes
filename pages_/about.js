@@ -39,7 +39,7 @@ const About = ({ document }) => {
 
 export default About;
 
-export async function getStaticProps({ lang }) {
-  const document = await getAboutPage(lang);
+export async function getStaticProps({ locale }) {
+  const document = await getAboutPage(locale);
   return { props: { document } };
 }
