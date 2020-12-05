@@ -7,6 +7,8 @@ import MainHeader from '../components/shared/typography/main-header';
 import { Paper, makeStyles } from '@material-ui/core';
 import { getSovetyPage } from '../apis/get-page';
 import Head from '../components/shared/head/head';
+import { useRichTextStyles } from '@Components/shared/richtext-page/styles';
+import clsx from 'clsx';
 
 const useStyles = makeStyles(({ spacing }) => ({
   paper: {
@@ -18,6 +20,7 @@ const useStyles = makeStyles(({ spacing }) => ({
 const breadcrumbs = [{ href: '/sovety', label: 'common:nav.sovety' }];
 
 const Advice = ({ document }) => {
+  const richClasses = useRichTextStyles();
   const { t } = useTranslation();
   const classes = useStyles();
   return (
@@ -28,7 +31,7 @@ const Advice = ({ document }) => {
           <MainHeader component="h1">{t('sovety:header')}</MainHeader>
           <Paper
             variant="outlined"
-            className={classes.paper}
+            className={clsx(classes.paper, richClasses.block)}
             dangerouslySetInnerHTML={{ __html: document }}
           />
         </WithBreadcrumbs>

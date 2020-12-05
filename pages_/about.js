@@ -7,6 +7,8 @@ import { makeStyles, Paper } from '@material-ui/core';
 import Head from '../components/shared/head/head';
 import MainHeader from '../components/shared/typography/main-header';
 import { getAboutPage } from '../apis/get-page';
+import { useRichTextStyles } from '~/components/shared/richtext-page/styles';
+import clsx from 'clsx';
 
 const useStyles = makeStyles(({ spacing }) => ({
   paper: {
@@ -18,6 +20,7 @@ const useStyles = makeStyles(({ spacing }) => ({
 const breadcrumbs = [{ href: '/about', label: 'common:nav.about' }];
 
 const About = ({ document }) => {
+  const richClasses = useRichTextStyles();
   const { t } = useTranslation();
   const classes = useStyles();
   return (
@@ -28,7 +31,7 @@ const About = ({ document }) => {
           <MainHeader component="h1">{t('about:header')}</MainHeader>
           <Paper
             variant="outlined"
-            className={classes.paper}
+            className={clsx(classes.paper, richClasses.block)}
             dangerouslySetInnerHTML={{ __html: document }}
           />
         </WithBreadcrumbs>

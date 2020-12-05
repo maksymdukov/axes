@@ -4,6 +4,7 @@ import useTranslation from 'next-translate/useTranslation';
 import { makeStyles } from '@material-ui/core/styles';
 import Link from '@Components/shared/link/link';
 import LabelledIcon from './elements/labelled-icon';
+import { useRichTextStyles } from '@Components/shared/richtext-page/styles';
 
 const useStyles = makeStyles(({ spacing, palette }) => ({
   deliveryLink: {
@@ -15,11 +16,15 @@ const useStyles = makeStyles(({ spacing, palette }) => ({
 
 const RightSide = ({ axe }) => {
   const classes = useStyles();
+  const richClasses = useRichTextStyles();
   const { t } = useTranslation();
   return (
     <>
       <Surface header={t('axe:descrHeader')}>
-        <div dangerouslySetInnerHTML={{ __html: axe.longDescription }} />
+        <div
+          className={richClasses.block}
+          dangerouslySetInnerHTML={{ __html: axe.longDescription }}
+        />
         <div>
           <Link href="/sovety">{t('common:nav.sovety')} &#8594;</Link>
         </div>
