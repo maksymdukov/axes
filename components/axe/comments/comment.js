@@ -36,18 +36,18 @@ const Comment = ({ comment, locale }) => {
   const classes = useStyles();
   const message = useMemo(
     () =>
-      splitNewLines(comment.message).map((line, idx) => (
+      splitNewLines(comment.content).map((line, idx) => (
         <React.Fragment key={idx}>
           {line} <br />
         </React.Fragment>
       )),
-    [comment.message]
+    [comment.content]
   );
   return (
     <Card elevation={0} className={classes.card} component="article">
       <header className={clsx(classes.padding)}>
         <Typography variant="subtitle2">
-          {capitalize(comment.author?.name)}
+          {capitalize(comment?.anonymousUser?.profile?.firstName)}
         </Typography>
         <Typography variant="body2" className={classes.date}>
           {format(new Date(comment.createdAt), 'd MMMM yyyy', { locale })}

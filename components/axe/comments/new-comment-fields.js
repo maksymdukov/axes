@@ -17,14 +17,14 @@ const NewCommentFields = ({
     <>
       <NewCommentRating setFieldValue={setFieldValue} value={values.rating} />
       <Field
-        name="name"
+        name="firstName"
         label={t('axe:commentForm.name')}
         component={TextField}
         fullWidth
       />
       <Field name="email" label="Email" component={TextField} fullWidth />
       <Field
-        name="message"
+        name="content"
         label={t('axe:commentForm.message')}
         multiline
         rows={6}

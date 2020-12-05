@@ -28,7 +28,7 @@ export const getCommentsBySlug = async ({
 
 export const postComment = async ({ values }) => {
   return apiRequest({
-    url: `/comments/v1/comments`,
+    url: `/v1/comments`,
     method: 'POST',
     data: values
   });

@@ -25,9 +25,9 @@ const NewCommentForm = ({ onSuccess, slug }) => {
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
   const initialValues = {
-    name: '',
+    firstName: '',
     email: '',
-    message: '',
+    content: '',
     rating: null,
     slug
   };
