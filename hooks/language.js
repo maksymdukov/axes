@@ -9,10 +9,9 @@ export const useLanguageToggler = () => {
     (lng) => {
       // localstorage
       setUserLanguageSetting(lng);
-
       Router.push(pagePath, purePathname, { locale: lng });
     },
-    [purePathname]
+    [purePathname, pagePath]
   );
   return { toggleLanguage };
 };

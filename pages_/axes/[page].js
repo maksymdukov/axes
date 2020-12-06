@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import Layout from '../../components/layout/layout';
 import PageLayout from '../../components/layout/page-layout';
 import Cards from '../../components/shared/card/cards';
@@ -21,10 +21,17 @@ export const AxesPage = ({ items, page, size, total }) => {
 
   const { asPath } = useRouter();
 
+  const memoizedData = useMemo(() => ({ items, page, size, total }), [
+    items,
+    page,
+    size,
+    total
+  ]);
+
   const { data, doRequest, error, loading } = useApiCall({
     fetcher: getAxes,
     args: { page, size, lang },
-    data: { items, page, size, total }
+    data: memoizedData
   });
 
   // TODO query changing in browser
