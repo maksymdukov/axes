@@ -1,4 +1,4 @@
-import { string, object, number } from 'yup';
+import { string, object, mixed } from 'yup';
 
 export let getSchema = (t, additional) =>
   object().shape({
@@ -15,18 +15,17 @@ export let getSchema = (t, additional) =>
       .required(t('common:errors.required'))
       .matches(/\+38\(\d{3}\)\d{3}-\d{2}-\d{2}/i, t('common:errors.phone')),
     delivery: string().required(t('common:errors.required')),
-    npNumber: number().when('delivery', {
+    npBranch: mixed().when('delivery', {
       is: 'novaposhta',
-      then: number(t('common:errors.number'))
+      then: mixed(t('common:errors.number'))
         .typeError(t('common:errors.number'))
         .required(t('common:errors.required'))
-        .min(1, t('common:errors.number'))
     }),
-    npSettlement: string().when('delivery', {
+    npSettlement: mixed().when('delivery', {
       is: 'novaposhta',
-      then: string(t('common:errors.required'))
-        .min(3, t('common:errors.min3'))
-        .required(t('common:errors.required'))
+      then: mixed(t('common:errors.required')).required(
+        t('common:errors.required')
+      )
     }),
     ukrAddress: string().when('delivery', {
       is: 'ukrposhta',

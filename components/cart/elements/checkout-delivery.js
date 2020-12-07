@@ -7,6 +7,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { makeStyles } from '@material-ui/core/styles';
 import useTranslation from 'next-translate/useTranslation';
 import FormHelperText from '@material-ui/core/FormHelperText';
+import NpSettlementField from './np-settlement-field';
+import NpWarehouseField from './np-warehouse-field';
 
 const useStyles = makeStyles(() => ({
   formControl: {
@@ -65,13 +67,13 @@ const CheckoutDelivery = () => {
           <Field
             name="npSettlement"
             label={t('common:checkout.npSettlement')}
-            component={TextField}
+            component={NpSettlementField}
             fullWidth
           />
           <Field
-            name="npNumber"
+            name="npBranch"
             label={t('common:checkout.npNumber')}
-            component={TextField}
+            component={NpWarehouseField}
             fullWidth
           />
         </>

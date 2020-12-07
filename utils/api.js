@@ -6,11 +6,13 @@ export const apiRequest = async ({
   data,
   options = {},
   baseUrl = config.API_SERVICE_URL,
-  params
+  params,
+  signal
 }) => {
   const qs = getQueryString(params);
   const targetUrl = `${baseUrl}${url}${qs ? '?' + qs : ''}`;
   const response = await fetch(targetUrl, {
+    signal,
     method,
     headers: { 'Content-Type': 'application/json' },
     body: data ? JSON.stringify(data) : undefined,
