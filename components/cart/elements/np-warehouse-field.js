@@ -1,25 +1,26 @@
 import React, { useCallback, useEffect, useMemo } from 'react';
-import AutocompleteField from '@Components/shared/inputs/autocomplete-field';
 import { useRouter } from 'next/router';
 import { useApiCall } from '~/hooks/use-api-call';
 import { findWarehouses } from '~/apis/novaposhta';
+import { formatWarehouseFields } from '~/apis/novaposhta.utils';
+import GenericAutocompleteField from '@Components/shared/inputs/generic-autocomplete-field';
 
 const NpWarehouseField = (props) => {
   const {
     form: { values, setFieldValue },
     field: { name }
   } = props;
+  const [inputValue, setInputValue] = React.useState('');
   const initData = useMemo(() => [], []);
   const { locale } = useRouter();
-  const fieldName = useMemo(
-    () => (locale === 'ru' ? 'DescriptionRu' : 'Description'),
-    [locale]
-  );
-  const getOptionLabel = (option) => (option ? option[fieldName] : '');
+  const getOptionLabel = (option) => (option ? option.FullDescription : '');
 
   const getOptionSelected = (option, value) => option.Ref === value.Ref;
 
-  const fetcher = useCallback(async (arg) => findWarehouses(arg), []);
+  const fetcher = useCallback(async (arg) => {
+    const warehouses = await findWarehouses(arg);
+    return formatWarehouseFields(warehouses, locale);
+  }, []);
 
   const { data, loading, doRequest, setFetchState } = useApiCall({
     fetcher,
@@ -31,9 +32,11 @@ const NpWarehouseField = (props) => {
       doRequest({ locale, settlementRef: values.npSettlement.Ref });
     } else {
       setFieldValue(name, null);
+      setInputValue('');
       setFetchState((prevState) => ({ ...prevState, data: initData }));
     }
   }, [
+    name,
     values.npSettlement,
     doRequest,
     locale,
@@ -43,11 +46,13 @@ const NpWarehouseField = (props) => {
   ]);
 
   return (
-    <AutocompleteField
+    <GenericAutocompleteField
       disabled={loading || !data.length}
       getOptionLabel={getOptionLabel}
       getOptionSelected={getOptionSelected}
       options={data}
+      inputValue={inputValue}
+      setInputValue={setInputValue}
       {...props}
     />
   );

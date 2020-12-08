@@ -1,36 +1,17 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useCallback } from 'react';
 import AsyncAutocompleteField from '@Components/shared/inputs/async-autocomplete-field';
 import { useRouter } from 'next/router';
 import { findSettlements } from '~/apis/novaposhta';
+import { formatSettlementFields } from '~/apis/novaposhta.utils';
 
 const NpSettlementField = ({ ...props }) => {
   const { locale } = useRouter();
-  const fieldNames = useMemo(
-    () =>
-      locale === 'ru'
-        ? {
-            description: 'DescriptionRu',
-            region: 'RegionsDescriptionRu',
-            area: 'AreaDescriptionRu'
-          }
-        : {
-            description: 'Description',
-            region: 'RegionsDescription',
-            area: 'AreaDescription'
-          },
-    [locale]
-  );
 
   const getOptionLabel = (option) => {
     if (!option) {
       return '';
     }
-    const description = option[fieldNames.description];
-    const region = option[fieldNames.region]
-      ? ` - ${option[fieldNames.region]}`
-      : '';
-    const area = option[fieldNames.area] ? ` - ${option[fieldNames.area]}` : '';
-    return `${description}${region}${area}`;
+    return option.FullDescription;
   };
 
   const getOptionSelected = (option, value) => option.Ref === value.Ref;
@@ -43,11 +24,12 @@ const NpSettlementField = ({ ...props }) => {
     inputValue
   }) => {
     prevAbortController?.abort();
-    return findSettlements({
+    const results = await findSettlements({
       locale,
       query: inputValue,
       signal: abortController.signal
     });
+    return formatSettlementFields(results, locale);
   };
 
   return (
