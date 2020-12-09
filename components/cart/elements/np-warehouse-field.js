@@ -4,6 +4,7 @@ import { useApiCall } from '~/hooks/use-api-call';
 import { findWarehouses } from '~/apis/novaposhta';
 import { formatWarehouseFields } from '~/apis/novaposhta.utils';
 import GenericAutocompleteField from '@Components/shared/inputs/generic-autocomplete-field';
+import { usePreviousValue } from '~/hooks/common';
 
 const NpWarehouseField = (props) => {
   const {
@@ -12,6 +13,7 @@ const NpWarehouseField = (props) => {
   } = props;
   const [inputValue, setInputValue] = React.useState('');
   const initData = useMemo(() => [], []);
+  const previousSettlement = usePreviousValue(values.npSettlement);
   const { locale } = useRouter();
   const getOptionLabel = (option) => (option ? option.FullDescription : '');
 
@@ -28,12 +30,15 @@ const NpWarehouseField = (props) => {
   });
 
   useEffect(() => {
-    if (values.npSettlement && values.npSettlement.Ref) {
+    setFieldValue(name, null);
+    setInputValue('');
+    setFetchState((prevState) => ({ ...prevState, data: initData }));
+    if (
+      values.npSettlement &&
+      values.npSettlement.Ref &&
+      previousSettlement !== values.npSettlement
+    ) {
       doRequest({ locale, settlementRef: values.npSettlement.Ref });
-    } else {
-      setFieldValue(name, null);
-      setInputValue('');
-      setFetchState((prevState) => ({ ...prevState, data: initData }));
     }
   }, [
     name,
