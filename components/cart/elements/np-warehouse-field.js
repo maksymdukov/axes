@@ -58,6 +58,7 @@ const NpWarehouseField = (props) => {
       options={data}
       inputValue={inputValue}
       setInputValue={setInputValue}
+      openOnFocus
       {...props}
     />
   );
