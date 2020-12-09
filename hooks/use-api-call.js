@@ -51,7 +51,7 @@ export const useApiCall = ({ fetcher, args, data, isAbortable = false }) => {
         }
       }
     },
-    [fetcher, setState, args]
+    [fetcher, setState, args, isAbortable]
   );
 
   useEffect(() => {

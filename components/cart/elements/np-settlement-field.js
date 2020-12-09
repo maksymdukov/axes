@@ -18,19 +18,18 @@ const NpSettlementField = ({ ...props }) => {
 
   const formatBeforeRequest = useCallback((input) => input.split(' - ')[0], []);
 
-  const fetcher = async ({
-    abortController,
-    prevAbortController,
-    inputValue
-  }) => {
-    prevAbortController?.abort();
-    const results = await findSettlements({
-      locale,
-      query: inputValue,
-      signal: abortController.signal
-    });
-    return formatSettlementFields(results, locale);
-  };
+  const fetcher = useCallback(
+    async ({ abortController, prevAbortController, inputValue }) => {
+      prevAbortController?.abort();
+      const results = await findSettlements({
+        locale,
+        query: inputValue,
+        signal: abortController.signal
+      });
+      return formatSettlementFields(results, locale);
+    },
+    []
+  );
 
   return (
     <AsyncAutocompleteField
