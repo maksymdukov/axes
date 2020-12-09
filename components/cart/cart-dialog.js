@@ -35,7 +35,7 @@ const CartDialog = ({ isOpened, handleClose }) => {
     email: '',
     phone: '',
     delivery: '',
-    npNumber: '',
+    npBranch: '',
     npSettlement: '',
     ukrAddress: '',
     comment: ''
@@ -67,8 +67,11 @@ const CartDialog = ({ isOpened, handleClose }) => {
   const doSendOrder = async (values, { setSubmitting }) => {
     try {
       setError(null);
-      if (!values.npNumber) {
-        delete values.npNumber;
+      if (!values.npBranch) {
+        delete values.npBranch;
+      }
+      if (!values.npSettlement) {
+        delete values.npSettlement;
       }
       if (!values.ukrAddress) {
         delete values.ukrAddress;
@@ -77,7 +80,14 @@ const CartDialog = ({ isOpened, handleClose }) => {
         ...values,
         phone: sanitizePhone(values.phone),
         items: cart.items,
-        ...(values.npNumber && { npNumber: +values.npNumber })
+        ...(!!values.npBranch && {
+          npBranch: values.npBranch.FullDescription,
+          npBranchId: values.npBranch.Ref
+        }),
+        ...(!!values.npSettlement && {
+          npSettlement: values.npSettlement.FullDescription,
+          npSettlementId: values.npSettlement.Ref
+        })
       });
       setScreen(3);
       clearCart();
