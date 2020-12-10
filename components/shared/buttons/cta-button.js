@@ -11,6 +11,7 @@ const useStyles = makeStyles(({ palette, shadows }) => ({
     boxShadow: shadows[2],
     transition: 'transform .15s linear',
     '&:hover': {
+      color: palette.success.contrastText,
       border: 'none',
       transform: 'translateY(-3px)',
       backgroundColor: palette.secondary.main,
@@ -30,6 +31,7 @@ const CtaButton = React.forwardRef(({ children, ...rest }, ref) => {
       ref={ref}
       variant="contained"
       color="secondary"
+      component="a"
       classes={{
         containedSecondary: classes.ctaBtn,
         sizeLarge: classes.large
