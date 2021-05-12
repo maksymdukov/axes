@@ -27,7 +27,7 @@
     "next": "^10.0.3",
     "next-translate": "^0.20.2",
     "nextjs-sitemap-generator": "^1.0.0",
-    "postcss": "^7.0.32",
+    "postcss": "^8.2.10",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-dropzone": "^11.0.1",
