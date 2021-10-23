@@ -81,9 +81,7 @@ export async function getStaticPaths({ locales }) {
           params: { page: String(idx + 1) },
           locale
         }))
-        .shift()
     );
-    // Remove first page. it's already rendered as index.js
   });
   return {
     paths,
