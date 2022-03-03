@@ -36,7 +36,7 @@
     "react-visibility-sensor": "^5.1.1",
     "sass": "^1.26.8",
     "swiper": "^5.4.3",
-    "url-parse": "^1.4.7",
+    "url-parse": "^1.5.9",
     "yup": "^0.29.1"
   },
   "devDependencies": {
