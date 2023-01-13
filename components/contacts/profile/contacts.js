@@ -12,9 +12,9 @@ const CONTACTS = [
   },
   {
     alt: 'Viber',
-    imgSrc: '/assets/images/viber.svg',
+    imgSrc: '/assets/images/telegram.svg',
     value: PHONE_NUMBER,
-    href: `viber://chat?number=${PHONE_NUMBER}`
+    href: `https://t.me/${PHONE_NUMBER}`
   }
 ];
 
